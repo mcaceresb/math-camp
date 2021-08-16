@@ -3,9 +3,9 @@ Import('*')
 env.PDF(target = '#out/lectures/Math Camp 2021 Lecture 1 - Proofs, Metric Spaces, Topology.pdf',
         source = '#src/lectures/lecture1.tex')
 
-# env.PDF(target = '#out/lectures/Math Camp 2021 Lecture 2 - Sequences, Continuity.pdf',
-#         source = '#src/lectures/lecture2.tex')
-#
+env.PDF(target = '#out/lectures/Math Camp 2021 Lecture 2 - Sequences, Continuity.pdf',
+        source = '#src/lectures/lecture2.tex')
+
 # env.PDF(target = '#out/lectures/Math Camp 2021 Lecture 3 - Correspondences, Compactness, EVT.pdf',
 #         source = '#src/lectures/lecture3.tex')
 #

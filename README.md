@@ -6,7 +6,7 @@ Brown Math Camp 2021
 ### Lecture Notes
 
 - [Lecture 1](out/lectures/Math%20Camp%202021%20Lecture%201%20-%20Proofs,%20Metric%20Spaces,%20Topology.pdf)
-- Lecture 2
+- [Lecture 2](out/lectures/Math%20Camp%202021%20Lecture%202%20-%20Sequences,%20Continuity.pdf)
 - Lecture 3
 - Lecture 4
 - Lecture 5
