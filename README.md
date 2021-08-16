@@ -1,7 +1,7 @@
 Brown Math Camp 2021
 --------------------
 
-[Syllabus](out/syllabus/Math Camp 2021 Syllabus.pdf)
+[Syllabus](src/syllabus/syllabus.tex)
 
 ### Lecture Notes
 
