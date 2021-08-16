@@ -14,7 +14,7 @@ Brown Math Camp 2021
 
 ### Problem Sets
 
-- Problem Set 1
+- [Problem Set 1](out/homework/Math%20Camp%202021%20Problem%20Set%201.pdf)
 - Problem Set 2
 - Problem Set 3
 
