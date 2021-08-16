@@ -1,0 +1,107 @@
+%! TEX program = xelatex
+%% Mauricio Caceres Bravo <mauricio.caceres.bravo@gmail.com>
+%% 2021-05-05 22:25
+
+%----------------------------------------------------------------------
+\documentclass[11pt]{article}
+
+\usepackage{nberpreamble}
+\usepackage{changepage}
+% \renewcommand\textsc[1]{{\fontfamily{put}\fontshape{sc}\selectfont#1}}
+
+\title{\bfseries\scshape Math Camp}
+\author{\scshape Brown University \\ \scshape Department of Economics}
+\date{\scshape Summer 2021}
+
+\renewcommand{\displayoptions}{\maketitle\pagenumbering{arabic}}
+\titleformat{\section}{\scshape\bfseries\Large}{\thesection}{1em}{#1}
+\setlength{\parindent}{1.5em}
+
+%----------------------------------------------------------------------
+\begin{document}
+\displayoptions
+
+{
+  \bfseries
+  \begin{adjustwidth}{\parindent}{0pt}
+    Instructor: Mauricio C\'aceres Bravo \\
+    E-mail: mauricio\_caceres\_bravo@brown.edu \\
+    Office Hours: After class and by appointment \\[12pt]
+    Times: 8/16, 8/17, 8/18, 8/19, 8/23, 8/24 from 9AM--12PM (10 min break) \\
+    Location: Robinson Hall Room 301
+  \end{adjustwidth}
+  \vspace{12pt}
+}
+
+% ---------------------------------------------------------------------
+\section{Course Description}
+\label{sec:course_description}
+
+Our goal is to make sure everyone is familiarized with the mathematical tools that are typically used in economic research. In particular, we focus on the tools that will help the students throughout the first year or their PhDs.
+
+Keep in mind that this course should serve as a warm-up for the challenging first year that you’ll have. We expect that, at the end of the Math Camp, the students are familiarized and comfortable with the theory presented, and are able to apply it throughout the first year.
+
+Finally, many of the topics we will cover will be presented in a ``Cookbook'' way, perhaps without the details a rigorous and formal student ideally would want. A more rigorous presentation of the topics we will expose will come shortly (ECON 2010).
+
+% ---------------------------------------------------------------------
+\section{Recommended Reading}
+\label{sec:recommended_reading}
+
+We do not follow a particular textbook in this course and hence you are not required to have any textbooks. In case you would like to read more about some topics, we suggest the following references: \textit{Real Analysis with Economic Applications} by Efe Ok (henceforth Ok) and \textit{Math for Economists} by Simon and Blume (henceforth SB). In past years these two books have been used in Econ 2010. Additional readings: \textit{Principles of Mathematical Analysis} (aka baby Rudin) by Walter Rudin (henceforth, R) and \textit{Microeconomic Theory} by Mas-Collel, Whinston and Green (henceforth MWG).
+
+% ---------------------------------------------------------------------
+\section{Homework Assignments}
+\label{sec:homework_assignments}
+
+Every two lectures, I will send you a set of exercises that cover the topics we covered in the day. The assignments will not be collected (but feel free to ask me for feedback). The problem sets will consist of basic (and not-so-basic) questions regarding every topic we see. Their goal is to ensure you are aware of (and hopefully comfortable with) the math level that will be required throughout your first year, and to push you towards working together for the first time.
+
+% ---------------------------------------------------------------------
+\section{Accommodations for Students with Disabilities}
+\label{sec:accommodations_for_students_with_disabilities}
+
+Brown University is committed to full inclusion of all students. Any student with a documented disability is welcome to contact me as early in the summer as possible so that we may arrange reasonable accommodations. As part of this process, please be in touch with Student and Employee Accessibility Services by calling 401-863-9588.
+
+% ---------------------------------------------------------------------
+\section{Tentative Schedule}
+\label{sec:tentative_schedule}
+
+\begin{tabularx}{\columnwidth}{llll}
+  \toprule
+  \multicolumn{2}{c}{Lecture}
+  &
+  \multicolumn{1}{c}{Topic}
+  &
+  \multicolumn{1}{c}{References}
+  \\\midrule
+  \multirow{2}{*}{8/16 (Mon)} & 1st half & Introduction, Mathematical Proofs             & Lecture Notes      \\
+                              & 2nd half & Intro to Topology, Limits                     & Ok                 \\[6pt]
+  \multirow{2}{*}{8/17 (Tue)} & 1st half & Sequences                                     & Ok                 \\
+                              & 2nd half & Continuity                                    & Ok                 \\[6pt]
+  \multirow{2}{*}{8/18 (Wed)} & 1st half & Correspondences                               & Lecture Notes      \\
+                              & 2nd half & Compactness and Extreme Value Theorem         & Ok                 \\[6pt]
+  \multirow{2}{*}{8/19 (Thu)} & 1st half & Differentiation and Implicit Function Theorem & Ok, MWG (Appendix) \\
+                              & 2nd half & Unconstrained Optimization                    & SB                 \\[6pt]
+  \multirow{2}{*}{8/23 (Mon)} & 1st half & Constrained Optimization                      & SB                 \\
+                              & 2nd half & Integration                                   & Ok                 \\[6pt]
+  \multirow{2}{*}{8/24 (Tue)} & 1st half & Linear Algebra                                & SB (Chp. 10-11)    \\
+                              & 2nd half & Intro to ODE                                  & SB (Chp. 24-25)    \\
+  \bottomrule
+\end{tabularx}
+
+% A.3, C.1, C.5
+% D.1
+
+% ---------------------------------------------------------------------
+\end{document}
+
+% TODO: Ask whether to send lecture notes before or after class
+% TODO: Swap intro to topology and sequences
+% TODO: Remove all references to "class" from lecture notes
+% TODO: You will see a bunch of stuff in math again, and a bunch you will not
+% TODO: You should definitey drop the genericness and use balls, etc. instead of neighborhoods?
+% TODO: Scrape the double proofs (delete the formal proof; just do the visual proof but do have formal statements)
+% TODO: Using sequential definitions in 10/09 TA review when you do compactness and EVT
+
+% All-Student Orientation: August 31
+% International Orientation: August 25-27
+% Student of Color Orientation: August 29-30

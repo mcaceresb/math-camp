@@ -1,0 +1,7 @@
+__pycache__
+*bulk*
+*tmp*
+!out
+.sconsign.dblite
+out/**/*log
+# **/*log

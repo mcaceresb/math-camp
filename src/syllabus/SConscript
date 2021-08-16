@@ -1,0 +1,4 @@
+Import('*')
+
+env.PDF(target = '#out/syllabus/Math Camp 2021 Syllabus.pdf',
+        source = '#src/syllabus/syllabus.tex')

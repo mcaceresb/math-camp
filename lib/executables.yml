@@ -1,0 +1,5 @@
+python: python
+r:      Rscript
+stata:  ~/.local/stata15/stata-mp
+matlab: matlab
+sas:    ~/.local/sas94/bin/sas_en
