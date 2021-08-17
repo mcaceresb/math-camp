@@ -1,9 +1,6 @@
 scons: done reading SConscript files.
 scons: Building targets ...
-cd out/lectures && pdflatex -interaction=nonstopmode -recorder lecture2.tex
-cd out/lectures && makeindex lecture2.idx
-cd out/lectures && pdflatex -interaction=nonstopmode -recorder lecture2.tex
-cd out/lectures && makeindex lecture2.idx
-cd out/lectures && pdflatex -interaction=nonstopmode -recorder lecture2.tex
-move out/lectures/lecture2.pdf to out/lectures/Math Camp 2021 Lecture 2 - Sequences, Continuity.pdf
+cd out/homework && pdflatex -interaction=nonstopmode -recorder ps1.tex
+cd out/homework && pdflatex -interaction=nonstopmode -recorder ps1.tex
+move out/homework/ps1.pdf to out/homework/Math Camp 2021 Problem Set 1.pdf
 scons: done building targets.
