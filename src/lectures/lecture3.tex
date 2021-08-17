@@ -29,7 +29,7 @@
 \subsection{Compactness}
 \label{sub:compactness}
 
-So I'm gonna say, straight up, that the first time I encountered compactness (way back in undergrad real analysis) I was agape for a few seconds because it seemed like an inscrutable concept. That is to say, if you get it right away, then awesome, but if you don't then know that it can take a little while for this to sink in.
+So I'm gonna say, straight up, that the first time I encountered compactness (way back in undergrad real analysis) it seemed like an inscrutable concept. If you get it right away, then awesome, but if you don't then no worries! It can take a little bit for this to sink in.
 
 \subsubsection{Introduction}
 \label{ssub:introduction}
@@ -531,6 +531,16 @@ The other direction follows from \Cref{thm:lecture3_compactness_heine_borel_og,t
   The \keyword{EVT} follows directly from other theorems in this section. Since $S$ is compact and $\varphi$ continuous, $\varphi(S)$ is compact. Since $\varphi(S) \subseteq \mathbb{R}$ is compact, it has a minimum and a maximum.
 \end{proof}
 
+\paragraph{Application to Economics}
+\label{par:application_to_economics}
+
+Consider a standard utility maximization problem
+\[
+  \max_{x \in B(p, w)} u(x)
+\]
+
+with $B(p, w) = \set{x: p \cdot x \le w}$ and $x, p \in \mathbb{R}^N_+$. $B(p, w)$ is closed and bounded, so if $u(x)$ is continuous the maximum exist and the problem has a solution at somee $x^* \in B(p, w)$.
+
 \subsubsection{Using Sequential Definitions}
 \label{ssub:using_sequential_definitions}
 
@@ -658,18 +668,18 @@ Here's the first roadblock: What would it mean for a correspondence to be \texti
 \begin{example}
   If $\Gamma(X) \subseteq X$ then we say it's a ``self-correspondence.'' An example of such a correspondence is the choice correspondence from utility maximization.
   \begin{align*}
-    \argmax_{\mathbb{R}^L_+} u(x)
+    \argmax_{\mathbb{R}^N_+} u(x)
     \quad
     \text{s.t.}
     \quad
-    p \cdot x \le B
+    p \cdot x \le w
   \end{align*}
 
   We can go a step further and also define the problem over correspondences. Let
   \begin{align*}
-    \Gamma(p, B)
+    \Gamma(p, w)
     =
-    \Fset{x \in \mathbb{R}^+: p \cdot x \le B}
+    \Fset{x \in \mathbb{R}^+: p \cdot x \le w}
   \end{align*}
 
   be the budget correspondence. Then we can define the $\argmax$ correspondence as
@@ -678,7 +688,7 @@ Here's the first roadblock: What would it mean for a correspondence to be \texti
     \quad
     \text{s.t.}
     \quad
-    x \in \Gamma(p, B)
+    x \in \Gamma(p, w)
   \end{align*}
 
   Why go through the trouble? The idea is that if we can prove enough theorems and properties of correspondences, re-expressing some problems we're familiar with in terms of correspondences might make how to solve them and what their properties are more transparent.
