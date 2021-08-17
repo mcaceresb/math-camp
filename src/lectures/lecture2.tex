@@ -570,9 +570,9 @@ More precisely, the idea is that if two points in the domain are close, then the
 \begin{definition}[continuity]\label{def:continuity_continuous}
   A function $f: X \to Y$ is \keyword{continuous} at $x \in X$ if for every $\varepsilon > 0$ there exist a $\delta > 0$ s.t.
   \[
-    d(z, x)
+    d(z, x) < \delta
     \implies
-    d(f(z), f(x))
+    d(f(z), f(x)) < \varepsilon
   \]
 
   Put another way, $z \in B_{\delta}(x) \implies f(z) \in B_{\varepsilon}(f(x))$, or
