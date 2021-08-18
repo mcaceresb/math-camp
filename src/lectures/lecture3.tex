@@ -1487,17 +1487,13 @@ A Nash Equilibrium is then defined as a set of strategies such that no player ha
 If $S_i$ are compact, non-empty, and convex-valued, and $u_i$ are continuous and quasiconcave, then we will be able to apply Kakutani's fixed point theorem to show that $s^* \in b(s^*)$ for some $s^* \in S = \prod_{i = 1}^N S_i$ (with some work in between to show that $b: S \to S$ is upper hemicontinuous).
 
 \clearpage
-\appendix
 
-\renewcommand\thesection{\Alph{section}}
-\titleformat{\section}[display]{
-  \LARGE\bfseries
-}{Appendix \thesection. #1}{0pt}{\vspace{-24pt}}
-\renewcommand\thesubsection{\Alph{section}.\arabic{subsection}}
-
-% ---------------------------------------------------------------------
-\section{Lecture 3}
-\label{sec:lecture_3}
+\setcounter{subsection}{0}
+\renewcommand\thesubsection{\Alph{subsection}}
+\titleformat{\subsection}[display]{
+  \Large\bfseries
+}{Appendix \thesubsection. #1}{0pt}{\vspace{-24pt}}
+\renewcommand\thesubsubsection{\Alph{subsection}.\arabic{subsubsection}}
 
 \subsection{Budget Correspondence Properties}
 \label{sub:appendix_budget_correspondence_properties}
