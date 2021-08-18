@@ -1487,6 +1487,290 @@ A Nash Equilibrium is then defined as a set of strategies such that no player ha
 If $S_i$ are compact, non-empty, and convex-valued, and $u_i$ are continuous and quasiconcave, then we will be able to apply Kakutani's fixed point theorem to show that $s^* \in b(s^*)$ for some $s^* \in S = \prod_{i = 1}^N S_i$ (with some work in between to show that $b: S \to S$ is upper hemicontinuous).
 
 \clearpage
+\appendix
+
+\renewcommand\thesection{\Alph{section}}
+\titleformat{\section}[display]{
+  \LARGE\bfseries
+}{Appendix \thesection. #1}{0pt}{\vspace{-24pt}}
+\renewcommand\thesubsection{\Alph{section}.\arabic{subsection}}
+
+% ---------------------------------------------------------------------
+\section{Lecture 3}
+\label{sec:lecture_3}
+
+\subsection{Budget Correspondence Properties}
+\label{sub:appendix_budget_correspondence_properties}
+
+Since this came up in class, here are some formal proofs about some properties I claimed the budget correspondence had. Only for the very curious!
+
+\subsubsection{Compact}
+\label{ssub:appendix_compact}
+
+We invoke \nameref{thm:lecture3_compactness_heine_borel_modern}. First, let us see $B(p, w)$ is closed:
+\begin{align*}
+  \left[B(p, w)\right]^C
+  \equiv
+  \mathbb{R}^N_+ \setminus B(p, w)
+  =
+  \Fset{
+    x \in \mathbb{R}^N_+:
+    p \cdot x > w
+  }
+\end{align*}
+
+Let $\delta = (p \cdot x - w) / \sum^{}_{} p_k$. Noting $\Fnorm{x - z} < \delta \implies |x_k - z_k| < \delta$, we have
+\begin{align*}
+  p \cdot (x - z)
+  &
+  \le
+  p \cdot |x - z|
+  <
+  p \cdot \delta
+  =
+  \dfrac{p \cdot x - w}{\sum^{}_{} p_k}
+  \sum^{}_{} p_k
+  =
+  p \cdot x - w
+  \\
+  p \cdot x - p \cdot z
+  &
+  <
+  p \cdot x - w
+  \implies
+  w
+  <
+  p \cdot z
+  \implies
+  z \in \left[B(p, w)\right]^C
+\end{align*}
+
+Hence $\left[B(p, w)\right]^C$ is open, meaning its complement, $B(p, w)$, is closed. To see its bounded,
+\begin{align*}
+  w
+  &
+  \ge
+  p \cdot x
+  \ge
+  \sum^{}_{} x_k \cdot \min p_k
+  \\
+  \dfrac{w}{\min_k p_k}
+  &
+  \equiv
+  M
+  \ge
+  \sum^{}_{} x_k
+  \stackrel{!}{\ge}
+  x_k
+  \quad
+  \quad
+  \forall k
+\end{align*}
+
+(to see why $\stackrel{!}{\ge}$ is true, recall $x \in \mathbb{R}^N_+ \implies x_k \ge 0 ~~ \forall k$).  Hence $x \in B(p, w) \implies 0 \le x_k \le M ~~ \forall k$, meaning $B(p, w)$ is bounded. Since $B(p, w)$ is a closed and bounded subset of $\mathbb{R}^N_+$, it is also compact.
+
+\subsubsection{Upper hemi-continuous}
+\label{ssub:appendix_upper_hemi_continuous}
+
+Fix any $(p, w)$ and consider any arbitrary sequence $(p_m, w_m) \to (p, w)$ and any arbitrary sequence $x_m \in B(p_m, w_m)$. If we can show that $\exists x_{m_k} \to x$ for some $x \in B(p, w)$, then $B(p, w)$ is upper hemicontinuous (uhc).
+\begin{enumerate}[1.]
+  \item First, find an arbitrary finite bound for $x_m$.  For instance, let $\varepsilon = 1$; since $(p_m, w_m) \to (p, w)$ then $\exists M$ s.t.
+    \begin{align*}
+      m \ge M
+      \implies
+      \Fnorm{(p_m, w_m) - (p, w)}
+      <
+      \varepsilon
+      \implies
+      |p_{k, m} - p_k| < \varepsilon
+      \quad
+      \text{and}
+      \quad
+      |w_m - w| < \varepsilon
+    \end{align*}
+
+    for each $k$. Therefore any $x_m \in B(p_m, w_m)$ is s.t.
+    \begin{align*}
+      (p - \varepsilon) \cdot x_m
+      \le
+      p_m \cdot x_m
+      \le
+      w_m
+      \le
+      w + \varepsilon
+      \implies
+      x_m \in B(p - \varepsilon, w + \varepsilon)
+    \end{align*}
+
+    for each $m \ge M$.
+
+  \item Now show that $x_m$ has a convergent sub-squence. In \Cref{ssub:appendix_compact} we showed $B$ is compact for any $(p, w)$, so $B(p - \varepsilon, w + \varepsilon)$ is compact and, in turn, sequentially compact. Hence $\exists x_{m_k} \to x$ for some $x \in B(p - 1, w + 1)$. Since $p_{m_k} \cdot x_{m_k}$ is continuous (it's just a linear function of $p_{m_k}$ and $x_{m_k}$),
+    \begin{align*}
+      p_{m_k} \to p
+      \quad
+      \text{and}
+      \quad
+      x_{m_k} \to x
+      &
+      \implies
+      p_{m_k} \cdot x_{m_k}
+      \to
+      p \cdot x
+    \end{align*}
+
+  \item Finally,
+    $
+    p_{m_k} \cdot x_{m_k}
+    \to
+    p \cdot x
+    $
+    and
+    $
+    w_{m_k}
+    \to w
+    $
+    and
+    $
+    p_{m_k} \cdot x_{m_k}
+    \le
+    w_{m_k}
+    ~~
+    \forall k
+    \implies
+    p \cdot x \le w
+    \implies
+    x \in B(p, w)
+    $.
+\end{enumerate}
+
+Therefore $\forall x_m \in B(p_m, w_m) ~~ \exists x_{n_k} \to x$ for some $x \in B(p, w)$, meaning $B(p, w)$ is uhc.  In sum, to prove a correspondence is uhc the degree of freedom we have is that we can converge to any point in $B(p, w)$; however, the restriction is that the sequence is arbitrary. We used sequential compactness because that guarantees that a convergent sub-sequence exists, and then we showed the limit was in the correspondence.
+
+\subsubsection{Lower hemi-continuous}
+\label{ssub:appendix_lower_hemi_continuous}
+
+Fix any $(p, w)$ and consider an arbitrary sequence $(p_m, w_m) \to (p, w)$ and any point $x \in B(p, w)$. If $\exists x_m \in B(p_m, w_m)$ s.t. $x_m \to x$ then $B(p, w)$ is lhc.
+\begin{enumerate}[1.]
+  \item Here we are restricted in that every point in the correspondence must have a sequence that converges to it. However, the degree of freedom we have is that we can pick the sequence. Our strategy, then, is to construct a sequence that will be contained in $B(p_m, w_m)$.
+
+  \item Let $\widetilde{x}_{n, k} \equiv \max\set{x_k - 1/n, 0}$. That is, $\widetilde{x}_n \equiv  \max \set{x - 1/n, 0}$ element-wise.  We claim $\forall n > N ~~ \exists M_n$ s.t.
+    \begin{align*}
+      m \ge M_n
+      \implies
+      \widetilde{x}_n
+      \in
+      B(p_m, w_m)
+      \quad
+      \text{(or, equivalently)}
+      p_m
+      \cdot
+      \widetilde{x}_n
+      \le
+      w_m
+    \end{align*}
+
+  \item Here we use the fact $(p_m, w_m) \to (p, w)$, so by definition $\forall \delta_n > 0 ~~ \exists M_n$ s.t.
+    \begin{align*}
+      m \ge M_n
+      \implies
+      \Fnorm{(p_m, w_m) - (p, w)}
+      <
+      \delta_n
+      \implies
+      |p_{k, m} - p_k| < \delta_n
+      \quad
+      \text{and}
+      \quad
+      |w_m - w| < \delta_n
+    \end{align*}
+
+  \item Therefore, we want to find $\delta_n > 0$ s.t.  $(p + \delta_n) \cdot \widetilde{x}_n \le (w - \delta_n)$. The corresponding $M_n$ would give
+    \begin{align*}
+      m \ge M_n
+      \implies
+      p_m \cdot \widetilde{x}_n
+      \le
+      (p + \delta_n) \cdot \widetilde{x}_n
+      \le
+      (w - \delta_n)
+      \le
+      w_m
+    \end{align*}
+
+    Recall $x \in B(p, w)$, so $p \cdot x \le w$, meaning it is sufficient for $\delta_n$ to be s.t.
+    \begin{align*}
+      \delta_n \cdot \left(x + \dfrac{1}{n}\right)
+      +
+      p \cdot \dfrac{1}{n}
+      &
+      \le
+      - \delta_n
+      \\
+      \sum^{}_{} \delta_n x_k
+      -
+      \sum^{}_{} \dfrac{\delta_n}{n}
+      -
+      \sum^{}_{} \dfrac{p_k}{n}
+      &
+      \le
+      -
+      \delta_n
+      \\
+      \delta_n \sum^{}_{} x_k
+      -
+      N \dfrac{\delta_n}{n}
+      -
+      \dfrac{1}{n} \sum^{}_{} p_k
+      &
+      \le
+      -
+      \delta_n
+      \\
+      \delta_n
+      \left(
+        \sum^{}_{} x_k
+        -
+        \dfrac{N}{n}
+        +
+        1
+      \right)
+      &
+      \le
+      \dfrac{1}{n} \sum^{}_{} p_k
+    \end{align*}
+
+    Therefore we can see that
+    \begin{align*}
+      \delta_n
+      &
+      \equiv
+      \dfrac{\sum^{}_{} p_k}{n \sum^{}_{} x_k - N + n}
+      \implies
+      (p + \delta_n) \cdot \widetilde{x}_n
+      \le
+      (w - \delta_n)
+      \implies
+      p_m \cdot \widetilde{x}_n
+      \le
+      w_m
+      \quad
+      \forall m \ge M_n
+    \end{align*}
+
+    where $\delta_k > 0$ because we set up $k > L$ and $p \gg 0$.
+
+  \item Last, we define the sequence that gives us the result:
+    \begin{itemize}[label=$\bullet$]
+      \item Let $x_m = 0$ for $m < M_{N + 1}$ ($0$ is in every budget correspondence).
+
+      \item Let $x_m = \widetilde{x}_n$ for $m: M_n \le m < M_{n + 1}$ otherwise ($n \ge N + 1$).
+    \end{itemize}
+
+    since $1/n \to 0$ we have $\widetilde{x}_n \to \max\set{x, 0} = x$ (recall $x \ge 0$ because $x \in \mathbb{R}^N_+$). 
+\end{enumerate}
+
+Hence for any $x \in B(p, w)$ we can construct a sequence $x_m \to x$ s.t. $x_m \in B(p_m, w_m)$ for each $m$, meaning $B(p, w)$ is lhc.
+
+\clearpage
 \printindex
 
 % ---------------------------------------------------------------------
