@@ -1,9 +1,5 @@
 scons: done reading SConscript files.
 scons: Building targets ...
 cd out/lectures && pdflatex -interaction=nonstopmode -recorder lecture4.tex
-cd out/lectures && makeindex lecture4.idx
-cd out/lectures && pdflatex -interaction=nonstopmode -recorder lecture4.tex
-cd out/lectures && makeindex lecture4.idx
-cd out/lectures && pdflatex -interaction=nonstopmode -recorder lecture4.tex
 move out/lectures/lecture4.pdf to out/lectures/Math Camp 2021 Lecture 4 - Differentiation, IFT, Unconstrained Optimization.pdf
 scons: done building targets.

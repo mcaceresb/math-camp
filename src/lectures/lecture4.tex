@@ -39,7 +39,7 @@
 \end{definition}
 
 Intuitively, differentiation yields the slope of a function at a point:
-\begin{figure}[!ht]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}
     \begin{axis}[name=plot1
@@ -404,14 +404,14 @@ Now we show \nameref{thm:lecture4_rolles_theorem}.
         = L
     \]
 
-    Consider $y \to c-$, that is $y$ approaching $c$ from the left. Since the $\sup$ is attained at $c$, $f(c) \ge f(y)$ for all $c > y$, which in turn gives
+    Consider $y \to c^-$, that is $y$ approaching $c$ from the left. Since the $\sup$ is attained at $c$, $f(c) \ge f(y)$ for all $c > y$, which in turn gives
     \[
         \dfrac{f(y) - f(c)}{y - c} \ge 0
         \quad\quad
         \forall c > y
     \]
 
-    Now take $y \to c+$, that is $y$ approaching $c$ from the right. Again, since the $\sup$ is attained at $c$, $f(c) \ge f(y)$ for all $c < y$, which in turn gives
+    Now take $y \to c^+$, that is $y$ approaching $c$ from the right. Again, since the $\sup$ is attained at $c$, $f(c) \ge f(y)$ for all $c < y$, which in turn gives
     \[
         \dfrac{f(y) - f(c)}{y - c} \le 0
         \quad\quad
@@ -420,34 +420,34 @@ Now we show \nameref{thm:lecture4_rolles_theorem}.
 
     Which means that
     \[
-        L_- = \lim_{y \to c-} \dfrac{f(y) - f(c)}{y - c} \ge 0
+        L_- = \lim_{y \to c^-} \dfrac{f(y) - f(c)}{y - c} \ge 0
     \]
 
     Suppose not, then $L_- < 0$. But for every $\varepsilon > 0$ there is some $\delta$ s.t.
     \[
-        c- - \delta < y < c- < c- + \delta
+        c^- - \delta < y < c^- < c^- + \delta
         \implies
         L_- - \varepsilon < \dfrac{f(y) - f(c)}{y - c} < L_- + \varepsilon
     \]
 
     Take $\varepsilon$ s.t. $L_- < - \varepsilon < 0$. Then for some $\delta > 0$, we get
     \[
-        c- - \delta < y < c- < c- + \delta
+        c^- - \delta < y < c^- < c^- + \delta
         \implies
         L_- - \varepsilon < \dfrac{f(y) - f(c)}{y - c} < L_- + \varepsilon < 0
     \]
 
     But we have established that $y < c$ gives $\dfrac{f(y) - f(c)}{y - c} \ge 0$, a contradiction. By that same logic, we can write
     \[
-        L_+ = \lim_{y \to c+} \dfrac{f(y) - f(c)}{y - c} \le 0
+        L_+ = \lim_{y \to c^+} \dfrac{f(y) - f(c)}{y - c} \le 0
     \]
 
     Since $f^\prime(c)$ exists, it must be the case that
     \[
         f^\prime(c)
-        = \lim_{y \to c+} \dfrac{f(y) - f(c)}{y - c}
+        = \lim_{y \to c^+} \dfrac{f(y) - f(c)}{y - c}
         = L_+
-        = \lim_{y \to c-} \dfrac{f(y) - f(c)}{y - c}
+        = \lim_{y \to c^-} \dfrac{f(y) - f(c)}{y - c}
         = L_-
         = L
     \]
