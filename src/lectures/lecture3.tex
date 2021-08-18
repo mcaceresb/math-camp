@@ -1225,6 +1225,214 @@ We can, however, say that closed graph, closed-valued, and uhc are related:
   \end{enumerate}
 \end{claim}
 
+% ---------------------------------------------------------------------
+\subsection{Fixed Point Theorems}
+\label{sub:fixed_point_theorems}
+
+\begin{definition}
+  A self-map $f: S \to S$ has a \keyword{fixed point} if $\exists x^* \in S$ s.t.  $x^* = f(x^*)$.
+\end{definition}
+
+\begin{theorem}[Brouwer's FPT]
+  Take any $S \subseteq \mathbb{R}$ compact, convex, and non-empty. If $f: S \to S$ is continuous then it has a fixed point.
+\end{theorem}
+
+\begin{definition}
+  A self-map correspondence $\Gamma: S \toto S$ has a \keyword{fixed point} if $\exists x^* \in S$ s.t.  $x^* \in \Gamma(x^*)$.
+\end{definition}
+
+\begin{definition}
+  A set $S$ is \keyword{convex} if $\forall x, y \in S$ and $\forall \alpha \in [0, 1]$ we have $\alpha x + (1 - \alpha) y \in S$.
+\end{definition}
+
+\begin{theorem}[Kakutani's FPT]
+  Take any $S \subseteq \mathbb{R}^N$ compact, convex-valued, and non-empty. If a correspondence $\Gamma: S \toto S$ is upper hemicontinuous then it has a fixed point.
+\end{theorem}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[name=plot1
+      ,title={Both FPT hold}
+      ,width=9cm
+      ,height=8cm
+      ,ymin=0
+      ,ymax=16
+      ,xmin=0
+      ,xmax=14
+      ,domain=0:10
+      ,ylabel=$f(x)$
+      ,xlabel=$x$
+    ]
+    \addplot [-, dashed] {x};
+    \addplot [only marks, mark=*] coordinates {(4.75, 4.75)};
+    \draw [->, >=latex]
+      (axis cs:3.5, 7.5) to[bend left=15] (axis cs:4.75, 5)
+      node[above] at (axis cs:3.5, 7.5) {Fixed Point};
+    \node at (axis cs:3, 12) {$f$ continuous};
+    \draw [-]
+      (axis cs:0,  0)  --
+      (axis cs:0,  10) --
+      (axis cs:10, 10) --
+      (axis cs:10, 0)  --
+      (axis cs:0,  0)
+      node[above] at (axis cs:10.1, 10) {$S \times S$};
+    \addplot [smooth] {0.08 * (x - 4.2)^3 - 0.2 * (x - 0.2)^2 + 0.525 * (x - 0.2) + 6.5};
+    \end{axis}
+
+    \begin{axis}[name=plot2
+      ,title={Both FPT fail}
+      ,at={($(plot1.east) + (0.5cm, 0)$)}
+      ,anchor=west
+      ,width=9cm
+      ,height=8cm
+      ,ymin=0
+      ,ymax=16
+      ,xmin=0
+      ,xmax=14
+      ,domain=0:10
+      ,ylabel=$f(x)$
+      ,xlabel=$x$
+    ]
+    \node[draw=white, align=left, text width=5.5cm]
+      at (axis cs:6.5, 12) {
+      Note $f$ is lower hemi-continuous, but not continuous
+    };
+    \addplot [-, dashed] {x};
+    \draw [-]
+      (axis cs:0,  0)  --
+      (axis cs:0,  10) --
+      (axis cs:10, 10) --
+      (axis cs:10, 0)  --
+      (axis cs:0,  0)
+      node[above] at (axis cs:10.1, 10) {$S \times S$};
+    \addplot [smooth,domain=0:4.75] {0.08 * (x - 4.2)^3 - 0.15 * (x - 0.2)^2 + 0.525 * (x - 0.2) + 6.5};
+    \addplot [smooth,domain=4.75:10] {0.08 * (x - 4.2)^3 - 0.2 * (x - 0.2)^2 + 0.625 * (x - 0.2) + 5.5};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Examples of when $f$ does or not have a fixed point}
+  \label{fig:examples_of_when_f_does_or_not_have_a_fixed_point}
+\end{figure}
+
+\begin{figure}[!ht]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[name=plot1
+      ,title={Kakutani's FPT holds}
+      ,width=9cm
+      ,height=8cm
+      ,ymin=0
+      ,ymax=16
+      ,xmin=0
+      ,xmax=14
+      ,domain=0:10
+      ,ylabel=$\Gamma(x)$
+      ,xlabel=$x$
+    ]
+    \addplot [-, dashed] {x};
+    \addplot [only marks, mark=*] coordinates {(4.75, 4.75)};
+    \draw [->, >=latex]
+      (axis cs:2, 5.5) to[bend right=15] (axis cs:4.5, 4.75)
+      node[above] at (axis cs:2, 5.5) {Fixed Point};
+    \node at (axis cs:5, 12) {$\Gamma$ is upper hemicontinuous};
+    \draw [-]
+      (axis cs:0,  0)  --
+      (axis cs:0,  10) --
+      (axis cs:10, 10) --
+      (axis cs:10, 0)  --
+      (axis cs:0,  0)
+      node[above] at (axis cs:10.1, 10) {$S \times S$};
+    % \draw [-, line width=0.75pt]
+    \draw [-, line width=0.75pt]
+      (axis cs:0, 8) -- (axis cs:6, 8) -- (axis cs:6, 2);
+    \draw [-, line width=0.75pt]
+      (axis cs:4, 8) -- (axis cs:4, 2) -- (axis cs:10, 2);
+    \addplot [fill, color=gray, opacity=0.2] coordinates {
+      (4, 8)
+      (4, 2)
+      (6, 2)
+      (6, 8)
+    };
+    \end{axis}
+
+    \begin{axis}[name=plot2
+      ,title={Kakutani's FPT fails}
+      ,at={($(plot1.east) + (0.5cm, 0)$)}
+      ,anchor=west
+      ,width=9cm
+      ,height=8cm
+      ,ymin=0
+      ,ymax=16
+      ,xmin=0
+      ,xmax=14
+      ,domain=0:10
+      ,ylabel=$\Gamma(x)$
+      ,xlabel=$x$
+    ]
+    \addplot [-, dashed] {x};
+    \node at (axis cs:6.5, 12) {$\Gamma$ upper hemi but not convex-valued};
+    \draw [-]
+      (axis cs:0,  0)  --
+      (axis cs:0,  10) --
+      (axis cs:10, 10) --
+      (axis cs:10, 0)  --
+      (axis cs:0,  0)
+      node[above] at (axis cs:10.1, 10) {$S \times S$};
+    \draw [-, line width=0.75pt]
+      (axis cs:0, 8) --
+      (axis cs:6, 8) --
+      (axis cs:6, 7) --
+      (axis cs:4, 7) --
+      (axis cs:4, 8);
+    \draw [-, line width=0.75pt]
+      (axis cs:10, 2) --
+      (axis cs:4, 2) --
+      (axis cs:4, 3) --
+      (axis cs:6, 3) --
+      (axis cs:6, 2);
+    \addplot [fill, color=gray, opacity=0.2] coordinates {
+      (6, 8)
+      (6, 7)
+      (4, 7)
+      (4, 8)
+    };
+    \addplot [fill, color=gray, opacity=0.2] coordinates {
+      (4, 2)
+      (4, 3)
+      (6, 3)
+      (6, 2)
+    };
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Examples of when $\Gamma$ does or not have a fixed point}
+  \label{fig:examples_of_when_gamma_does_or_not_have_a_fixed_point}
+\end{figure}
+
+\paragraph{Application to Economics}
+\label{par:application_to_economics}
+
+The proof of the existence of a Nash Equilibrium in game theory is an application of Kakutani's fixed point theorem.
+\begin{itemize}[label=$\bullet$]
+  \item We have $N$ players, $1, 2, \ldots, N$ and the corresponding strategy sets, $S_1, \ldots, S_N$.
+  \item Let $s = (s_1, \ldots, s_N)$ be any collection of strategies from all players, with $s_i \in S_i$.
+  \item Let $s_{-i} = (s_1, \ldots, s_{i - 1}, s_{i + 1}, \ldots, s_N)$ the collection of strategies from all players other than $i$.
+  \item For each player $i$ we can define a \textit{best-response} function to the strategies of other players,
+    \[
+      b_i(s_{-i}) = \argmax_{s_i \in S_i} u_i(s_i; s_{-i})
+    \]
+
+    the utility-maximizing strategy for $i$ given the other player's strategies.
+
+  \item Let $b(s) = \left(b_1(s_{-1}), \ldots, b_N(s_{-N})\right)$ be the collection of best-response strategies from all players.
+\end{itemize}
+
+A Nash Equilibrium is then defined as a set of strategies such that no player has an incentive to deviate. That is, the strategy $s^*_i$ chosen by player $i$ is in the set of best responses to all the other strategies, $s^*_{-i}$, or $s^*_i \in b_i(s^*_{-i}) ~~ \forall i$. We can hence express a Nash Equilibrium $s^*$ as a fixed point of $b$,
+\[
+  s^* \in b(s^*)
+\]
+
+If $S_i$ are compact, non-empty, and convex-valued, and $u_i$ are continuous and quasiconcave, then we will be able to apply Kakutani's fixed point theorem to show that $s^* \in b(s^*)$ for some $s^* \in S = \prod_{i = 1}^N S_i$ (with some work in between to show that $b: S \to S$ is upper hemicontinuous).
+
 \clearpage
 \printindex
 
