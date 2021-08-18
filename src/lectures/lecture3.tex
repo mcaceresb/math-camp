@@ -1225,6 +1225,59 @@ We can, however, say that closed graph, closed-valued, and uhc are related:
   \end{enumerate}
 \end{claim}
 
+\subsubsection{Berge's Theorem of the Maximum}
+\label{ssub:berge_s_theorem_of_the_maximum}
+
+\begin{theorem}[Berge's Maximum Theorem]\label{thm:lecture4_correspondences_maximum_theorem}
+  Let $\Gamma: \Theta \toto X$ be compact-valued, $\varphi: X \times \Theta \to \mathbb{R}$ be continuous, and define
+  \begin{align*}
+    \sigma(\theta)
+    &
+    \equiv
+    \argmax_{x \in \Gamma(\theta)}
+    \varphi(x, \theta)
+    \\
+    \varphi^*(\theta)
+    &
+    \equiv
+    \max_{x \in \Gamma(\theta)}
+    \varphi(x, \theta)
+  \end{align*}
+
+  If $\Gamma$ is \textit{both} upper and lower hemi-continuous at some $\theta \in \Theta$ then
+  \begin{enumerate}
+    \item $\sigma: \Theta \toto X$ is compact-valued everywhere, uhc at $\theta$, and closed at $\theta$.
+
+    \item $\varphi^*: \Theta \toto \mathbb{R}$ is continuous at $\theta$.
+  \end{enumerate}
+\end{theorem}
+
+\paragraph{Application to Economics}
+\label{par:application_to_economics}
+
+Recall the utility maximization problem with parameters $(p, w) \in \mathbb{R}^{N + 1}_{+}$:
+\begin{align*}
+  v(p, w)
+  &
+  \equiv
+  \max u(x)
+  \quad
+  \text{s.t.}
+  \quad
+  p \cdot x \le w
+  \\
+  x(p, w)
+  &
+  \equiv
+  \argmax u(x)
+  \quad
+  \text{s.t.}
+  \quad
+  p \cdot x \le w
+\end{align*}
+
+Recall $B(p, w) = \set{x: p \cdot x \le w}$ the budget correspondence is compact. It turns out it is also uhc and lhc, so we not only know that the maximum exists (if $u(x)$ continuous), but in particular the indirect utility function $v(p, w)$ is continuous and the demand correspondence $x(p, w)$ is compact-valued, uhc, and closed.
+
 % ---------------------------------------------------------------------
 \subsection{Fixed Point Theorems}
 \label{sub:fixed_point_theorems}
