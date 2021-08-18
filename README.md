@@ -7,7 +7,7 @@ Brown Math Camp 2021
 
 - [Lecture 1](out/lectures/Math%20Camp%202021%20Lecture%201%20-%20Proofs,%20Metric%20Spaces,%20Topology.pdf)
 - Lecture 2
-- Lecture 3
+- [Lecture 3](out/lectures/Math%20Camp%202021%20Lecture%203%20-%20Correspondences,%20Compactness,%20EVT.pdf)
 - Lecture 4
 - Lecture 5
 - Lecture 6
