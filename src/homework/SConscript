@@ -3,9 +3,9 @@ Import('*')
 env.PDF(target = '#out/homework/Math Camp 2021 Problem Set 1.pdf',
         source = '#src/homework/ps1.tex')
 
-# env.PDF(target = '#out/homework/Math Camp 2021 Problem Set 2.pdf',
-#         source = '#src/homework/ps2.tex')
-#
+env.PDF(target = '#out/homework/Math Camp 2021 Problem Set 2.pdf',
+        source = '#src/homework/ps2.tex')
+
 # env.PDF(target = '#out/homework/Math Camp 2021 Problem Set 3.pdf',
 #         source = '#src/homework/ps3.tex')
 #

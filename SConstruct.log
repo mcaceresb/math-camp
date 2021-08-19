@@ -1,6 +1,6 @@
 scons: done reading SConscript files.
 scons: Building targets ...
-cd out/lectures && pdflatex -interaction=nonstopmode -recorder lecture3.tex
-cd out/lectures && pdflatex -interaction=nonstopmode -recorder lecture3.tex
-move out/lectures/lecture3.pdf to out/lectures/Math Camp 2021 Lecture 3 - Correspondences, Compactness, EVT.pdf
+cd out/homework && pdflatex -interaction=nonstopmode -recorder ps2.tex
+cd out/homework && pdflatex -interaction=nonstopmode -recorder ps2.tex
+move out/homework/ps2.pdf to out/homework/Math Camp 2021 Problem Set 2.pdf
 scons: done building targets.
