@@ -370,7 +370,7 @@ The other direction follows from \Cref{thm:lecture3_compactness_heine_borel_og,t
     \end{tikzpicture}
   \end{figure}
 
-  Note that at least one of the hypercubes cannot admit a finite sub-cover (maybe none of them admit a finite sub-cover, but we only need one). Let this cube be $C_1$. We proceed by induction, and now take $C_m$ to be our main cube, and construct $C_{m + 1}$ by partitioning $C_m$ into $2^N$ equal closed cubes where at least one non-empty cube does not admit a finite-sub-cover.
+  Note that at least one of the hypercubes cannot admit a finite sub-cover (maybe none of them admit a finite sub-cover, but we only need one). Let this cube be $C_1$. We proceed recursively, and now take $C_m$ to be our main cube, and construct $C_{m + 1}$ by partitioning $C_m$ into $2^N$ equal closed cubes where at least one non-empty cube does not admit a finite-sub-cover.
   \begin{enumerate}
     \item $C_m$ are closed.
 
@@ -1367,7 +1367,7 @@ Recall $B(p, w) = \set{x: p \cdot x \le w}$ the budget correspondence is compact
   \label{fig:examples_of_when_f_does_or_not_have_a_fixed_point}
 \end{figure}
 
-\begin{figure}[!ht]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}
     \begin{axis}[name=plot1
