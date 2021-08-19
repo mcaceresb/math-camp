@@ -1,5 +1,5 @@
 scons: done reading SConscript files.
 scons: Building targets ...
-cd out/homework && pdflatex -interaction=nonstopmode -recorder solutions1.tex
-move out/homework/solutions1.pdf to out/homework/Math Camp 2021 Suggested Solutions 1.pdf
+cd out/lectures && pdflatex -interaction=nonstopmode -recorder lecture2.tex
+move out/lectures/lecture2.pdf to out/lectures/Math Camp 2021 Lecture 2 - Sequences, Continuity.pdf
 scons: done building targets.
