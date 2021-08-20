@@ -8,7 +8,7 @@ Brown Math Camp 2021
 - [Lecture 1](out/lectures/Math%20Camp%202021%20Lecture%201%20-%20Proofs,%20Metric%20Spaces,%20Topology.pdf)
 - [Lecture 2](out/lectures/Math%20Camp%202021%20Lecture%202%20-%20Sequences,%20Continuity.pdf)
 - [Lecture 3](out/lectures/Math%20Camp%202021%20Lecture%203%20-%20Correspondences,%20Compactness,%20EVT.pdf)
-- [Lecture 3](out/lectures/Math%20Camp%202021%20Lecture%204%20-%20Differentiation,%20IFT,%20Unconstrained%20Optimization.pdf)
+- [Lecture 4](out/lectures/Math%20Camp%202021%20Lecture%204%20-%20Differentiation,%20IFT,%20Unconstrained%20Optimization.pdf)
 - Lecture 5
 - Lecture 6
 
