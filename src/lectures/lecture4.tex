@@ -227,7 +227,7 @@ Some useful special results:
 
 \begin{example}
   \begin{itemize}[label=$\bullet$]
-    \item One thing to note is that the Taylor expansion of any polynomial is eventually the polynomial itself. Consider, for example,
+    \item The Taylor expansion of any polynomial is the polynomial itself. Consider
       \[
         f(x) = x^2 + 3x
       \]
@@ -254,21 +254,8 @@ Some useful special results:
         x^2 + 3x
       \end{align*}
 
-      However, for lower-order Taylor expansions the theorem still applies:
-      \begin{align*}
-        f(x)
-        & = \dfrac{f(1)}{0!} (x - 1)^0 + \dfrac{f^\prime(c)}{1!} (x - 1)^1
-        \\
-        & = 4 + (2c + 3) (x - 1)
-        \\
-        f(x)
-        & \approx \dfrac{f(1)}{0!} (x - 1)^0 + \dfrac{f^\prime(1)}{1!} (x - 1)^1
-        \\
-        & = 4 + 5 (x - 1)
-      \end{align*}
-
-      In the first case, the expansion is exact for \textit{some} $c$ between $1$ and $x$. In the second case, we have a first-order Taylor approximation. We can visualize both
-      \begin{figure}[!ht]
+      However, for lower-order Taylor expansions the theorem still applies. Visually:
+      \begin{figure}[H]
         \centering
         \caption{Visualizing Taylor's Theorem}
         \label{fig:visualizing_taylor_s_theorem}
@@ -282,7 +269,7 @@ Some useful special results:
             ,xmin=0
             ,xmax=1.5
             ,domain=0:1.5
-            ,ylabel=$f(x)$
+            ,ylabel=$f(x) = x^2 + 3x$
             ,xlabel=$x$
             ,clip=false
           ]
@@ -306,7 +293,7 @@ Some useful special results:
             ,xmin=0
             ,xmax=1.75
             ,domain=0:1.75
-            ,ylabel=$f(x)$
+            ,ylabel=$f(x) = x^2 + 3x$
             ,xlabel=$x$
             ,clip=false
           ]
@@ -315,11 +302,26 @@ Some useful special results:
           \draw [dashed] (axis cs:1, 4) -- (axis cs:1, 0);
             \node[below] at (axis cs:1, 0) {$x = 1$};
           \addplot [only marks, mark=*] coordinates {(1, 4)};
+          \draw [->, >=latex] (axis cs:1.35, 4.75) -- (axis cs:1.35, 5.65);
+            \node[below] at (axis cs:1.35, 4.75) {$5x - 1$};
           \end{axis}
         \end{tikzpicture}
       \end{figure}
 
-      You can see on the left that there is indeed some number $c$ s.t. Taylor's theorem holds. For our sample value of $x = 0.5$ we find $c = 0.75 \in (0.5, 1)$. On the right figure, on the other hand, we plot the \textit{approximation}. In this case, the function and the approximation are exactly equal at $1$, since the approximation at that point simplifies to $f(1)$. We can also see that around $x = 1$ the approximation is fairly good! However, farther away the error increases, as we would expect.
+      The left and right figures correspond to:
+      \begin{align*}
+        f(x)
+        & = \dfrac{f(1)}{0!} (x - 1)^0 + \dfrac{f^\prime(c)}{1!} (x - 1)^1
+        \\
+        & = 4 + (2c + 3) (x - 1)
+        \\
+        f(x)
+        & \approx \dfrac{f(1)}{0!} (x - 1)^0 + \dfrac{f^\prime(1)}{1!} (x - 1)^1
+        \\
+        & = 4 + 5 (x - 1)
+      \end{align*}
+
+      We can see on the left that there is indeed some number $c$ s.t. Taylor's theorem holds. For our sample value of $x = 0.5$ we find $c = 0.75 \in (0.5, 1)$. On the right figure, on the other hand, we plot the \textit{approximation}. In this case, the function and the approximation are exactly equal at $1$, since the approximation at that point simplifies to $f(1)$. We can also see that around $x = 1$ the approximation is fairly good! However, farther away the error increases, as we would expect.
 
     \item One common Taylor approximation is for the logarithm. In particular, the first order Taylor expansion around  $1$:
       \begin{align*}
