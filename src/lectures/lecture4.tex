@@ -146,7 +146,7 @@ Intuitively, differentiation yields the slope of a function at a point:
 \end{proof}
 
 \begin{theorem}
-  Let $f: I \to \mathbb{R}$ and $f: I \to \mathbb{R}$ be differentiable.
+  Let $f: I \to \mathbb{R}$ and $g: I \to \mathbb{R}$ be differentiable.
   \begin{itemize}[label=$\bullet$]
     \item $\dfrac{d}{dx} [c f(x)] = c f^\prime(x)$.
     \item $\dfrac{d}{dx} [f(x) + g(x)] = f^\prime(x) + g^\prime(x)$.
@@ -165,7 +165,44 @@ Some useful special results:
   \dfrac{d}{dx} \cos(x) & = -\sin(x)
 \end{align*}
 
-\begin{theorem}[L'H\^opital's rule.]
+\begin{definition}
+  A function $f: I \to \mathbb{R}$ is \keyword{continuously differentiable} if $f^\prime$ is continuous.
+\end{definition}
+
+\begin{example}
+  $f(x) = x^2$ is continuously differentiable since $f^\prime(x) = 2x$ is continuous. However,
+  \begin{align*}
+    f(x) = \begin{cases}
+      x^2 \sin(x) & x \ne 0 \\
+      0 & x = 0
+    \end{cases}
+  \end{align*}
+
+  is \textit{not} continuously differentiable. In particular, for $x \ne 0$,
+  \begin{align*}
+    f^\prime(x)
+    =
+    2 x \cos(1/x) - x^2 \dfrac{1}{x^2} \cos(1/x)
+    =
+    2 x \cos(1/x) - \cos(1/x)
+  \end{align*}
+
+  and for $x = 0$ the derivative is $0$:
+  \begin{align*}
+    \lim_{x \to 0}
+    \dfrac{f(x) - f(0)}{x - 0}
+    =
+    \lim_{x \to 0}
+    \dfrac{x^2 \sin(1/x)}{x}
+    =
+    \lim_{x \to 0}
+    x \sin(1/x)
+  \end{align*}
+
+  With $\sin(1/x)$ bounded, $x \to 0 \implies x \sin(x) \to 0$. However, the derivative itself is not continuous  at $0$. Note that while $2x \cos(1/x) \xrightarrow{x \to 0} 0$, $- \cos(1/x)$ does not have a limit, so the derivative does not have a limit as $x \to 0$ either, meaning it cannot be continuous.
+\end{example}
+
+\begin{theorem}[L'H\^opital's rule.]\label{thm:lecture4_lhopital}
   Take $f, g: [a, b] \to \mathbb{R}$ be continuous functions on $[a, b]$ and differentiable on $(a, b)$ with $f(x), g(x) \ne 0$ for all $x \in (a, b)$. Further, let
   \[
     \lim_{x \to b} \dfrac{f^\prime(x)}{g^\prime(x)} = L
@@ -181,12 +218,129 @@ Some useful special results:
   Let $n \in \mathbb{N}$ and $f: [a, b] \to \mathbb{R}$ be continuously differentiable $n + 1$ times on $(a, b)$. Then for all $\widetilde{x}, x \in (a, b)$ there is some $c \in (\widetilde{x}, x)$ s.t.
   \[
     f(x)
-    = \sum^{n}_{k = 0} \dfrac{f^{(k)(x)}}{k!} (x - \widetilde{x})^k
+    = \sum^{n}_{k = 0} \dfrac{f^{(k)}(\widetilde{x})}{k!} (x - \widetilde{x})^k
     + \dfrac{f^{(n + 1)}(c)}{(n + 1)!} (x - \widetilde{x})^{n + 1}
   \]
 
   The first term is called the \keyword{$n$th order Taylor expansion} of $f$ around $\widetilde{x}$.
 \end{theorem}
+
+\begin{example}
+  \begin{itemize}[label=$\bullet$]
+    \item One thing to note is that the Taylor expansion of any polynomial is eventually the polynomial itself. Consider, for example,
+      \[
+        f(x) = x^2 + 3x
+      \]
+
+      \begin{align*}
+        f(x)
+        & =
+        \dfrac{f(1)}{0!} (x - 1)^0
+        +
+        \dfrac{f^\prime(1)}{1!} (x - 1)^1
+        +
+        \dfrac{f^{\prime\prime}(c)}{2!} (x - 1)^2
+        \\
+        & =
+        4
+        +
+        5 (x - 1)
+        +
+        \dfrac{2}{2} (x - 1)^2
+        \\
+        & =
+        4 + 5x - 5 + x^2 - 2x + 1
+        =
+        x^2 + 3x
+      \end{align*}
+
+      However, for lower-order Taylor expansions the theorem still applies:
+      \begin{align*}
+        f(x)
+        & = \dfrac{f(1)}{0!} (x - 1)^0 + \dfrac{f^\prime(c)}{1!} (x - 1)^1
+        \\
+        & = 4 + (2c + 3) (x - 1)
+        \\
+        f(x)
+        & \approx \dfrac{f(1)}{0!} (x - 1)^0 + \dfrac{f^\prime(1)}{1!} (x - 1)^1
+        \\
+        & = 4 + 5 (x - 1)
+      \end{align*}
+
+      In the first case, the expansion is exact for \textit{some} $c$ between $1$ and $x$. In the second case, we have a first-order Taylor approximation. We can visualize both
+      \begin{figure}[!ht]
+        \centering
+        \caption{Visualizing Taylor's Theorem}
+        \label{fig:visualizing_taylor_s_theorem}
+        \begin{tikzpicture}
+          \begin{axis}[name=plot1
+            ,title={Given $x = 5$ Recover Exact Value}
+            ,width=9cm
+            ,height=8cm
+            ,ymin=0
+            ,ymax=6
+            ,xmin=0
+            ,xmax=1.5
+            ,domain=0:1.5
+            ,ylabel=$f(x)$
+            ,xlabel=$x$
+            ,clip=false
+          ]
+          \addplot [smooth,domain=0:1.25] {x^2 + 3 * x};
+          \addplot [smooth,domain=0.1:1.15] {4 + (2 * (3/4) + 3) * (x - 1)};
+          \draw [dashed] (axis cs:0.5, 1.75) -- (axis cs:0.5, 0);
+            \node[below] at (axis cs:0.5, 0) {$x = 0.5$};
+          \draw [->, >=latex] (axis cs:0.7, 4.25) -- (axis cs:0.875, 4.25);
+            \node[left] at (axis cs:0.7, 4.25) {$c = 0.75 \in (0.5, 1)$};
+          \addplot [only marks, mark=*] coordinates {(0.5, 1.75)};
+          \end{axis}
+
+          \begin{axis}[name=plot2
+            ,title={Approximate the function around $x = 1$}
+            ,at={($(plot1.east) + (0.5cm, 0)$)}
+            ,anchor=west
+            ,width=9cm
+            ,height=8cm
+            ,ymin=0
+            ,ymax=7
+            ,xmin=0
+            ,xmax=1.75
+            ,domain=0:1.75
+            ,ylabel=$f(x)$
+            ,xlabel=$x$
+            ,clip=false
+          ]
+          \addplot [smooth,domain=0:1.5] {x^2 + 3 * x};
+          \addplot [smooth,domain=0.15:1.5] {4 + 5 * (x - 1)};
+          \draw [dashed] (axis cs:1, 4) -- (axis cs:1, 0);
+            \node[below] at (axis cs:1, 0) {$x = 1$};
+          \addplot [only marks, mark=*] coordinates {(1, 4)};
+          \end{axis}
+        \end{tikzpicture}
+      \end{figure}
+
+      You can see on the left that there is indeed some number $c$ s.t. Taylor's theorem holds. For our sample value of $x = 0.5$ we find $c = 0.75 \in (0.5, 1)$. On the right figure, on the other hand, we plot the \textit{approximation}. In this case, the function and the approximation are exactly equal at $1$, since the approximation at that point simplifies to $f(1)$. We can also see that around $x = 1$ the approximation is fairly good! However, farther away the error increases, as we would expect.
+
+    \item One common Taylor approximation is for the logarithm. In particular, the first order Taylor expansion around  $1$:
+      \begin{align*}
+        \log(x) \approx \log(1) + \dfrac{1}{1} (x - 1) = x - 1
+      \end{align*}
+
+      Another version of this approximation is for $\log(1 + x)$ around $0$:
+      \begin{align*}
+        \log(1 + x) \approx \log(1) + \dfrac{1}{1 + 0} (x - 0) = x
+      \end{align*}
+
+      Take the relation:
+      \begin{align*}
+        \log Y = \alpha \log K + (1 - \alpha) \log L
+      \end{align*}
+
+      Using the approximation above, we can say that if $K$ increases by $10\%$, then $Y$ increases by $\alpha \log (1.1) \approx \alpha \cdot 0.1$, that is, $10\alpha \%$.
+  \end{itemize}
+
+  This second approximation is often used when dealing with percentage changes. You will hear the term \keyword{log-linearization}  thrown around, and this is what that's in reference to: Logarithms can be approximated as a percentage for small values.
+\end{example}
 
 \subsubsection{Partial Derivatives}
 \label{ssub:partial_derivatives}
@@ -201,7 +355,7 @@ Some useful special results:
 \begin{definition}
   The \keyword{partial derivative} of a function $f: S \subseteq \mathbb{R}^N \to \mathbb{R}^M$ at $x \in S$ is
   \[
-    \dfrac{\partial}{\partial x_j} f_i(x) = \lim_{t \to 0} \dfrac{f_i(x + t \cdot e_j)}{t}
+    \dfrac{\partial}{\partial x_j} f_i(x) = \lim_{t \to 0} \dfrac{f_i(x + t \cdot e_j) - f_i(x)}{t}
   \]
 
   for $i = 1, \ldots, M$ and $j = 1, \ldots, N$.
@@ -227,9 +381,9 @@ Note that partial derivatives needn't imply anything about the behavior of the f
   \end{cases}
 \]
 
-The partial derivatives at $0$ are all $0$ (crucially, we take the limits one dimension at a time, so it's not that $(x, y) \to (0, 0)$, but rather $x \to 0$ and then $y \to 0$. Now take any $y_n \to 0$ and $x_n = y_n^2$ s.t. $y_n \ne 0$ for all $n$.
+The partial derivatives at $0$ are all $0$ (crucially, we take the limits one dimension at a time, so it's not that $(x, y) \to (0, 0)$, but rather $x \to 0$ and then $y \to 0$. Now take any $y_m \to 0$ and $x_m = y_m^2$ s.t. $y_m \ne 0$ for all $n$.
 \[
-  \lim_{n \to \infty} f(x_n, y_n) = \dfrac{1}{2} \ne 0
+  \lim_{n \to \infty} f(x_m, y_m) = \dfrac{1}{2} \ne 0
 \]
 
 which means the function is not even continuous at $0$.
@@ -247,7 +401,7 @@ which means the function is not even continuous at $0$.
 \end{theorem}
 
 \begin{definition}
-  Let $f: S \subseteq \mathbb{R}^N \to \mathbb{R}^M$ and $x \in S$; $(Df)(x)$ is a $N \times M$ matrix with $i, j$ entry equal to $\dfrac{\partial}{\partial x_j} f_i(x)$.
+  Let $f: S \subseteq \mathbb{R}^N \to \mathbb{R}^M$ and $x \in S$; $(Df)(x)$ is a $N \times M$ matrix with $i, j$ entry equal to $\dfrac{\partial}{\partial x_i} f_j(x)$.
 \end{definition}
 
 \begin{definition}
@@ -452,7 +606,7 @@ Now we show \nameref{thm:lecture4_rolles_theorem}.
         = L
     \]
 
-    Clearly, $L_+ \le 0$, $L_- \ge 0$, and $L_+ = L_- = L$  gives that $L = 0$. The proof for the case when the $\inf$ is interior is completely analogous.
+    Now we can see that $L_+ \le 0$, $L_- \ge 0$, and $L_+ = L_- = L$  gives that $L = 0$. The proof for the case when the $\inf$ is interior is completely analogous.
 \end{proof}
 
 \begin{corollary}
@@ -536,7 +690,7 @@ The IFT gives a result we can apply to these types of problems.
 \label{ssub:the_ift}
 
 \begin{theorem}[Implicit Function Theorem (IFT)]
-  Take a function $f: \mathbb{R}^N \times \mathbb{R}^M \to \mathbb{R}^M$ that is continuously differentiable and fix a point $(\widetilde{\theta}, \widetilde{y}) \in \mathbb{R}^N \times \mathbb{R}^M$ s.t. $f(\widetilde{\theta}, \widetilde{x}) = 0$. If $D_x f(\widetilde{\theta}, \widetilde{y})$ is non-sigular (i.e. full-rank, or has a non-0 determinant) then for some open sets $A, B$ s.t. $\widetilde{\theta} \in A$, $\widetilde{x} \in B$, there exist a unique function $h: A \to B$ that is continuously differentiable in $A$ s.t.
+  Take a function $f: \mathbb{R}^N \times \mathbb{R}^M \to \mathbb{R}^M$ that is continuously differentiable and fix a point $(\widetilde{\theta}, \widetilde{x}) \in \mathbb{R}^N \times \mathbb{R}^M$ s.t. $f(\widetilde{\theta}, \widetilde{x}) = 0$. If $D_x f(\widetilde{\theta}, \widetilde{x})$ is non-sigular (i.e. full-rank, or has a non-0 determinant) then for some open sets $A, B$ s.t. $\widetilde{\theta} \in A$, $\widetilde{x} \in B$, there exist a unique function $h: A \to B$ that is continuously differentiable in $A$ s.t.
   \[
     f(\theta, h(\theta)) = 0
   \]
@@ -580,7 +734,7 @@ National income must equal consumption plus investment (savings) plus government
 
 which is the exact type of problem the IFT can help us solve. We have endogenous variables $x = (Y, r)$, national income and the interest rate, and exogenous variables $\theta = (M^S, G, T)$, money supply, government spending, and taxes. Hence
 \begin{equation}
- \label{eq:is_lm_example} 
+ \label{eq:is_lm_example}
   f(\theta, x)
   =
   \left[\begin{matrix}
@@ -770,21 +924,21 @@ Which means that for some $x = (Y, r), \theta = (M^S, G, T)$ that satisfies \Cre
 \label{ssub:linear_algebra_review}
 
 \begin{definition}
-  A square $N \times N$ matrix $S$ with elements in $\mathbb{R}$ is \keyword{positive semidefinite} if $\forall p \in \mathbb{R}^N$ we have
+  A square $N \times N$ matrix $S$ with elements in $\mathbb{R}$ is \keyword{positive semidefinite} (PSD) if $\forall p \in \mathbb{R}^N$ we have
   \[
     p^T S p \ge 0
   \]
 
-  and \keyword{positive definite} if the inequality is strict.
+  and \keyword{positive definite} (PD) if the inequality is strict.
 \end{definition}
 
 \begin{definition}
-  A square $N \times N$ matrix $S$ with elements in $\mathbb{R}$ is \keyword{nagative semidefinite} if $\forall p \in \mathbb{R}^N$ we have
+  A square $N \times N$ matrix $S$ with elements in $\mathbb{R}$ is \keyword{negative semidefinite} (NSD) if $\forall p \in \mathbb{R}^N$ we have
   \[
     p^T S p \le 0
   \]
 
-  and \keyword{negative definite} if the inequality is strict.
+  and \keyword{negative definite} (ND) if the inequality is strict.
 \end{definition}
 
 \begin{definition}
@@ -872,7 +1026,7 @@ In our example above, these are the matrix $S$ itself ($3$rd leading principal m
   \begin{enumerate}
     \item If the determinant of all the leading principal minors is strictly positive, then $S$ is positive definite.
 
-    \item If for every $k \le N$ the determinant of the $k$th order leading principal minor has sign $(-1)^k$ (that is, positive for $k$ even and negativee for $k$ odd), then $S$ is negative definite.
+    \item If for every $k \le N$ the determinant of the $k$th order leading principal minor has sign $(-1)^k$ (that is, positive for $k$ even and negative for $k$ odd), then $S$ is negative definite.
 
     \item If the determinant of the $k$th order leading principal minor is non-zero and does not fit either pattern above for some $k$, then $S$ is indefinite.
 
@@ -963,7 +1117,7 @@ Some examples
   Again, the converse need not be true. In our previous example, $x^* = 0$ is actually a local minimum, and we can check that $Df(x^*) = 4(0^3) = 0$ and $D^2f(x^*) = 12(0^2) = 0 \ge 0$ (positive semidefinite). However, $D^2f(x^*) \le 0$ means that it is negative semidefinite as well, but that does not imply a local maximum. Hence the condition is necessary but not sufficient.
 \end{remark}
 
-Let us take $f(x) = 3x^3 - 3x^2$, the function from our previous example. We saw that $Df(x) = 6x^2 - 6x = 0$ at $x = 0, 1$. Now we have
+Let us take $f(x) = 2x^3 - 3x^2$, the function from our previous example. We saw that $Df(x) = 6x^2 - 6x = 0$ at $x = 0, 1$. Now we have
 \begin{equation}
   \begin{array}{c}
     D^2f(x) = 12x - 6 \\
@@ -1036,17 +1190,17 @@ The second order principal minor is just the Hessian itself. The 1st order princ
 \begin{theorem}
   Let $f: A \to \mathbb{R}$ be a twice continuously differentiable function on an open set $A \subseteq \mathbb{R}^N$.
   \begin{enumerate}
-    \item $f(x)$ is concave $\iff$ $D^2f(x)$ is negative semidefinite.
-    \item $f(x)$ is convex $\iff$ $D^2f(x)$ is positive semidefinite.
+    \item $f(x)$ is concave $\iff$ $D^2f(x)$ is negative semidefinite. (Strictly concave iff negative definite.)
+    \item $f(x)$ is convex $\iff$ $D^2f(x)$ is positive semidefinite. (Strictly convex iff positive definite.)
   \end{enumerate}
 \end{theorem}
 
 \begin{theorem}
   Let $f: A \to \mathbb{R}$ be a twice continuously differentiable function on an open set $A \subseteq \mathbb{R}^N$.
   \begin{enumerate}
-    \item If $f$ is concave and $x^*$ is s.t. $Df(x^*) = 0$ then $x^*$ is a global maximum.
+    \item If $f$ is concave and $x^*$ is s.t. $Df(x^*) = 0$ then $x^*$ is a global maximum. (If $f$ is strictly concave the global maximum is unique.)
 
-    \item If $f$ is convex and $x^*$ is s.t. $Df(x^*) = 0$ then $x^*$ is a global minimum.
+    \item If $f$ is convex and $x^*$ is s.t. $Df(x^*) = 0$ then $x^*$ is a global minimum. (If $f$ is strictly convex the global minimum is unique.)
   \end{enumerate}
 \end{theorem}
 
