@@ -244,7 +244,7 @@ Note the above is equivalent to stating that if $x^*$ solves \Cref{eq:lecture5_m
 \begin{equation}
   \mathcal{L}(x, \lambda)
   =
-  f(x) + (h(x) - c) \lambda
+  f(x) - (h(x) - c) \lambda
 \end{equation}
 
 In the above equation $\mathcal{L}$ is called the \keyword{Lagrangian}, so the result from \Cref{thm:lecture5_lagrangian} that $Df(x^*) = Dh(x^*) \lambda^*$ is referred to as the FOC for the Lagrangian.
@@ -637,7 +637,7 @@ In this case, the Lagrangian was
   (p_x x + p_y y - w) \mu_3
 \end{align*}
 
-Note in this case, only the budget constraint is binding, so the bordered Hessian is
+Note here only the budget constraint is binding, so the bordered Hessian is
 \begin{align*}
   \begin{bmatrix}
     0    & p_x & p_y \\
@@ -646,7 +646,7 @@ Note in this case, only the budget constraint is binding, so the bordered Hessia
   \end{bmatrix}
 \end{align*}
 
-In this case, we have two variables and one binding constraint, so we check the last $2 - 1 = 1$ leading principal minors, which is the third leading principal minor, or just the matrix itself. The determinant is
+Hence we have two variables and one binding constraint, so we check the last $2 - 1 = 1$ leading principal minors, which is the third leading principal minor, or just the matrix itself. The determinant is
 \begin{align*}
   &
   0 \cdot \det
@@ -847,6 +847,7 @@ In $x$--$\theta$ space, we can see that $f(x^*(\theta), \theta)$ \textit{\textbf
         ,ylabel style={anchor=south west}
         ,zlabel style={anchor=south west}
         ,tick align=outside
+        % ,clip=false
       ]
       \addplot3 [
         surf
@@ -872,6 +873,7 @@ In $x$--$\theta$ space, we can see that $f(x^*(\theta), \theta)$ \textit{\textbf
         (0.25,      0.5,  0.25)
         (0.3164062, 0.75, 0.1054688)
       };
+      \node at (axis cs:0.35, 0.1, 0.675) {$(x^*(\theta), \theta, f(x^*(\theta), \theta))$};
       \end{axis}
   \end{tikzpicture}
 \end{figure}
