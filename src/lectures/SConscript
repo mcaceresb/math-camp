@@ -15,5 +15,5 @@ env.PDF(target = '#out/lectures/Math Camp 2021 Lecture 4 - Differentiation, IFT,
 env.PDF(target = '#out/lectures/Math Camp 2021 Lecture 5 - Constrained Optimization, Integration.pdf',
         source = '#src/lectures/lecture5.tex')
 
-# env.PDF(target = '#out/lectures/Math Camp 2021 Lecture 6 - Linear Algebra, ODE.pdf',
-#         source = '#src/lectures/lecture6.tex')
+env.PDF(target = '#out/lectures/Math Camp 2021 Lecture 6 - Linear Algebra, ODE.pdf',
+        source = '#src/lectures/lecture6.tex')

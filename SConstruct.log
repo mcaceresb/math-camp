@@ -1,5 +1,5 @@
 scons: done reading SConscript files.
 scons: Building targets ...
-cd out/lectures && pdflatex -interaction=nonstopmode -recorder lecture5.tex
-move out/lectures/lecture5.pdf to out/lectures/Math Camp 2021 Lecture 5 - Constrained Optimization, Integration.pdf
+cd out/lectures && pdflatex -interaction=nonstopmode -recorder lecture6.tex
+move out/lectures/lecture6.pdf to out/lectures/Math Camp 2021 Lecture 6 - Linear Algebra, ODE.pdf
 scons: done building targets.
