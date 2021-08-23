@@ -210,7 +210,11 @@ with $c \in \mathbb{R}$ some scalar. With unconstrained optimization, we look fo
     x^2 + x^2 = 1
     \implies
     x = y = \sqrt{1/2}
+    \quad\text{or}\quad
+    x = y = - \sqrt{1/2}
   \end{align*}
+
+  Note that we can't mix and match roots here lest the objective be $\sqrt{}$ a negative number.
 \end{example}
 
 \subsubsection{Multiple Equality Constraints}
@@ -322,116 +326,28 @@ In the above equation $\mathcal{L}$ is called the \keyword{Lagrangian}, so the r
     (1 - x - 3x^2) (1 - x)
   \end{align*}
 
-  The solutions are given by $x = \left(1, \dfrac{-1 \pm \sqrt{13}}{6}\right)$. Note that $x = 1$ cannot be a solution. In this case, $y = z = 0$ (this yields an objective of $0$, which we can readily check this is not a $\max$, but it is also an issue for how we solved the problem, where $y \ne 0$l is required). For the other two points:
+  The solutions are given by $x = \left(1, \dfrac{1 \pm \sqrt{13}}{6}\right)$. Note that $x = 1$ cannot be a solution. In this case, $y = z = 0$ (this yields an objective of $0$, which we can readily check this is not a $\max$, but it is also an issue for how we solved the problem, where $y \ne 0$l is required). For the other two points:
   \begin{align*}
-    x = - \dfrac{1 + \sqrt{13}}{6}
+    x = \dfrac{1 + \sqrt{13}}{6}
     \quad
-    z = \dfrac{7 + \sqrt{13}}{6}
+    z = \dfrac{5 - \sqrt{13}}{6}
     \quad
     y
     = - \sqrt{1 - \dfrac{14 + 2 \sqrt{13}}{36}}
     = - \dfrac{\sqrt{22 - 2 \sqrt{13}}}{6}
     \\
-    x = \dfrac{- 1 + \sqrt{13}}{6}
+    x = \dfrac{1 - \sqrt{13}}{6}
     \quad
-    z = \dfrac{7 - \sqrt{13}}{6}
+    z = \dfrac{5 + \sqrt{13}}{6}
     \quad
     y
-    = \sqrt{1 - \dfrac{14 - 2 \sqrt{13}}{36}}
-    = \dfrac{\sqrt{22 + 2 \sqrt{13}}}{6}
+    = - \sqrt{1 - \dfrac{14 - 2 \sqrt{13}}{36}}
+    = - \dfrac{\sqrt{22 + 2 \sqrt{13}}}{6}
   \end{align*}
 
-  (technically we get $4$, but the other two give a negative value for the objective, which is even smaller than $0$). With some tedious algebra (or plugging numbers into a computer) you find the function is maximized at the first point.
-  % To finish, note that
-  % \begin{align*}
-  %   \left(
-  %     \dfrac{1 + \sqrt{13}}{6}
-  %   \right)
-  %   \left(
-  %     \dfrac{7 + \sqrt{13}}{6}
-  %   \right)
-  %   \dfrac{\sqrt{22 - 2 \sqrt{13}}}{6}
-  %   \\
-  %   \left(
-  %     8 \sqrt{13}
-  %     +
-  %     20
-  %   \right)
-  %   \sqrt{22 - 2 \sqrt{13}}
-  %   \\
-  %   \left(
-  %     64 \cdot 13
-  %     +
-  %     320 \sqrt{13}
-  %     +
-  %     400
-  %   \right)
-  %   \left(
-  %     22 - 2 \sqrt{13}
-  %   \right)
-  %   \\
-  %   \left(
-  %     22 \cdot 64 \cdot 13
-  %     +
-  %     22 \cdot 320 \sqrt{13}
-  %     +
-  %     22 \cdot 400
-  %     %
-  %     - 2 \sqrt{13} \cdot 64 \cdot 13
-  %     - 2 \sqrt{13} \cdot 320 \sqrt{13}
-  %     - 2 \sqrt{13} \cdot 400
-  %   \right)
-  % \end{align*}
-  % \begin{align*}
-  %   \left(
-  %     \dfrac{- 1 + \sqrt{13}}{6}
-  %   \right)
-  %   \left(
-  %     \dfrac{7 - \sqrt{13}}{6}
-  %   \right)
-  %   \dfrac{\sqrt{22 + 2 \sqrt{13}}}{6}
-  %   \\
-  %   \left(
-  %     8 \sqrt{13} - 20
-  %   \right)
-  %   \sqrt{22 + 2 \sqrt{13}}
-  %   \\
-  %   \left(
-  %     64 \cdot 13
-  %     -
-  %     320 \sqrt{13}
-  %     +
-  %     400
-  %   \right)
-  %   \left(
-  %     22 + 2 \sqrt{13}
-  %   \right)
-  %   \\
-  %   \left(
-  %     22 \cdot 64 \cdot 13
-  %     -
-  %     22 \cdot 320 \sqrt{13}
-  %     +
-  %     22 \cdot 400
-  %     %
-  %     + 2 \sqrt{13} \cdot 64 \cdot 13
-  %     + 2 \sqrt{13} \cdot 320 \sqrt{13}
-  %     + 2 \sqrt{13} \cdot 400
-  %   \right)
-  % \end{align*}
-  %
-  % Then you just need the fact that
-  % \begin{align*}
-  %   44 \cdot 320
-  %   >
-  %   8 \cdot 416
-  %   +
-  %   4 \cdot 400
-  %   +
-  %   4 \cdot 320 \cdot \sqrt{13}
-  % \end{align*}
+  (technically we get $4$, but the other two give a negative value for the objective, which is even smaller than $0$). With some tedious algebra (or plugging numbers into a computer) you find the function is maximized at the second point.
 \end{example}
-
+- 
 \subsubsection{Inequality Constraints}
 \label{ssub:inequality_constraints}
 
@@ -1048,7 +964,7 @@ We can intuit that as our approximations become tighter, in the limit, we will r
 \end{definition}
 
 \begin{definition}
-  Let $P_m$ be a partition of $[a, b]$; $P_n$ is a refinement of $P_m$ if $P_n \subseteq P_m$.
+  Let $P_m$ be a partition of $[a, b]$; $P_n$ is a refinement of $P_m$ if $P_m \subseteq P_n$.
 \end{definition}
 
 \begin{definition}
@@ -1109,7 +1025,7 @@ Some useful properties of Riemann integrals (given $f, g: [a, b] \to \mathbb{R}$
     \[
       \int_{a}^{b} f(x) dx
       =
-      \int_{b}^{a} f(x) dx
+      - \int_{b}^{a} f(x) dx
     \]
 
   \item Zero-width interval:
