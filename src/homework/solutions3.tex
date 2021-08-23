@@ -1,0 +1,489 @@
+%----------------------------------------------------------------------
+\documentclass{article}
+
+\usepackage[homework]{brownpreamble}
+\lhead{\color{light-gray} \itshape Math Camp 2021}
+\rhead{\color{light-gray} \itshape Suggested Solutions 3}
+\renewcommand\sectiontype{Suggested Solutions \thesection\ }
+% \renewcommand\thesection{\arabic{section}}
+\setcounter{section}{2}
+
+%----------------------------------------------------------------------
+\begin{document}
+\displayoptions
+
+% ---------------------------------------------------------------------
+\section{}
+
+\begin{enumerate}[1.]
+  \item {\itshape
+    Take a collection of functions with $f_i: \Omega to \mathbb{R}^N$, $\Omega \subseteq \mathbb{R}^M, i \in \mathbb{N}$. The collection $\set{f_i}$ defines a sequence of funtions, and for each $x \in \Omega$ we have a possibly different sequence $\set{f_i(x)}$ in $\mathbb{R}^N$.
+
+    Let $\set{f_i}$ be a sequence of functions, with $f_i: \Omega \to \mathbb{R}^N$ and $\Omega \subseteq \mathbb{R}^M$. We say that $\set{f_i}$ \textbf{point-wise convrges} to $f: \Omega_0 \to \mathbb{R}^N$ if $x \in \Omega_0 \implies f_i(x) \to f(x)$.
+
+    Let $\set{f_i}$ be a sequence of functions, with $f_i: \Omega \to \mathbb{R}^N$ and $\Omega \subseteq \mathbb{R}^M$. We say that $\set{f_i}$ \textbf{uniformly convrges} to $f: \Omega_0 \to \mathbb{R}^N$ if $\forall \varepsilon > 0 ~~ \exists I_0(\varepsilon)$ s.t. for $i > I_0(\varepsilon)$ we have $\Fnorm{f_i(x) - f(x)} < \varepsilon$. }
+
+    \begin{enumerate}[a)]
+      \item \textit{Let $f_i(x) = x / i$ and $f(x) = 0$. Check that $f_i \to f$ point-wise.}
+
+        \solution Pick an arbitrary $x$ and $\varepsilon > 0$. We have the sequence $x_m = x / m$, and for $M = |x| / \varepsilon$ we have that
+        \[
+          |x / m| < \varepsilon = |x / M|
+        \]
+
+        whenever $m > M$. Hence for any given $x$, $f_i(x) \to f(x)$.
+
+      \item \textit{Show $f_i$ defined above does not converge uniformly to $f$.}
+
+        \solution Crucially, the number $I_0(\varepsilon)$ we choose in this case cannot depend on $x$, only on $\varepsilon$. Suppose that it does converge uniformly, then for any $\varepsilon > 0$ we find $I_0(\varepsilon)$ s.t. $i > I_0(\varepsilon)$ gives
+        \[
+          \Fnorm{f_i(x) - f(x)} < \varepsilon
+          \iff
+          \dfrac{1}{i} \Fnorm{x} < \varepsilon
+          \iff
+          \Fnorm{x} < \varepsilon i
+        \]
+
+        However, $f_i$ are defined on $\mathbb{R}$, for any fixed $\varepsilon$ and $I_0(\varepsilon)$, take any given $i > I_0(\varepsilon)$, for instance $i = I_0(\varepsilon) + 1$, and $x = \varepsilon i + 1 \in \mathbb{R}$ will violate the equation above, a contradiction.
+
+      \item \textit{Show uniform convergence implies point-wise convergence.}
+
+        \solution This follows directly from the definition. Pick an $x^\prime \in \Omega_0$; $f_i \to f$ point-wise if the sequence $x^\prime_i = f_i(x^\prime) \to f(x)$. This is true if for every $\varepsilon > 0$ there exists some $I$ s.t. $i > I$ gives
+        \[
+          \Fnorm{f_i(x^\prime) - f(x^\prime)} < \varepsilon
+        \]
+
+        If $f_i \to f$ uniformly, then we know that $I_0(\varepsilon)$ exists s.t.
+        \[
+          \Fnorm{f_i(x) - f(x)} < \varepsilon
+        \]
+
+        for every $x \in \Omega_0$, which means it must also be true of $x^\prime$. Let $I = I_0(\varepsilon)$ and we are done.
+    \end{enumerate}
+
+  \item {\itshape Let $A \subseteq \mathbb{R}^N$ be a convex set. $f: A \to \mathbb{R}^N$ is quasiconcave if for any $x, y \in A$ and $\alpha \in [0, 1]$ we have
+      \begin{align*}
+        f(\alpha x + (1 - \alpha) y) \ge \min{f(x), f(y)}
+      \end{align*}
+
+    and strictly quasiconcave if the above holds strictly. Show if $f$ is quasiconcave then $\argmax_{x \in A} f(x)$ is a convex set (recall the empty set is convex by vacuity). Further show that if $f$ is strictly quasiconcave then $\argmax_{x \in A} f(x)$ is a singleton or empty.}
+
+    \solution We have that for any pair $x, y \in A$, and $\alpha \in [0, 1]$
+      \[
+        f(\alpha x + (1 - \alpha) y) \ge \min\set{f(x), f(y)}
+      \]
+
+      Furthermore,
+      \[
+        \argmax_{x \in A} f(x) = \set{x \in A: f(x) \ge f(y) ~~ \forall y \in A}
+      \]
+
+      We want to show that for any two points, $x^*, y^* \in \argmax_{x \in A} f(x)$, the following holds:
+      \[
+        \alpha x^* + (1 - \alpha) y^* \in \argmax_{x \in A} f(x)
+      \]
+
+      Note that since $A$ is convex and $x^*, y^* \in A$, we have $\alpha x^* + (1 - \alpha) y^* \in A$.
+
+      If there is no maximum the above is true by vacuity: For any two points in the empty set, their combination is also in the empty set. This statement is true by vacuity, but perhaps the contrapositive makes it more clear: If the convex combination of any two points is not on the empty set for some $\alpha \in [0, 1]$ (true because there are no points in the empty set), then the two points are not in the set (also true because there are no points in the empty set).
+
+      So let us consider the non-trivial case. $x^*, y^* \in \argmax$ gives that $f(x^*) \ge f(x) ~~ \forall x \in A$ and $f(y^*) \ge f(x) ~~ \forall x \in A$. Since $f$ is quasiconcave,
+      \[
+        f(\alpha x^* + (1 - \alpha) y^*) \ge \min\set{f(x^*), f(y^*)} \ge f(x) ~~ \forall x \in A
+      \]
+
+      which is exactly what we wanted to show, so $\argmax$ is a convex set. If we have \textit{strict} quasiconcavity and the maximum does not exist, then the $\argmax$ is empty. So, again, let us consider the non-trivial case: Suppose that $\argmax$ is not a singleton. We know that it must be convex, so for $x^*, y^* \in \argmax$ with $x^* \ne y^*$ we have
+      \[
+        f(\alpha x^* + (1 - \alpha) y^*) \in \argmax_{x \in A} f(x)
+      \]
+
+      However, by strict quasiconcavity we also have
+      \[
+        f(\alpha x^* + (1 - \alpha) y^*) > \min\set{f(x^*), f(y^*)} \ge f(x) ~~ \forall x \in A
+      \]
+
+      Since $A$ is convex and $x^*, y^* \in A$, we have that $\alpha x^* + (1 - \alpha) y^* \in A$, and thus
+      \[
+        f(\alpha x^* + (1 - \alpha) y^*) > f(\alpha x^* + (1 - \alpha) y^*)
+      \]
+
+      a contradiction. So if the $\argmax$ is not empty, it is a singleton.
+
+  \item {\itshape
+      Consider a continuous function $f: \mathbb{R}^N \to \mathbb{R}$. Show
+    }
+
+    \begin{enumerate}[a)]
+      \item \textit{If $f$ is differentiable and $x^* \in \mathbb{R}^N$ is a local maximizer of $f$ then $\nabla f(x^*) = 0$.}
+
+        \solution Suppose $x^*$ a local maximizer of $f$. Then $\exists \varepsilon > 0$ s.t.
+        \[
+          x \in B_{\varepsilon}(x^*)
+          \implies
+          f(x^*) \ge f(x)
+        \]
+
+        Since $f$ is differentiable, we know that $\dfrac{\partial}{x_j} f(x^*)$ exists for each $j$. Hence
+        \[
+          \dfrac{\partial}{\partial x_j} f(x^*)
+          =
+          \lim_{t \to 0}  \dfrac{f(x^* + t e_j) - f(x^*)}{t}
+          =
+          \lim_{t \to 0+} \dfrac{f(x^* + t e_j) - f(x^*)}{t}
+          =
+          \lim_{t \to 0-} \dfrac{f(x^* + t e_j) - f(x^*)}{t}
+        \]
+
+        where $\set{e_j}$ are the standard basis for $\mathbb{R}^N$. Further, for $t < \varepsilon$, we have that $\Fnorm{x^* + t e_j - x^*} = t < \varepsilon$. Hence $x^* + t e_j \in B_{\varepsilon}(x)$ and
+        \begin{equation}
+          \begin{array}{c}
+          f(x^* + t e_j) \le f(x^*)
+          \implies
+          f(x^* + t e_j) - f(x^*)
+          \le 0
+          \\[6pt]
+          t \ge 0
+          \implies \dfrac{f(x^* + t e_j) - f(x^*)}{t}
+          \le 0
+          \\[6pt]
+          t \le 0
+          \implies \dfrac{f(x^* + t e_j) - f(x^*)}{t}
+          \ge 0
+          \end{array}
+          \label{eq:ps3_eq1}
+        \end{equation}
+
+        This means that as $t \to 0^+$ or $t \to 0^-$ we get
+        \begin{equation}
+          \begin{array}{rl}
+            \dfrac{\partial}{\partial x_j} f(x^*)
+            & =
+            \lim_{t \to 0+} \dfrac{f(x^* + t e_j) - f(x^*)}{t}
+            \le 0
+            \\[6pt]
+            \quad\quad
+            \dfrac{\partial}{\partial x_j} f(x^*)
+            & =
+            \lim_{t \to 0-} \dfrac{f(x^* + t e_j) - f(x^*)}{t}
+            \ge 0
+            \\[6pt]
+            \implies
+            \dfrac{\partial}{\partial x_j} f(x^*)
+            & = 0
+          \end{array}
+          \nonumber
+        \end{equation}
+
+      \item \textit{If $f$ is twice continuously differentiable and $x^* \in \mathbb{R}^N$ is s.t. $\nabla f(x^*) = 0$, then if $x^*$ is a local maximizer the symmetric $N \times N$ Hessian $D^2f(x^*)$ is negative semidefinite. (Hint: Use a Taylor expansion and assume the $D^3 f(x)$ is bounded.)}
+
+        \solution Take any $z$ and the 2nd-order Taylor expansion of $g(\varepsilon) = f(x^* + \varepsilon v)$ around $\varepsilon = 0$.
+        \begin{align*}
+          g(\varepsilon)
+          =
+          g(0) 
+          + g^\prime(0) \varepsilon 
+          + \dfrac{1}{2} g^{\prime\prime}(0) \varepsilon^2
+          + \dfrac{1}{6} g^{\prime\prime\prime}(c) \varepsilon^3
+        \end{align*}
+
+        for some $c \in (0, \varepsilon)$. By the chain rule,
+        \begin{align*}
+          g^{\prime}(0)
+          =
+          v^T D_x f(x^*)
+          \quad\text{and}\quad
+          g^{\prime\prime}(0)
+          =
+          v^T D_x f(x^*) v
+        \end{align*}
+
+        However, from the FOC we know that $D_x f(x^*) = 0$.  Therefore we find
+        \begin{align*}
+          f(x^* + \varepsilon v) - f(x^*)
+          &
+          =
+          \dfrac{1}{2} v^T D_x f(x^*) v \varepsilon^2
+          + \dfrac{1}{6} g^{\prime\prime\prime}(c) \varepsilon^3
+          \\
+          \dfrac{2}{\varepsilon^2}
+          \left(
+            f(x^* + \varepsilon v) - f(x^*)
+          \right)
+          &
+          =
+          v^T D_x f(x^*) v
+          +
+          \dfrac{1}{3} g^{\prime\prime\prime}(c) \varepsilon
+        \end{align*}
+
+        We want to show that $v^T D_x f(x^*) v \le 0$. Suppose by contradiction $\kappa_v \equiv v^T D_x f(x^*) v > 0$. Since $x^*$ is a maximizer, we know that $f(x^* + \varepsilon v) \le f(x^*)$. Hence
+        \begin{align*}
+          0
+          \ge
+          v^T D_x f(x^*) v
+          +
+          \dfrac{1}{3} g^{\prime\prime\prime}(c) \varepsilon
+          \implies
+          \dfrac{1}{3} g^{\prime\prime\prime}(c) \varepsilon
+          \le
+          - \kappa_v
+          <
+          0
+        \end{align*}
+
+        If $D^3 f$ is bounded then $g^{\prime\prime\prime}$ is bounded, which means $\exists \varepsilon$ s.t. $|g^{\prime\prime\prime}(c) / 3| \varepsilon < \kappa_v$. Therefore
+        \begin{align*}
+          \dfrac{1}{3} g^{\prime\prime\prime}(c) \varepsilon
+          >
+          - \kappa_v
+        \end{align*}
+
+        contradiction. This means $v^T D_x f(x^*) v \le 0$ for any $v$, so the Hessian is negative semi-definite.
+
+      \item \textit{If $f$ is concave then $f(x + z) \le f(x) + Df(x) z$ for any $x, z$.}
+
+        \solution Take any $x, y, \alpha \in [0, 1]$ and let $z = y - x$. We have
+          \begin{align*}
+            f(\alpha y + (1 - \alpha) x)
+            \ge
+            \alpha f(y) + (1 - \alpha) f(x)
+            =
+            \alpha (f(y) - f(x)) + f(x)
+          \end{align*}
+
+          Plugging in $z$, we have
+          \begin{align*}
+            f(\alpha y + (1 - \alpha) x)
+            & = f(x + \alpha z)
+            \\
+            \alpha (f(y) - f(x)) + f(x)
+            &
+            \alpha (f(x + z) - f(x)) + f(x)
+            \\
+            f(x + \alpha z)
+            &
+            \ge
+            \alpha (f(x + z) - f(x)) + f(x)
+            \\
+            f(x + z)
+            &
+            \le
+            \dfrac{f(x + \alpha z) - f(x)}{\alpha} + f(x)
+          \end{align*}
+
+          holds for \textit{every} $\alpha$. Let $g(\alpha) \equiv f(x + \alpha z)$ and note
+          \begin{align*}
+            g^\prime(0)
+            =
+            \lim_{\alpha \to 0} 
+            \dfrac{g(\alpha) - g(0)}{\alpha}
+            =
+            \lim_{\alpha \to 0} 
+            \dfrac{f(x + \alpha z) - f(x)}{\alpha}
+          \end{align*}
+
+          However, by the chain rule, we know that
+          \begin{align*}
+            g^\prime(0)
+            =
+            D_x f(x) \cdot z
+          \end{align*}
+
+          Plugging back in, we get
+          \begin{align*}
+            f(x + z)
+            \le
+            &
+            D f(x) \cdot z + f(x)
+          \end{align*}
+
+          which is what we wanted to show.
+
+      \item \textit{If $f$ is concave then any critical point (i.e. $x$ s.t. $Df(x) = 0$) is a global maximizer.}
+
+        \solution Following the previous result, for any $x, z$ we have
+        \[
+          f(x + z) \le f(x) + \nabla f(x) \cdot z
+        \]
+
+        Let $x^*$ be a critical point, $y$ be any other point, and $z \equiv y - x$. Since $D f(x^*) = 0$,
+        \[
+          f(y)
+          =
+          f(x^* + (y - x^*))
+          \le f(x^*) + D f(x^*) \cdot (y - x^*)
+          = f(x^*) + 0 \cdot (y - x^*)
+          = f(x^*)
+        \]
+
+        Since $f(x^*) \ge f(y)$ for every $y \in \mathbb{R}^N$, $x^*$ is a global maximizer.
+    \end{enumerate}
+
+    \begin{remark}
+      We focused on maxima but the proofs for minima are analogous.
+    \end{remark}
+
+  \item {\itshape
+    Define the set $\Delta = \set{p \in \mathbb{R}^L_{+}: \sum^{}_{l} p_l = 1}$ and the function $z^+$ on $\Delta$ as $z^+_l(p) = \max\set{z_l(p), 0}$, where $z(p) = \set{z_1(p), z_2(p), \ldots, z_L(p)}$ is a continuous function, homogeneous of degree 0, and satisfying $p \cdot z(p) = 0$ for all $p \in \mathbb{R}^L$. Denote $\alpha(p) = \sum^{}_{l} \left[p_l + z_l^+\right]$.}
+
+    \begin{enumerate}[a)]
+      \item \textit{Show that $\Delta$ is a non-empty compact and convex set.}
+
+        \solution For non-emptiness, note
+        \[
+          p_l = \dfrac{1}{L}
+          \implies
+          \sum_l p_l = \sum^{}_{l} \dfrac{1}{L} = 1
+        \]
+
+        The set is bounded below by $0$, since $p_l \ge 0$ for each $l$, and above by $1$, since $p_j \le p_j + \sum^{}_{l \ne j} p_l \le 1$ (note the sum is positive since $p_l \ge 0$ for each $l$). If we can show that $\Delta$ is closed, then we can show that it is compact. Take any $q \notin \Delta$. We know that
+        \[
+          \sum^{}_{l} q \ne 1
+          \implies
+          \sum^{}_{l} q < 1
+          \quad
+          \text{ or }
+          \quad
+          \sum^{}_{l} q > 1
+        \]
+
+        We want to show that for any such $q$ there is some $\varepsilon$ s.t. every element $r \in B_{\varepsilon}(q)$ is not in $\Delta$. Suppose $\sum^{}_{l} q < 1$.  It must be that $0 < \delta < 1 - \sum^{}_{l} q_l$ for some $\delta$. Take $0 < \varepsilon < \delta / L$ and $r \in B_{\varepsilon}(q)$. We have that $0 \le r_l \le q_l + \varepsilon < q_l + \delta / L$ for each $l$, and so
+        \[
+          \sum^{}_{l} r_l \le \sum^{}_{l}  \left[q_l + \delta / L\right] = \sum^{}_{l}  q_l + \delta < 1
+        \]
+
+        Suppose $\sum^{}_{l} q > 1$. Then $0 < \delta < \sum^{}_{l} q - 1$ for some $\delta$. Take $0 < \varepsilon < \delta / L$ and $r \in B_{\varepsilon}(q)$. We have that $q_l - \delta / L \le q_l - \varepsilon \le r_l$ for each $l$, and so
+        \[
+          \sum^{}_{l} r_l \ge \sum^{}_{l}  \left[q_l - \delta / L\right] = \sum^{}_{l} q_l - \delta > 1
+        \]
+
+        Hence if $\sum^{}_{l} q \ne 1$, there is some $\varepsilon > 0$ s.t. for any $r \in B_{\varepsilon}(q)$, $r \notin \Delta$, which means that $\Delta^C$ is open, and thus $\Delta$ is closed. Since $\Delta$ is closed and bounded, it is compact.
+
+        Last, we show that it is convex. Take any $p, q \in \Delta$ and let $r = \alpha p + (1 - \alpha) q$ for any $\alpha \in [0, 1]$. We can see that
+        \[
+          \sum^{}_{l} r_l
+          = \sum^{}_{l} \left[\alpha p_l + (1 - \alpha) q_l\right]
+          = \alpha \sum^{}_{l} p_l + (1 - \alpha) \sum^{}_{l} q_l
+          = \alpha + (1 - \alpha)
+          = 1
+        \]
+
+        Hence $r \in \Delta$, and $\Delta$ is convex.
+
+      \item \textit{Show that $f: \Delta \to \Delta$ is continuous in $p$.}
+        \[
+          f(p) = \dfrac{1}{\alpha(p)} \left(p + z^+(p)\right)
+        \]
+
+        \solution We will use the result that if $g: A \to B$ is continuous and $h: B \to C$ is continuous then the composition $h \circ g$ is continuous. Clearly $f_1(x) = x$ the identity function is continuous. Since $f_2(x) = \max\set{x, 0}$ is continuous and $z_l(p)$ is continuous, $z_l^+(p) = f_2(z(p))$ is continuous. Hence $p_l + z_l^+(p)$ is continuous for each $l$, which means $p \mapsto p + z^+(p)$ will be continuous.
+
+        Since $p_l + z_l^+(p)$ is continuous, $\alpha(p) = \sum^{}_{l} p_l + z_l^+(p)$, the linear combination of $L$ continuous functions, is continuous. To finish, we have that $f_3(x) = 1 / x$ is continuous when $x \ne 0$, so $f_3(\alpha(p))$ will be continuous whenever $\alpha(p) \ne 0$. However, we have that
+        \[
+          \alpha(p) = \sum^{}_{l} p_l + \sum^{}_{l} z^+_l(p)
+          \quad\quad
+          \sum^{}_{l} p_l = 1
+          \quad\quad
+          z^+_l(p) = \max\set{z_l(p), 0} \ge 0
+        \]
+
+        Hence $\alpha(p) \ge 1 > 0$. This means that $f(p)$ is the composition of continuous functions, and thus itself is continuous.
+
+      \item \textit{Prove that $f$ has a fixed point. (Hint: You can use existing theorems!)}
+
+        \solution This follows directly from Brouwer's fixed point theorem. Any continuous $f: \Delta \to \Delta$ with $\Delta \subseteq \mathbb{R}^N$ non-empty, convex, and compact has a fixed point. I think we just need to show that the co-domain of $f$ is, indeed, $\Delta$. Here note that for any $q = f(p)$, we have
+        \[
+          \sum^{}_{l} q_l = \dfrac{1}{\sum^{}_{l} \left[p_l + z^+_l\right]} \sum^{}_{l} \left[p_l + z^+_l\right] = 1
+        \]
+
+      \item \textit{Use the fact $f$ has a fixed point and the properties of $z$ to argue that $\exists p^*$ s.t. $z^+(p^*) \cdot z(p^*) = 0$. (Hint: Use the fact $p^* \cdot z(p^*) = 0$.)}
+
+        \solution For $p^* \in \Delta$ a fixed point of $f$ we have
+        \begin{equation}
+          \begin{array}{rl}
+            p^*
+            & = f(p^*) = \dfrac{1}{\alpha(p^*)} \left(p^* + z^+(p^*)\right)
+            \\
+            p^* \cdot z(p^*)
+            & = \dfrac{1}{1 + \sum^{}_{l} z^+(p^*)} \left(p^* + z^+(p^*)\right) \cdot z(p^*)
+            \\
+            0
+            & = \dfrac{1}{1 + \sum^{}_{l} z^+(p^*)} \left(p^* \cdot z(p^*) + z^+(p^*) \cdot z(p^*)\right)
+            \\
+            0
+            & = z^+(p^*) \cdot z(p^*)
+          \end{array}
+          \nonumber
+        \end{equation}
+
+      \item \textit{Conclude thet $z(p^*) \le 0$.}
+
+        \solution
+        \[
+          z^+(p^*) \cdot z(p^*)
+          =
+          \sum^{}_{l} z_l(p^*) \max\set{z_l(p^*), 0}
+        \]
+
+        If $z_l(p^*) \le 0$ for any $l$, then $z_l(p^*) \max\set{z_l(p^*), 0} = 0$. Hence
+        \[
+          z^+(p^*) \cdot z(p^*)
+          =
+          \sum^{}_{l: z_l > 0} z_l(p^*) \max\set{z_l(p^*), 0}
+        \]
+
+        But if $z_l > 0$ for any $l$l, then $z_l(p^*) \max\set{z_l(p^*), 0} = z_l(p^*)^2 > 0$, which means
+        \[
+          z^+(p^*) \cdot z(p^*) > 0
+        \]
+
+        a contradiction. Thus $z_l(p^*) \le 0$.
+    \end{enumerate}
+
+  \begin{remark}
+    If for consumer $i$ we define the excess demand function $z_i(p) = x_i(p, \omega_i) - \omega_i$ for wealth $\omega_i$ and prices $p$. One way to define general equilibrium is vector of prices s.t. $\sum^{}_{i} z_i(p) \le 0$ for all $i$ (i.e. there is no aggregate excess demand). You have just shown that under some conditions such a price vector always exists.
+  \end{remark}
+
+  \item \textit{Use the chain rule and the FTC to prove the Leibniz rule:}
+    \[
+      \dfrac{d}{dx} \int_{v(x)}^{u(x)} f(t) dt
+      =
+      f(v(x)) \dfrac{dv}{dx}
+      - f(u(x)) \dfrac{du}{dx}
+    \]
+
+    \solution The FTC gives that if $f$ is integrable on $[a, b]$ then for any $x \in [a, b]$
+    \[
+      F(x) = \int_{x}^{a} f(t) dt
+    \]
+
+    is continuously differentiable on $(a, b)$ and
+    \[
+      \dfrac{d}{dx} F(x) = f(x)
+    \]
+
+    Further,
+    \[
+      F(b) - F(a) = \int_{b}^{a} f(t) dt
+    \]
+
+    If $f$ is integrable on $[v(x), u(x)]$, then we have that
+    \[
+      \int_{v(x)}^{u(x)} f(t) dt
+      =
+      F(v(x)) - F(u(x))
+    \]
+
+    Now we combine the FTC and the chain rule to see that
+    \[
+      \dfrac{d}{dx} \int_{v(x)}^{u(x)} f(t) dt
+      =
+      \dfrac{d}{dx} F(v(x)) - \dfrac{d}{dx} F(u(x))
+      =
+      f(v(x)) \dfrac{dv}{dx} - f(u(x)) \dfrac{du}{dx}
+    \]
+
+    which is what we wanted to show.
+\end{enumerate}
+
+%----------------------------------------------------------------------
+\end{document}
