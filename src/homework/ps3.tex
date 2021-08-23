@@ -1,0 +1,87 @@
+%----------------------------------------------------------------------
+\documentclass{article}
+
+\usepackage[homework]{brownpreamble}
+\lhead{\color{light-gray} \itshape Math Camp 2021}
+\rhead{\color{light-gray} \itshape Problem Set 3}
+\renewcommand\sectiontype{Problem Set \thesection\ }
+% \renewcommand\thesection{\arabic{section}}
+\setcounter{section}{2}
+
+%----------------------------------------------------------------------
+\begin{document}
+\displayoptions
+
+% ---------------------------------------------------------------------
+\section{}
+
+\begin{enumerate}[1.]
+  \item {\itshape
+    Take a collection of functions with $f_i: \Omega to \mathbb{R}^N$, $\Omega \subseteq \mathbb{R}^M, i \in \mathbb{N}$. The collection $\set{f_i}$ defines a sequence of funtions, and for each $x \in \Omega$ we have a possibly different sequence $\set{f_i(x)}$ in $\mathbb{R}^N$.
+
+    Let $\set{f_i}$ be a sequence of functions, with $f_i: \Omega \to \mathbb{R}^N$ and $\Omega \subseteq \mathbb{R}^M$. We say that $\set{f_i}$ \textbf{point-wise convrges} to $f: \Omega_0 \to \mathbb{R}^N$ if $x \in \Omega_0 \implies f_i(x) \to f(x)$.
+
+    Let $\set{f_i}$ be a sequence of functions, with $f_i: \Omega \to \mathbb{R}^N$ and $\Omega \subseteq \mathbb{R}^M$. We say that $\set{f_i}$ \textbf{uniformly convrges} to $f: \Omega_0 \to \mathbb{R}^N$ if $\forall \varepsilon > 0 ~~ \exists I_0(\varepsilon)$ s.t. for $i > I_0(\varepsilon)$ we have $\Fnorm{f_i(x) - f(x)} < \varepsilon$.
+
+    \begin{enumerate}[a)]
+      \item \textit{Let $f_i(x) = x / i$ and $f(x) = 0$. Check that $f_i \to f$ point-wise.}
+      \item \textit{Show $f_i$ defined above does not converge uniformly to $f$.}
+      \item \textit{Show uniform convergence implies point-wise convergence.}
+    \end{enumerate}
+  }
+
+  \item {\itshape Let $A \subseteq \mathbb{R}^N$ be a convex set. $f: A \to \mathbb{R}^N$ is quasiconcave if for any $x, y \in A$ and $\alpha \in [0, 1]$ we have
+      \begin{align*}
+        f(\alpha x + (1 - \alpha) y) \ge \min{f(x), f(y)}
+      \end{align*}
+
+    and strictly quasiconcave if the above holds strictly. Show if $f$ is quasiconcave then $\argmax_{x \in A} f(x)$ is a convex set (recall the empty set is convex by vacuity). Further show that if $f$ is strictly quasiconcave then $\argmax_{x \in A} f(x)$ is a singleton or empty.}
+
+  \item {\itshape
+      Consider a continuous function $f: \mathbb{R}^N \to \mathbb{R}$. Show
+
+    \begin{enumerate}[a)]
+      \item \textit{If $f$ is differentiable and $x^* \in \mathbb{R}^N$ is a local maximizer or minimizer of $f$, then $\nabla f(x^*) = 0$.}
+
+      \item \textit{If $f$ is twice continuously differentiable and $x^* \in \mathbb{R}^N$ is s.t. $\nabla f(x^*) = 0$, then if $x^*$ is a local maximizer the symmetric $N \times N$ Hessian $D^2f(x^*)$ is negative semidefinite. (Hint: Use a Taylor expansion and assume the $D^3 f(x)$ is bounded.)}
+
+      \item \textit{If $f$ is concave then $f(x + z) \le f(x) + Df(x) z$ for any $x, z$.}
+
+      \item \textit{If $f$ is concave then any critical point (i.e. $x$ s.t. $Df(x) = 0$) is a global maximizer.}
+    \end{enumerate}
+  }
+
+  \item {\itshape
+      Define the set $\Delta = \set{p \in \mathbb{R}^L_{+}: \sum^{}_{l} p_l = 1}$ and the function $z^+$ on $\Delta$ as $z^+_l(p) = \max\set{z_l(p), 0}$, where $z(p) = \set{z_1(p), z_2(p), \ldots, z_L(p)}$ is a continuous function, homogeneous of degree 0, and satisfying $p \cdot z(p) = 0$ for all $p \in \mathbb{R}^L$. Denote $\alpha(p) = \sum^{}_{l} \left[p_l + z_l^+\right]$.
+
+    \begin{enumerate}[a)]
+      \item \textit{Show that $\Delta$ is a non-empty compact and convex set.}
+
+      \item \textit{Show that $f: \Delta \to \Delta$ is continuous in $p$.}
+        \[
+          f(p) = \dfrac{1}{\alpha(p)} \left(p + z^+(p)\right)
+        \]
+
+      \item \textit{Prove that $f$ has a fixed point. (Hint: You can use existing theorems!)}
+
+      \item \textit{Use the fact $f$ has a fixed point and the properties of $z$ to argue that $\exists p^*$ s.t. $z^+(p^*) \cdot z(p^*) = 0$. (Hint: Use the fact $p^* \cdot z(p^*) = 0$.)}
+
+      \item \textit{Conclude thet $z(p^*) \le 0$.}
+    \end{enumerate}
+  }
+
+  \begin{remark}
+    If for consumer $i$ we define the excess demand function $z_i(p) = x_i(p, \omega_i) - \omega_i$ for wealth $\omega_i$ and prices $p$. One way to define general equilibrium is vector of prices s.t. $\sum^{}_{i} z_i(p) \le 0$ for all $i$ (i.e. there is no aggregate excess demand). You have just shown that under some conditions such a price vector always exists.
+  \end{remark}
+
+  \item \textit{Use the chain rule and the FTC to prove the Leibniz rule:}
+    \[
+      \dfrac{d}{dx} \int_{v(x)}^{u(x)} f(t) dt
+      =
+      f(v(x)) \dfrac{dv}{dx}
+      - f(u(x)) \dfrac{du}{dx}
+    \]
+\end{enumerate}
+
+%----------------------------------------------------------------------
+\end{document}
