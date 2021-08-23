@@ -12,8 +12,8 @@ env.PDF(target = '#out/homework/Math Camp 2021 Problem Set 2.pdf',
 env.PDF(target = '#out/homework/Math Camp 2021 Suggested Solutions 1.pdf',
         source = '#src/homework/solutions1.tex')
 
-# env.PDF(target = '#out/homework/Math Camp 2021 Suggested Solutions 2.pdf',
-#         source = '#src/homework/solutions2.tex')
-#
+env.PDF(target = '#out/homework/Math Camp 2021 Suggested Solutions 2.pdf',
+        source = '#src/homework/solutions2.tex')
+
 # env.PDF(target = '#out/homework/Math Camp 2021 Suggested Solutions 3.pdf',
 #         source = '#src/homework/solutions3.tex')

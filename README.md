@@ -19,5 +19,5 @@ Brown Math Camp 2021
 - Problem Set 3
 
 - [Suggested Solutions 1](out/homework/Math%20Camp%202021%20Suggested%20Solutions%201.pdf)
-- Suggested Solutions 2
+- [Suggested Solutions 2](out/homework/Math%20Camp%202021%20Suggested%20Solutions%202.pdf)
 - Suggested Solutions 3
