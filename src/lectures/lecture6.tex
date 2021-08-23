@@ -194,7 +194,7 @@ In general, we find that
 \begin{itemize}[label=$\bullet$]
   \item If $A$ is invertible\footnote{Note in this case $N = M$ is necessary, but not sufficient.} (more on invertible matrices below) then there exists a \textbf{\textit{unique}} solution given by $x^* = A^{-1} d$.
 
-  \item If $M < N$ then in general there no solutions (you have more equations than parameters; in general it is not possible to satisfy all the equalities).
+  \item If $M < N$ then in general there are no solutions (you have more equations than parameters; in general it is not possible to satisfy all the equalities).
 
   \item If $N < M$ then in general there are infinitely many solutions (you have more parameters than equations; the additional parameters give you additional degrees of freedom).
 \end{itemize}
@@ -238,7 +238,7 @@ Some multiplicative properties of vector spaces:
 \begin{remark}
   If you are like me, you might think it's a bit odd that we are making a big deal of associativity, commutativity, and distributivity (like we did back in primary school). The reason is that a more formal treatment of linear spaces would not take any of these properties for granted, and would be very careful in discussing everything in this section (and henceforth) using just the definitions.
 
-  And if you are like me you might also wonder, why don't we do that? We've done a lot of definition-theorem-proof style lectures in this class. It is a math class after all. So why not here as well? The reason is that it turns out that for all intents and purposes, vector spaces are equivalent to $\mathbb{R}^N$. There is a formal way of defining what that means and of showing it. While I invite the curious to read \Cref{sub:appendix_linear_algebra_in_the_abstract}, for this class I will simply discuss $\mathbb{R}^N$ and I will take it to have all the properties we expect.
+  And if you are like me you might also wonder, why don't we do that? We've done a lot of definition-theorem-proof style lectures in this class. It is a math class after all. So why not here as well? The reason is that it turns out that for all intents and purposes, vector spaces are equivalent to $\mathbb{R}^N$. There is a formal way of defining what that means and of showing it; happy to provide details for the very curious, but for this class I will simply discuss $\mathbb{R}^N$ and I will take it to have all the properties we expect.
 \end{remark}
 
 \begin{definition}
@@ -251,7 +251,7 @@ Some multiplicative properties of vector spaces:
 \end{definition}
 
 \begin{definition}
-  Let $V$ be a vector space; $\set{v_i}$ s.t. $v_i \in V$ is a \keyword{basis} of $V$ if for every $u \in V$ there exists a unique linear combination of $\set{v_i}$ s.t.
+  Let $V$ be a vector space. We have $\set{v_i}$ s.t. $v_i \in V$ is a \keyword{basis} of $V$ if for every $u \in V$ there exists a unique linear combination of $\set{v_i}$ s.t.
   \[
     u = \sum^{N}_{i = 1} \alpha_i v_i
   \]
@@ -339,7 +339,7 @@ That is, basis for a vector space have the same number of elements. This leads t
 \begin{definition}
   Let $V, W$ be vector spaces. $T: V \to W$ is a \keyword{linear transformation} if
   \[
-    T(\alpha v + w) = T(v) + T(w)
+    T(\alpha v + w) = \alpha T(v) + T(w)
   \]
 
   for any $v \in V, w \in W, \alpha \in \mathbb{R}$.
@@ -509,10 +509,9 @@ Some properties of \keyword{matrix multiplication}:
 \begin{enumerate}
   \item \keyword{Associativity}: $(AB)C = A(BC)$
   \item \keyword{Distributivity}: $A(B + C) = AB + AC$
-  \item \keyword{Associativity}: $A + B = B + A$
 \end{enumerate}
 
-However, in general \textbf{\textit{matrix multiplication is not commutative}}. That is, $AB \ne BA$ in general (in fact, $BA$ may not even be well-defined).
+However, in general \textbf{\textit{matrix multiplication is not commutative}}. That is, $AB \ne BA$ in general (in fact, $BA$ may not even be well-defined). Although matrix addition \textit{is} commutative: $A + B = B + A$.
 
 \subsubsection{Matrix Inverse, Rank, and Determinant}
 \label{ssub:matrix_inverse_rank_and_determinant}
@@ -623,9 +622,34 @@ Some other properties of the rank:
         1/2 & -1
       \end{matrix}
       \right]
+      \\[24pt]
+      \left[
+      \begin{matrix}
+        1 & 0 \\
+        0 & 1
+      \end{matrix}
+      \right.
+      & \to
+      \left.
+      \begin{matrix}
+        1 & -1 \\
+        -1 & 2
+      \end{matrix}
+      \right]
     \end{array}
     \nonumber
   \end{equation}
+
+  The steps here were:
+  \begin{enumerate}
+    \item Multiply the first row by $1/2$.
+
+    \item Multiply the second row by $-1$ and add the first row to the second row.
+
+    \item Add the  second row to the first row.
+
+    \item Multiply the second row by $-2$.
+  \end{enumerate}
 
   In general, however, we have a shortcut for $2 \times 2$ matrices:
   \[
@@ -641,6 +665,8 @@ Some other properties of the rank:
     \end{matrix}\right]
     \quad\quad
   \]
+
+  You can check this formula gives exactly what we found using row operations.
 \end{example}
 
 \begin{definition}
@@ -890,6 +916,8 @@ This means that for any $v \ne 0$, we have that
 \[
   \det(A - \lambda I) = 0
 \]
+
+(Recall that a matrix has a zero determinant if it is singular; in this case if$(A - \lambda I)v = 0$ for any non-zero vector then the columns of $A - \lambda I$ are not linearly independent, and thus the matrix is singular and has a zero determinant.)
 
 \begin{example}
   Consider
@@ -1378,183 +1406,183 @@ for some constant vector $C$ and $\exp(\Lambda t)$ denoting the diagonal matrix 
   \Lambda y
 \]
 
-% ---------------------------------------------------------------------
-\clearpage
-
-\setcounter{subsection}{0}
-\renewcommand\thesubsection{\Alph{subsection}}
-\titleformat{\subsection}[display]{
-  \Large\bfseries
-}{Appendix \thesubsection. #1}{0pt}{\vspace{-24pt}}
-\renewcommand\thesubsubsection{\Alph{subsection}.\arabic{subsubsection}}
-\crefalias{section}{appendix}
-\crefalias{subsection}{appendix}
-
-\subsection{Linear Algebra in the Abstract}
-\label{sub:appendix_linear_algebra_in_the_abstract}
-
-Only for the very curious, I will exhibit here an entirely formal treatment of linear spaces and build up to the theorem I mentioned wherein we see that any linear space (under a very mild condition; namely that it is finite-dimensional) is equivalent to $\mathbb{R}^N$. Proofs for this appendix are available on request, but again this is just here to show you there is a very abstract and formal way of defining everything, even if it leads to the exact place you would expect (the  real numbers).
-
-\begin{definition}
-  A \keyword{binary operator} on $X$ is a map $f: X \times X \to X$. We denote $f(x, y) \equiv x f y$.
-\end{definition}
-
-\begin{definition}
-  Let $X$ be a non-empty set and $+$ a binary operator. $(X, +)$ is a \keyword{group} if the following hold:
-  \begin{enumerate}
-    \item \keyword{Associativity}: $+(+(x, y), z) = +(x, +(y, z))$; that is, $(x + y) + z = x + (y + z)$.
-
-    \item Existence of an \keyword{additive identity}: $\exists e \in X$ s.t. $e + x = x = x + e$. We denote $e \equiv 0$, i.e. $0 + x = x = x + 0$.
-
-    \item Existence of an \keyword{additive inverse}: $\forall x \in X ~~ \exists y$ s.t. $x + y = y + x = 0$. We denote $y \equiv -x$.
-  \end{enumerate}
-\end{definition}
-
-Note we are using $+$ to denote addition (because, seriously, what else would we use?)
-\begin{definition}
-  A group $(X, +)$ is an \keyword{Abelian group} if the following also holds:
-  \begin{enumerate}[start=4]
-    \item \keyword{Commutativity}: $+(x, y) = +(y, x)$; that is, $x + y = y + x$.
-  \end{enumerate}
-\end{definition}
-
-An easy example of an Abelian group is $\mathbb{R}$ with addition. A more complex example:
-\begin{example}
-  Consider a Rubiks cube and the set of all possible permutations of the faces. This is a group:
-  \begin{itemize}[label=$\bullet$]
-    \item There is an identity element, namely the solved cube.
-
-    \item There is an inverse element: Given any permutation, the set of operations that solves the cube would give the inverse element from the solved cube.
-
-    \item It is associative: Given any sequence of permutations, as long as they are applied in the same sequence, whether we ``group'' any set of operations together doesn't matter.
-  \end{itemize}
-
-  However, this is \textbf{\textit{not}} an Abelian group because operations on the cube are not commutative---order matters.
-\end{example}
-
-\begin{claim}
-  Let $(X, +)$ be a group:
-  \begin{itemize}[label=$\bullet$]
-    \item The identity element is unique.
-
-    \item The inverse element is unique.
-  \end{itemize}
-\end{claim}
-
-\begin{definition}
-  $(X, +, \bcdot)$ is a \keyword{linear space} (or \keyword{vector space}) if $(X, +)$ is an Abelian group and $\bcdot: \mathbb{R} \times X \to X$ satisfies, for any $\alpha, \lambda \in \mathbb{R}$ and $\vec{x}, \vec{y} \in X$,
-  \begin{enumerate}
-    \item \keyword{Associativity}: $\bcdot(\alpha, \bcdot(\lambda, \vec{x})) = \bcdot(\alpha \lambda, \vec{x})$; that is, $\alpha \bcdot (\lambda \bcdot \vec{x}) = (\alpha \lambda) \bcdot \vec{x}$.
-
-    \item \keyword{Distributivity}: In $\mathbb{R}$, $\bcdot(\alpha + \lambda, \vec{x}) = +(\bcdot(\alpha, \vec{x}), \bcdot(\lambda, \vec{x}))$; i.e. $(\alpha + \lambda) \bcdot \vec{x} = \alpha \bcdot \vec{x} + \lambda \bcdot \vec{x}$.
-
-      in $X$, $\bcdot(\lambda, +(\vec{x}, \vec{y})) = +(\bcdot(\lambda, \vec{x}), \bcdot(\lambda, \vec{y}))$; i.e. $\lambda \bcdot (\vec{x} + \vec{y}) = \lambda \bcdot \vec{x} + \lambda \bcdot \vec{y}$.
-
-    \item \keyword{Unit rule}: $\bcdot(1, \vec{x}) = \vec{x}$; that is, $1 \bcdot \vec{x} = \vec{x}$.
-  \end{enumerate}
-\end{definition}
-
-Did you catch the sleight of hand in this definition?\footnote{$\mathbb{R}$ with addition and multiplication as normally defined is what is known as a \keyword{field} (another  example of a field are the rationals, $\mathbb{Q}$). I will not  delve into that here, but the reason linear spaces end up being equivalent fo $\mathbb{R}^N$ is because the field we use to define them is $\mathbb{R}$! This does mean there is a second level of abstraction where if we used some arbitrary field $\mathcal{F}$ then those more abstract linear spaces would be equivalent to $\mathcal{F}^N$.}
-\begin{claim}
-  Let $(X, +, \bcdot)$ be a linear space. Then
-  \begin{itemize}[label=$\bullet$]
-    \item $\lambda \bcdot \vec{0} = \vec{0}$.
-
-    \item $\lambda = 0 \implies \lambda \vec{x} = \vec{0}$.
-
-    \item If $\vec{x} \ne \vec{0}$ then $\lambda \vec{x} = \vec{0} \implies \lambda = 0$.
-
-    \item $-(\lambda \bcdot \vec{x}) = (-\lambda) \bcdot \vec{x}$.
-
-    \item If $\vec{x} \ne  0$ then $\alpha \vec{x} = \beta \vec{x} \iff \alpha = \beta$.
-  \end{itemize}
-\end{claim}
-
-All the above might seem obvious, but try to prove them \textit{only using the definitions} to see why they are not!
-\begin{definition}
-  For any $m \in \mathbb{N}$, a \keyword{linear combination} of $\vec{x}_1, \ldots, \vec{x}_m$ is a vector
-  \begin{align*}
-    \sum^{m}_{i = 1} \lambda_i \vec{x}_i
-  \end{align*}
-
-  with $\lambda_1, \ldots, \lambda_m \in \mathbb{R}$ the \keyword{coefficients} of the linear combination.
-\end{definition}
-
-\begin{theorem}
-  $S$ is a linear space iff it contains all linear combinations of any set of vectors in $S$.
-\end{theorem}
-
-\begin{definition}
-    The set of all linear combinations of finitely many elements of a non-empty set $S$ of is called the \keyword{span} of $S$, defined as the set
-  \begin{align*}
-    \sspan(S)
-    \equiv
-    \bset{
-      \sum^{m}_{i = 1}  \lambda_i \vec{x}_i:
-      m \in \mathbb{N}, (\vec{x}_i, \lambda_i) \in S \times \mathbb{R} ~~ \forall i = 1, \ldots, m
-    }
-  \end{align*}
-
-  By convention, $\sspan(\varnothing) = \set{\vec{0}}$.
-\end{definition}
-
-\begin{definition}
-  A \keyword{basis} for a linear space $X$ is a $\supseteq$-minimal subset of $X$ that spans $X$, i.e. $S$ is a basis for $X$ iff
-  \begin{enumerate}
-    \item $X = \sspan(S)$
-
-    \item $X = \sspan(T) \implies T \cancel\subset S$.
-  \end{enumerate}
-\end{definition}
-
-\begin{definition}
-  If a linear space $X$ has a finite basis then it is finite-dimensional with \keyword{dimension} $\dim(X)$ the cardinality of any of its bases. If $X$ does not have a finite basis, then it is $\infty$-dimensional and $\dim(X) = \infty$.
-\end{definition}
-
-\begin{definition}
-  A subset $S$ of a linear space $X$ is \keyword{linearly dependent} in $X$ if it either equals $\set{\vec{0}}$ or if $\exists \vec{x} \in S$ s.t. $\vec{x}$ can be expressed as a linear combination of finitely many vectors in $S \setminus \set{\vec{x}}$. Any finite set of vectors is called linearly dependent if $\set{x_1, \ldots, x_m}$ is linearly dependent.
-\end{definition}
-
-\begin{definition}
-  A subset $S$ of a linear space $X$ is called \keyword{linearly independent} if no finite subset is linearly dependent. By convention, we say $\varnothing$ is linearly independent.
-\end{definition}
-
-\begin{proposition}\label{proposition:linear_spaces_basis_independent}
-  A subset $S$ of a linear space $X$ is a basis for $X$ iff $S$ is linearly independent and $\sspan(S) = X$.
-\end{proposition}
-
-\begin{corollary}
-  Any two bases of a linear space $X$ have the same cardinality.
-\end{corollary}
-
-\begin{definition}
-  Let $X, Y$ be two linear spaces. A function $L: X \to Y$ is a \keyword{linear operator} or a \keyword{linear transformation} if
-  \begin{align*}
-    L(\alpha \vec{x} + \vec{y})
-    &
-    =
-    \alpha L(\vec{x}) + L(\vec{y})
-    \quad
-    \quad
-    \forall \vec{x}, \vec{y} \in X
-    \quad
-    \text{and}
-    \quad
-    \alpha \in \mathbb{R}
-  \end{align*}
-\end{definition}
-
-\begin{definition}
-  Let $X, Y$ be two linear spaces and $L$ a linear operator $L: X \to Y$. If $L$ is a bijection it is called a \keyword{linear isomorphism} between $X$ and $Y$. If such a bijection exists we say $X$ and $Y$ are \keyword{isomorphic}.
-\end{definition}
-
-\begin{proposition}
-  Two finite-dimensional linear spaces $X, Y$ are isomorphic iff they have the same dimension.
-\end{proposition}
-
-\begin{corollary}
-  Every non-trivial finite-dimensional linear space $X$ (i.e. $X \ne \set{\vec{0}}$) is isomorphic to $\mathbb{R}^{\dim(X)}$.
-\end{corollary}
+% % ---------------------------------------------------------------------
+% \clearpage
+%
+% \setcounter{subsection}{0}
+% \renewcommand\thesubsection{\Alph{subsection}}
+% \titleformat{\subsection}[display]{
+%   \Large\bfseries
+% }{Appendix \thesubsection. #1}{0pt}{\vspace{-24pt}}
+% \renewcommand\thesubsubsection{\Alph{subsection}.\arabic{subsubsection}}
+% \crefalias{section}{appendix}
+% \crefalias{subsection}{appendix}
+%
+% \subsection{Linear Algebra in the Abstract}
+% \label{sub:appendix_linear_algebra_in_the_abstract}
+%
+% Only for the very curious, I will exhibit here an entirely formal treatment of linear spaces and build up to the theorem I mentioned wherein we see that any linear space (under a very mild condition; namely that it is finite-dimensional) is equivalent to $\mathbb{R}^N$. Proofs for this appendix are available on request, but again this is just here to show you there is a very abstract and formal way of defining everything, even if it leads to the exact place you would expect (the  real numbers).
+%
+% \begin{definition}
+%   A \keyword{binary operator} on $X$ is a map $f: X \times X \to X$. We denote $f(x, y) \equiv x f y$.
+% \end{definition}
+%
+% \begin{definition}
+%   Let $X$ be a non-empty set and $+$ a binary operator. $(X, +)$ is a \keyword{group} if the following hold:
+%   \begin{enumerate}
+%     \item \keyword{Associativity}: $+(+(x, y), z) = +(x, +(y, z))$; that is, $(x + y) + z = x + (y + z)$.
+%
+%     \item Existence of an \keyword{additive identity}: $\exists e \in X$ s.t. $e + x = x = x + e$. We denote $e \equiv 0$, i.e. $0 + x = x = x + 0$.
+%
+%     \item Existence of an \keyword{additive inverse}: $\forall x \in X ~~ \exists y$ s.t. $x + y = y + x = 0$. We denote $y \equiv -x$.
+%   \end{enumerate}
+% \end{definition}
+%
+% Note we are using $+$ to denote addition (because, seriously, what else would we use?)
+% \begin{definition}
+%   A group $(X, +)$ is an \keyword{Abelian group} if the following also holds:
+%   \begin{enumerate}[start=4]
+%     \item \keyword{Commutativity}: $+(x, y) = +(y, x)$; that is, $x + y = y + x$.
+%   \end{enumerate}
+% \end{definition}
+%
+% An easy example of an Abelian group is $\mathbb{R}$ with addition. A more complex example:
+% \begin{example}
+%   Consider a Rubiks cube and the set of all possible permutations of the faces. This is a group:
+%   \begin{itemize}[label=$\bullet$]
+%     \item There is an identity element, namely the solved cube.
+%
+%     \item There is an inverse element: Given any permutation, the set of operations that solves the cube would give the inverse element from the solved cube.
+%
+%     \item It is associative: Given any sequence of permutations, as long as they are applied in the same sequence, whether we ``group'' any set of operations together doesn't matter.
+%   \end{itemize}
+%
+%   However, this is \textbf{\textit{not}} an Abelian group because operations on the cube are not commutative---order matters.
+% \end{example}
+%
+% \begin{claim}
+%   Let $(X, +)$ be a group:
+%   \begin{itemize}[label=$\bullet$]
+%     \item The identity element is unique.
+%
+%     \item The inverse element is unique.
+%   \end{itemize}
+% \end{claim}
+%
+% \begin{definition}
+%   $(X, +, \bcdot)$ is a \keyword{linear space} (or \keyword{vector space}) if $(X, +)$ is an Abelian group and $\bcdot: \mathbb{R} \times X \to X$ satisfies, for any $\alpha, \lambda \in \mathbb{R}$ and $\vec{x}, \vec{y} \in X$,
+%   \begin{enumerate}
+%     \item \keyword{Associativity}: $\bcdot(\alpha, \bcdot(\lambda, \vec{x})) = \bcdot(\alpha \lambda, \vec{x})$; that is, $\alpha \bcdot (\lambda \bcdot \vec{x}) = (\alpha \lambda) \bcdot \vec{x}$.
+%
+%     \item \keyword{Distributivity}: In $\mathbb{R}$, $\bcdot(\alpha + \lambda, \vec{x}) = +(\bcdot(\alpha, \vec{x}), \bcdot(\lambda, \vec{x}))$; i.e. $(\alpha + \lambda) \bcdot \vec{x} = \alpha \bcdot \vec{x} + \lambda \bcdot \vec{x}$.
+%
+%       in $X$, $\bcdot(\lambda, +(\vec{x}, \vec{y})) = +(\bcdot(\lambda, \vec{x}), \bcdot(\lambda, \vec{y}))$; i.e. $\lambda \bcdot (\vec{x} + \vec{y}) = \lambda \bcdot \vec{x} + \lambda \bcdot \vec{y}$.
+%
+%     \item \keyword{Unit rule}: $\bcdot(1, \vec{x}) = \vec{x}$; that is, $1 \bcdot \vec{x} = \vec{x}$.
+%   \end{enumerate}
+% \end{definition}
+%
+% Did you catch the sleight of hand in this definition?\footnote{$\mathbb{R}$ with addition and multiplication as normally defined is what is known as a \keyword{field} (another  example of a field are the rationals, $\mathbb{Q}$). I will not  delve into that here, but the reason linear spaces end up being equivalent fo $\mathbb{R}^N$ is because the field we use to define them is $\mathbb{R}$! This does mean there is a second level of abstraction where if we used some arbitrary field $\mathcal{F}$ then those more abstract linear spaces would be equivalent to $\mathcal{F}^N$.}
+% \begin{claim}
+%   Let $(X, +, \bcdot)$ be a linear space. Then
+%   \begin{itemize}[label=$\bullet$]
+%     \item $\lambda \bcdot \vec{0} = \vec{0}$.
+%
+%     \item $\lambda = 0 \implies \lambda \vec{x} = \vec{0}$.
+%
+%     \item If $\vec{x} \ne \vec{0}$ then $\lambda \vec{x} = \vec{0} \implies \lambda = 0$.
+%
+%     \item $-(\lambda \bcdot \vec{x}) = (-\lambda) \bcdot \vec{x}$.
+%
+%     \item If $\vec{x} \ne  0$ then $\alpha \vec{x} = \beta \vec{x} \iff \alpha = \beta$.
+%   \end{itemize}
+% \end{claim}
+%
+% All the above might seem obvious, but try to prove them \textit{only using the definitions} to see why they are not!
+% \begin{definition}
+%   For any $m \in \mathbb{N}$, a \keyword{linear combination} of $\vec{x}_1, \ldots, \vec{x}_m$ is a vector
+%   \begin{align*}
+%     \sum^{m}_{i = 1} \lambda_i \vec{x}_i
+%   \end{align*}
+%
+%   with $\lambda_1, \ldots, \lambda_m \in \mathbb{R}$ the \keyword{coefficients} of the linear combination.
+% \end{definition}
+%
+% \begin{theorem}
+%   $S$ is a linear space iff it contains all linear combinations of any set of vectors in $S$.
+% \end{theorem}
+%
+% \begin{definition}
+%     The set of all linear combinations of finitely many elements of a non-empty set $S$ of is called the \keyword{span} of $S$, defined as the set
+%   \begin{align*}
+%     \sspan(S)
+%     \equiv
+%     \bset{
+%       \sum^{m}_{i = 1}  \lambda_i \vec{x}_i:
+%       m \in \mathbb{N}, (\vec{x}_i, \lambda_i) \in S \times \mathbb{R} ~~ \forall i = 1, \ldots, m
+%     }
+%   \end{align*}
+%
+%   By convention, $\sspan(\varnothing) = \set{\vec{0}}$.
+% \end{definition}
+%
+% \begin{definition}
+%   A \keyword{basis} for a linear space $X$ is a $\supseteq$-minimal subset of $X$ that spans $X$, i.e. $S$ is a basis for $X$ iff
+%   \begin{enumerate}
+%     \item $X = \sspan(S)$
+%
+%     \item $X = \sspan(T) \implies T \cancel\subset S$.
+%   \end{enumerate}
+% \end{definition}
+%
+% \begin{definition}
+%   If a linear space $X$ has a finite basis then it is finite-dimensional with \keyword{dimension} $\dim(X)$ the cardinality of any of its bases. If $X$ does not have a finite basis, then it is $\infty$-dimensional and $\dim(X) = \infty$.
+% \end{definition}
+%
+% \begin{definition}
+%   A subset $S$ of a linear space $X$ is \keyword{linearly dependent} in $X$ if it either equals $\set{\vec{0}}$ or if $\exists \vec{x} \in S$ s.t. $\vec{x}$ can be expressed as a linear combination of finitely many vectors in $S \setminus \set{\vec{x}}$. Any finite set of vectors is called linearly dependent if $\set{x_1, \ldots, x_m}$ is linearly dependent.
+% \end{definition}
+%
+% \begin{definition}
+%   A subset $S$ of a linear space $X$ is called \keyword{linearly independent} if no finite subset is linearly dependent. By convention, we say $\varnothing$ is linearly independent.
+% \end{definition}
+%
+% \begin{proposition}\label{proposition:linear_spaces_basis_independent}
+%   A subset $S$ of a linear space $X$ is a basis for $X$ iff $S$ is linearly independent and $\sspan(S) = X$.
+% \end{proposition}
+%
+% \begin{corollary}
+%   Any two bases of a linear space $X$ have the same cardinality.
+% \end{corollary}
+%
+% \begin{definition}
+%   Let $X, Y$ be two linear spaces. A function $L: X \to Y$ is a \keyword{linear operator} or a \keyword{linear transformation} if
+%   \begin{align*}
+%     L(\alpha \vec{x} + \vec{y})
+%     &
+%     =
+%     \alpha L(\vec{x}) + L(\vec{y})
+%     \quad
+%     \quad
+%     \forall \vec{x}, \vec{y} \in X
+%     \quad
+%     \text{and}
+%     \quad
+%     \alpha \in \mathbb{R}
+%   \end{align*}
+% \end{definition}
+%
+% \begin{definition}
+%   Let $X, Y$ be two linear spaces and $L$ a linear operator $L: X \to Y$. If $L$ is a bijection it is called a \keyword{linear isomorphism} between $X$ and $Y$. If such a bijection exists we say $X$ and $Y$ are \keyword{isomorphic}.
+% \end{definition}
+%
+% \begin{proposition}
+%   Two finite-dimensional linear spaces $X, Y$ are isomorphic iff they have the same dimension.
+% \end{proposition}
+%
+% \begin{corollary}
+%   Every non-trivial finite-dimensional linear space $X$ (i.e. $X \ne \set{\vec{0}}$) is isomorphic to $\mathbb{R}^{\dim(X)}$.
+% \end{corollary}
 
 \clearpage
 \printindex
