@@ -279,7 +279,7 @@ Some examples of sets that are and are not compact:
   \end{figure}
 \end{proof}
 
-The other direction follows from \Cref{thm:lecture3_compactness_heine_borel_og,thm:lecture3_compactness_closed_compact} below. If a set $S$ is bounded in $\mathbb{R}^N$ then it is the subset of some $N$-dimensional cube. Once we show the cube is compact, \Cref{thm:lecture3_compactness_closed_compact} gives that $S$ is compact. For the curious, I sketch the proof here.
+The other direction follows from \Cref{thm:lecture3_compactness_heine_borel_og,thm:lecture3_compactness_closed_compact} below. If a set $S$ is bounded in $\mathbb{R}^N$ then it is the subset of some $N$-dimensional cube. Once we show the cube is compact, \Cref{thm:lecture3_compactness_closed_compact} gives that $S$ is compact. For the curious, I sketch the proof here. (Note: Details of this particular proof omitted from lecture.)
 \begin{theorem}\label{thm:lecture3_compactness_heine_borel_og}
   $\forall -\infty < a < b < \infty$, the $N$-dimensional cube $[a, b]^N$ is compact.
 \end{theorem}
@@ -442,7 +442,7 @@ The other direction follows from \Cref{thm:lecture3_compactness_heine_borel_og,t
 \label{ssub:weierstrass_extreme_value_theorem_evt_}
 
 \begin{theorem}
-  Let $S \subseteq \mathbb{R}$ with $S \ne \varnothing$ be a compact set; then $S$ has a minimum and a maximum.
+  Let $S \subseteq \mathbb{R}$ with $S \ne \varnothing$ a compact set; then $S$ has a minimum and a maximum.
 \end{theorem}
 
 \begin{proof}
@@ -1027,7 +1027,7 @@ Some remarks:
       \item The figure on the right is also uhc: Take any open $O \subset \mathbb{R}_+$ s.t. $\Gamma(x) \subseteq O$ and we have $\Gamma^{-1}(O) = (x, \infty)$. Last, if $\Gamma(0) \subseteq O \subseteq \mathbb{R}$ then $O = \mathbb{R}_+$, and $\Gamma^{-1}(\mathbb{R}_+) = [0, 1] = X$  (and, again, $X$ is open relative to itself). However, take $1/n \to 0$ and $n \in \Gamma(1/n)$; $n \to \infty \notin \mathbb{R}_+$.
     \end{itemize}
 
-  \item Therefore uhc is not enough to guarantee that a sequence always exists. More precisely, it's not so much that we need the set-values of $\Gamma$ to be closed and bounded: We need them to be compact, and that will guarantee the existence of a sub-sequence. (Recall here the link between compactness and sequential compactness, which we will use in our proof to guarantee the existence of a convergent sub-sequence; being closed and bounded, however, is only equivalent to compactness in Euclidean space. The latter is nice for exposition but the actual technical requirement is compactness.)
+  \item Therefore uhc is not enough to guarantee that a sequence always exists. More precisely, it's not so much that we need the set-values of $\Gamma$ to be closed and bounded: We need them to be compact, and that will guarantee the existence of a sub-sequence. (Recall here the link between compactness and sequential compactness, which would show up in a proof of \Cref{thm:lecture3_compactness_uhc_sequential}.)
 \end{itemize}
 
 \begin{theorem}\label{thm:lecture3_compactness_lhc_sequential}
@@ -1168,6 +1168,7 @@ $\Gamma$ has a closed graph if \ldots its graph is closed.
   $\Gamma$ is \keyword{closed} at $x \in X$ if $\forall (x_m) \in X^\infty, (y_m) \in Y^\infty$ s.t. $x_m \to x \in X, y_m \to y \in Y$, and $y_m \in \Gamma(x_m)$ we also have $y \in \Gamma(x)$. $\Gamma$ has a \keyword{closed graph} if it is closed at every $x \in X$.
 \end{definition}
 
+This definition might seem complicated but if you look closely, it is just the sequential characterization of what it means for a set to be closed (it has all its limits).
 \begin{figure}[H]
   \centering
   \caption{Not Closed Graph}
@@ -1277,6 +1278,10 @@ Recall the utility maximization problem with parameters $(p, w) \in \mathbb{R}^{
 \end{align*}
 
 Recall $B(p, w) = \set{x: p \cdot x \le w}$ the budget correspondence is compact. It turns out it is also uhc and lhc, so we not only know that the maximum exists (if $u(x)$ continuous), but in particular the indirect utility function $v(p, w)$ is continuous and the demand correspondence $x(p, w)$ is compact-valued, uhc, and closed.
+
+\begin{remark}
+  During class, I was asked how we know that the budget correspondence was compact, uhc, and lhc. This is not at all obvious! For the curious, I offer proofs in \Cref{sub:appendix_budget_correspondence_properties}.
+\end{remark}
 
 % ---------------------------------------------------------------------
 \subsection{Fixed Point Theorems}
@@ -1494,6 +1499,8 @@ If $S_i$ are compact, non-empty, and convex-valued, and $u_i$ are continuous and
   \Large\bfseries
 }{Appendix \thesubsection. #1}{0pt}{\vspace{-24pt}}
 \renewcommand\thesubsubsection{\Alph{subsection}.\arabic{subsubsection}}
+\crefalias{section}{appendix}
+\crefalias{subsection}{appendix}
 
 \subsection{Budget Correspondence Properties}
 \label{sub:appendix_budget_correspondence_properties}
