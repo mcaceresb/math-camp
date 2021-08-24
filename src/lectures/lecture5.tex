@@ -347,7 +347,7 @@ In the above equation $\mathcal{L}$ is called the \keyword{Lagrangian}, so the r
 
   (technically we get $4$, but the other two give a negative value for the objective, which is even smaller than $0$). With some tedious algebra (or plugging numbers into a computer) you find the function is maximized at the second point.
 \end{example}
-- 
+
 \subsubsection{Inequality Constraints}
 \label{ssub:inequality_constraints}
 
@@ -447,7 +447,7 @@ is twice continuously differentiable as well. Suppose $(x^*, \mu^*, \lambda^*)$ 
 
 with $\widetilde{g} = (g_1, \ldots, g_L)$. That is,
 \begin{align*}
-  v^T D^2_x (x^*, \mu^*, \lambda^*) v < 0
+  v^T D^2_x \mathcal{L}(x^*, \mu^*, \lambda^*) v < 0
 \end{align*}
 
 for any $v \in V$. To check this condition, consider the \keyword{bordered Hessian}:
@@ -463,8 +463,8 @@ for any $v \in V$. To check this condition, consider the \keyword{bordered Hessi
 
 You will note the bordered Hessian is basically the Hessian of the Lagrangian, but it is so-called because it looks like we are ``bordering'' $D^2_x \mathcal{L}$ with $D \widetilde{g}, Dh$. In any case, it is sufficient to check that the last $N - L - M$ leading principal minors of $H$:
 \begin{itemize}[label=$\bullet$]
-  \item For a $\max$, their determinants alternate signs, with the sign of the $(2(L + M) + 1)$th principal minor equal to $(-1)^{L + M + 1}$ (note the last $N - L - M$ leading principal minors are from $2(L + M) + 1$ to $2(L + M) + (N - L - M) = N + L + M$).
-  \item For a $\min$, all the signs of their determinant equal $(-1)^{L + M}$.
+  \item For a $\max$, they alternate signs, with the sign of the $(2(L + M) + 1)$th principal minor equal to $(-1)^{L + M + 1}$ (note the last $N - L - M$ leading principal minors are from $2(L + M) + 1$ to $2(L + M) + (N - L - M) = N + L + M$).
+  \item For a $\min$, all their signs equal $(-1)^{L + M}$.
 \end{itemize}
 
 You will note we are discarding the first $2(L + M)$ leading principal minors. Why?\footnote{The bordered Hessian cannot be  positive or negative definite due to the  matrix of  zeros in the top left corner (second derivatives with respect to the multipliers are a $0$). That discards checking the first $L + M$ leading principal minors. What about the next? Intuitively, we can think that binding conditions impose restrictions of parameters. Remember we motivated our sketch of the proof of the Lagrange multiplier method by invoking the IFT. Why did we do this? Because if for each constraint we express a variable in terms  of the others, we can solve the modified unconstrained problem. In other words, each constraint removes a variable from the problem, and there goes the other $L + M$ degrees of freedom.}
@@ -612,7 +612,7 @@ Hence we have two variables and one binding constraint, so we check the last $2 
   0
 \end{align*}
 
-Finally, $L + M + 1 = 1 + 1 = 2$, so $(-1)^2 > 0$ means the determinant of the  3rd leading principal minor must be positive for a $\max$, and that is exactly what we found.
+Finally, $L + M + 1 = 1 + 1 = 2$, so $(-1)^2 > 0$ means the 3rd leading principal minor must be positive for a $\max$, and that is exactly what we found.
 
 % ---------------------------------------------------------------------
 \subsection{Envelope Theorem}
@@ -859,7 +859,7 @@ with $x(\cdot), y(\cdot)$ the so-called Hicksian demand functions. We can see th
 \subsubsection{Motivation and Definition}
 \label{ssub:motivation_and_definition}
 
-The motivation for integration is the problem of finding the area under a curve:
+The motivation is the problem of finding the area under a curve:
 \begin{figure}[!ht]
   \centering
   \caption{Area Under $f(x)$}
