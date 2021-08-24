@@ -957,7 +957,7 @@ Which means that for some $x = (Y, r), \theta = (M^S, G, T)$ that satisfies \Cre
 \end{definition}
 
 \begin{definition}
-  Let $S$ be a $N \times N$ matrix with elements in $\mathbb{R}$. The $k$th order \keyword{principal minor} is a submatrix of $S$ obtained by removing $N - k$ rows and the corresponding columns of $S$.
+  Let $S$ be a $N \times N$ matrix with elements in $\mathbb{R}$. A $k$th order \keyword{principal submatrix} is the submatrix of $S$ obtained by removing $N - k$ rows and the corresponding columns of $S$. A $k$th order \keyword{principal minor} is the determinant of a $k$th order principal submatrix.
 \end{definition}
 
 It's easiest to talk about the principal minors using examples: Take
@@ -969,7 +969,7 @@ It's easiest to talk about the principal minors using examples: Take
   \end{matrix}\right]
 \]
 
-The $1$st order principal minors are
+The $1$st order principal submatrices are
 \[
   [1]
   \quad\quad
@@ -978,7 +978,7 @@ The $1$st order principal minors are
   [9]
 \]
 
-The $2$nd order principal minors are
+and the principal minors are the determinants therein. The $2$nd order principal submatrices are
 \[
   \left[\begin{matrix}
     1 & 2 \\
@@ -996,24 +996,50 @@ The $2$nd order principal minors are
   \end{matrix}\right]
 \]
 
-Finally, the $3$rd order principal minor is just the matrix $S$ itself.
+and the $2nd$ order principal minors are their  determinants:
+\[
+  \det\left[\begin{matrix}
+    1 & 2 \\
+    4 & 5
+  \end{matrix}\right]
+  = -3
+  \quad\quad
+  \det\left[\begin{matrix}
+    1 & 3 \\
+    7 & 9
+  \end{matrix}\right]
+  = -12
+  \quad\quad
+  \det\left[\begin{matrix}
+    5 & 6 \\
+    8 & 9
+  \end{matrix}\right]
+  =
+  -3
+\]
+
+Finally, the $3$rd order principal submatrix is just the matrix $S$ itself, and the $3$rd order principal minor is the determinant of $S$ (in this case, $0$).
 
 \begin{definition}
   Let $S$ be a $N \times N$ matrix with elements in $\mathbb{R}$. The $k$th \keyword{leading principal minor} is the principal minors obtained by removing the ``last'' $N - k$ columns and rows of $S$.
 \end{definition}
 
-In our example above, these are the matrix $S$ itself ($3$rd leading principal minor), and
+In our example above, these are the determinants of the matrix $S$ itself ($3$rd leading principal minor), and
 \[
   \text{ 2nd }
   \rightarrow
-  [1]
+  \det[1]
+  =
+  1
   \quad\quad\quad
   \text{ 1st }
   \rightarrow
-  \left[\begin{matrix}
+  \det\left[\begin{matrix}
     1 & 2 \\
     4 & 5
   \end{matrix}\right]
+  =
+  - 3
 \]
 
 \begin{definition}
@@ -1026,15 +1052,15 @@ In our example above, these are the matrix $S$ itself ($3$rd leading principal m
 \begin{theorem}
   Let $S$ be a $N \times N$ symmetric matrix.
   \begin{enumerate}
-    \item If the determinant of all the leading principal minors is strictly positive, then $S$ is positive definite.
+    \item If all the leading principal minors are strictly positive, then $S$ is positive definite.
 
-    \item If for every $k \le N$ the determinant of the $k$th order leading principal minor has sign $(-1)^k$ (that is, positive for $k$ even and negative for $k$ odd), then $S$ is negative definite.
+    \item If for every $k \le N$ the $k$th order leading principal minor has sign $(-1)^k$ (that is, positive for $k$ even and negative for $k$ odd), then $S$ is negative definite.
 
-    \item If the determinant of the $k$th order leading principal minor is non-zero and does not fit either pattern above for some $k$, then $S$ is indefinite.
+    \item If the $k$th order leading principal minor is non-zero and does not fit either pattern above for some $k$, then $S$ is indefinite.
 
-    \item If the determinant of all principal minors of $S$ are weakly positive ($\ge 0$) then $S$ is positive semidefinite.
+    \item If all principal minors of $S$ are weakly positive ($\ge 0$) then $S$ is positive semidefinite.
 
-    \item If for every $k \le N$ the determinant of all $k$th order principal minors are $\le 0$ when $k$ is odd and $\ge 0$ when $k$ is even, then $S$ is negative semidefinite.
+    \item If for every $k \le N$ the $k$th order principal minors are $\le 0$ when $k$ is odd and $\ge 0$ when $k$ is even, then $S$ is negative semidefinite.
   \end{enumerate}
 \end{theorem}
 
@@ -1150,7 +1176,7 @@ We find that
   \nonumber
 \end{equation}
 
-The second order principal minor is just the Hessian itself. The 1st order principal minor is $6x$. Note the determinant is
+The second order principal minor is the determinant of the Hessian itself. The 1st order principal minor is $6x$. Note the determinant of the Hessian is
 \begin{equation}
   \begin{array}{c}
     \Fabs{D^2 f(x, y)} = -36xy - 81
@@ -1159,9 +1185,9 @@ The second order principal minor is just the Hessian itself. The 1st order princ
 \end{equation}
 
 \begin{enumerate}
-  \item For $(0, 0)$, we have $6(0) = 0$ and $-36(0)(0) - 81 = -81 < 0$. The determinant of the 2nd leading principal minor is negative, so the Hessian at that point cannot be positive definite. Further, $(-1)^2$ is positive, so it cannot be negative definite either. Hence the Hessian at $(0, 0)$ is indefinite.
+  \item For $(0, 0)$, we have $6(0) = 0$ and $-36(0)(0) - 81 = -81 < 0$. The 2nd leading principal minor is negative, so the Hessian at that point cannot be positive definite. Further, $(-1)^2$ is positive, so it cannot be negative definite either. Hence the Hessian at $(0, 0)$ is indefinite.
 
-  \item For $(3, -3)$, we have $6(3) = 18 > 0$ and $-36(3)(-3) - 81 = 324 - 81 = 243 > 0$. The determinant of the 1st and 2nd leading principal minors are both positive, which means the Hessian at that point is positive definite and $(3, -3)$ is a local minimum.
+  \item For $(3, -3)$, we have $6(3) = 18 > 0$ and $-36(3)(-3) - 81 = 324 - 81 = 243 > 0$. The 1st and 2nd leading principal minors are both positive, which means the Hessian at that point is positive definite and $(3, -3)$ is a local minimum.
 \end{enumerate}
 
 \subsubsection{Concavity and Convexity}
@@ -1219,7 +1245,7 @@ Some examples:
       \end{matrix}\right]
     \]
 
-    Note that $Df(0, 0) = (0, 0)$. Further, the determinant of the 1st leading principal minor of the Hessian is $2 > 0$; for the 2nd leading principal minor we have $2(2) - 0(0) = 4 > 0$. Thus $D^2f(x)$ is positive definite; this means $f$ is convex and $(0, 0)$ is a global minimum.
+    Note that $Df(0, 0) = (0, 0)$. Further, the 1st leading principal minor of the Hessian is $2 > 0$; for the 2nd leading principal minor we have $2(2) - 0(0) = 4 > 0$. Thus $D^2f(x)$ is positive definite; this means $f$ is convex and $(0, 0)$ is a global minimum.
 
   \item What about $f(x) = x^4$? In this case
     \[
@@ -1241,7 +1267,7 @@ Some examples:
       \end{matrix}\right]
     \]
 
-    Note $Df(x, 0) = Df(0, y) = (0, 0)$, but the determinant of the $k$th order principal minors are all $0$ at $(x, 0)$ or $(0, y)$. More genearlly we have that while determinant of the 1st principal minors are $2y^2 \ge 0$ and $2x^2 \ge 0$, the determinant of the 2nd principal minor is
+    Note $Df(x, 0) = Df(0, y) = (0, 0)$, but the $k$th order principal minors are all $0$ at $(x, 0)$ or $(0, y)$. More genearlly we have that while the 1st principal minors are $2y^2 \ge 0$ and $2x^2 \ge 0$, the determinant of the 2nd principal minor is
     \[
         4x^2y^2 - 16x^2y^2 \le 0
     \]

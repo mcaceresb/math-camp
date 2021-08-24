@@ -463,11 +463,11 @@ for any $v \in V$. To check this condition, consider the \keyword{bordered Hessi
 
 You will note the bordered Hessian is basically the Hessian of the Lagrangian, but it is so-called because it looks like we are ``bordering'' $D^2_x \mathcal{L}$ with $D \widetilde{g}, Dh$. In any case, it is sufficient to check that the last $N - L - M$ leading principal minors of $H$:
 \begin{itemize}[label=$\bullet$]
-  \item For a $\max$, their determinants alternate signs, with the sign of the determinant of the $(2(L + M) + 1)$th principal minor equal to $(-1)^{L + M + 1}$ (note the last $N - L - M$ leading principal minors are from $2(L + M) + 1$ to $2(L + M) + (N - L - M) = N + L + M$).
+  \item For a $\max$, their determinants alternate signs, with the sign of the $(2(L + M) + 1)$th principal minor equal to $(-1)^{L + M + 1}$ (note the last $N - L - M$ leading principal minors are from $2(L + M) + 1$ to $2(L + M) + (N - L - M) = N + L + M$).
   \item For a $\min$, all the signs of their determinant equal $(-1)^{L + M}$.
 \end{itemize}
 
-You will note we are discarding the first $2(L + M)$ leading principal minors. Why?\footnote{The bordered Hessian cannot be  positive or negative definite due to the  matrix of  zeros in the top left corner (second derivatives with respect to the multipliers are a $0$). That discards checking the determinant of the first $L + M$ leading principal minors. What about the next? Intuitively, we can think that binding conditions impose restrictions of parameters. Remember we motivated our sketch of the proof of the Lagrange multiplier method by invoking the IFT. Why did we do this? Because if for each constraint we express a variable in terms  of the others, we can solve the modified unconstrained problem. In other words, each constraint removes a variable from the problem, and there goes the other $L + M$ degrees of freedom.}
+You will note we are discarding the first $2(L + M)$ leading principal minors. Why?\footnote{The bordered Hessian cannot be  positive or negative definite due to the  matrix of  zeros in the top left corner (second derivatives with respect to the multipliers are a $0$). That discards checking the first $L + M$ leading principal minors. What about the next? Intuitively, we can think that binding conditions impose restrictions of parameters. Remember we motivated our sketch of the proof of the Lagrange multiplier method by invoking the IFT. Why did we do this? Because if for each constraint we express a variable in terms  of the others, we can solve the modified unconstrained problem. In other words, each constraint removes a variable from the problem, and there goes the other $L + M$ degrees of freedom.}
 
 \subsubsection{Application to Economics}
 \label{ssub:application_to_economics}
@@ -1204,7 +1204,7 @@ Some useful properties of Riemann integrals (given $f, g: [a, b] \to \mathbb{R}$
   \begin{enumerate}
     \item $F(x) \equiv \displaystyle\int_a^x f(t) dt$ is continuous on $[a, b]$, differentiable on $(a, b)$, and an anti-derivative of $f$. That is,
       \begin{align*}
-        F^{\prime}(x) = \dfrac{d}{dx} \int_{x}^{a} f(t) dt = f(x)
+        F^{\prime}(x) = \dfrac{d}{dx} \int_{a}^{x} f(t) dt = f(x)
       \end{align*}
 
     \item For any $F$ that is an anti-derivative of $f$ we have
