@@ -17,7 +17,7 @@
 
 \begin{enumerate}[1.]
   \item {\itshape
-    Take a collection of functions with $f_i: \Omega to \mathbb{R}^N$, $\Omega \subseteq \mathbb{R}^M, i \in \mathbb{N}$. The collection $\set{f_i}$ defines a sequence of funtions, and for each $x \in \Omega$ we have a possibly different sequence $\set{f_i(x)}$ in $\mathbb{R}^N$.
+    Take a collection of functions with $f_i: \Omega \to \mathbb{R}^N$, $\Omega \subseteq \mathbb{R}^M, i \in \mathbb{N}$. The collection $\set{f_i}$ defines a sequence of funtions, and for each $x \in \Omega$ we have a possibly different sequence $\set{f_i(x)}$ in $\mathbb{R}^N$.
 
     Let $\set{f_i}$ be a sequence of functions, with $f_i: \Omega \to \mathbb{R}^N$ and $\Omega \subseteq \mathbb{R}^M$. We say that $\set{f_i}$ \textbf{point-wise convrges} to $f: \Omega_0 \to \mathbb{R}^N$ if $x \in \Omega_0 \implies f_i(x) \to f(x)$.
 
@@ -32,7 +32,7 @@
 
   \item {\itshape Let $A \subseteq \mathbb{R}^N$ be a convex set. $f: A \to \mathbb{R}^N$ is quasiconcave if for any $x, y \in A$ and $\alpha \in [0, 1]$ we have
       \begin{align*}
-        f(\alpha x + (1 - \alpha) y) \ge \min{f(x), f(y)}
+        f(\alpha x + (1 - \alpha) y) \ge \min\set{f(x), f(y)}
       \end{align*}
 
     and strictly quasiconcave if the above holds strictly. Show if $f$ is quasiconcave then $\argmax_{x \in A} f(x)$ is a convex set (recall the empty set is convex by vacuity). Further show that if $f$ is strictly quasiconcave then $\argmax_{x \in A} f(x)$ is a singleton or empty.}

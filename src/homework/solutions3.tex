@@ -17,7 +17,7 @@
 
 \begin{enumerate}[1.]
   \item {\itshape
-    Take a collection of functions with $f_i: \Omega to \mathbb{R}^N$, $\Omega \subseteq \mathbb{R}^M, i \in \mathbb{N}$. The collection $\set{f_i}$ defines a sequence of funtions, and for each $x \in \Omega$ we have a possibly different sequence $\set{f_i(x)}$ in $\mathbb{R}^N$.
+    Take a collection of functions with $f_i: \Omega \to \mathbb{R}^N$, $\Omega \subseteq \mathbb{R}^M, i \in \mathbb{N}$. The collection $\set{f_i}$ defines a sequence of funtions, and for each $x \in \Omega$ we have a possibly different sequence $\set{f_i(x)}$ in $\mathbb{R}^N$.
 
     Let $\set{f_i}$ be a sequence of functions, with $f_i: \Omega \to \mathbb{R}^N$ and $\Omega \subseteq \mathbb{R}^M$. We say that $\set{f_i}$ \textbf{point-wise convrges} to $f: \Omega_0 \to \mathbb{R}^N$ if $x \in \Omega_0 \implies f_i(x) \to f(x)$.
 
@@ -63,7 +63,7 @@
 
   \item {\itshape Let $A \subseteq \mathbb{R}^N$ be a convex set. $f: A \to \mathbb{R}^N$ is quasiconcave if for any $x, y \in A$ and $\alpha \in [0, 1]$ we have
       \begin{align*}
-        f(\alpha x + (1 - \alpha) y) \ge \min{f(x), f(y)}
+        f(\alpha x + (1 - \alpha) y) \ge \min\set{f(x), f(y)}
       \end{align*}
 
     and strictly quasiconcave if the above holds strictly. Show if $f$ is quasiconcave then $\argmax_{x \in A} f(x)$ is a convex set (recall the empty set is convex by vacuity). Further show that if $f$ is strictly quasiconcave then $\argmax_{x \in A} f(x)$ is a singleton or empty.}
@@ -180,8 +180,8 @@
         \begin{align*}
           g(\varepsilon)
           =
-          g(0) 
-          + g^\prime(0) \varepsilon 
+          g(0)
+          + g^\prime(0) \varepsilon
           + \dfrac{1}{2} g^{\prime\prime}(0) \varepsilon^2
           + \dfrac{1}{6} g^{\prime\prime\prime}(c) \varepsilon^3
         \end{align*}
@@ -242,43 +242,14 @@
 
       \item \textit{If $f$ is concave then $f(x + z) \le f(x) + Df(x) z$ for any $x, z$.}
 
-        \solution Take any $x, y, \alpha \in [0, 1]$ and let $z = y - x$. We have
-          \begin{align*}
-            f(\alpha y + (1 - \alpha) x)
-            \ge
-            \alpha f(y) + (1 - \alpha) f(x)
-            =
-            \alpha (f(y) - f(x)) + f(x)
-          \end{align*}
-
-          Plugging in $z$, we have
-          \begin{align*}
-            f(\alpha y + (1 - \alpha) x)
-            & = f(x + \alpha z)
-            \\
-            \alpha (f(y) - f(x)) + f(x)
-            &
-            \alpha (f(x + z) - f(x)) + f(x)
-            \\
-            f(x + \alpha z)
-            &
-            \ge
-            \alpha (f(x + z) - f(x)) + f(x)
-            \\
-            f(x + z)
-            &
-            \le
-            \dfrac{f(x + \alpha z) - f(x)}{\alpha} + f(x)
-          \end{align*}
-
-          holds for \textit{every} $\alpha$. Let $g(\alpha) \equiv f(x + \alpha z)$ and note
+        \solution Take $x, z$ s.t. $x$ and $x + z$ are in the domain of $f$. Let $g(\alpha) \equiv f(x + \alpha z)$ and note
           \begin{align*}
             g^\prime(0)
             =
-            \lim_{\alpha \to 0} 
+            \lim_{\alpha \to 0}
             \dfrac{g(\alpha) - g(0)}{\alpha}
             =
-            \lim_{\alpha \to 0} 
+            \lim_{\alpha \to 0}
             \dfrac{f(x + \alpha z) - f(x)}{\alpha}
           \end{align*}
 
@@ -289,24 +260,63 @@
             D_x f(x) \cdot z
           \end{align*}
 
-          Plugging back in, we get
+          Therefore, if we can show that
           \begin{align*}
             f(x + z)
-            \le
             &
-            D f(x) \cdot z + f(x)
+            \le
+            \dfrac{f(x + \alpha z) - f(x)}{\alpha} + f(x)
           \end{align*}
 
-          which is what we wanted to show.
+          then we have our result (the inequality is preserved in the limit). Note the above holds $\forall \alpha \ge 0$ if
+          \begin{align*}
+            \alpha f(x + z)
+            &
+            \le
+            f(x + \alpha z) - f(x) + \alpha f(x)
+            \\
+            f(x + \alpha z \pm \alpha x)
+            &
+            \ge
+            \alpha f(x + z) + (1 - \alpha) f(x)
+            \\
+            f(\alpha (x + z) + (1 - \alpha) x)
+            &
+            \ge
+            \alpha f(x + z) + (1 - \alpha) f(x)
+          \end{align*}
+
+          This the last inequality is true by the definition of concavity of $x$. Note there is one subtlety here in that we haven't said anything about $\alpha < 0$. In this case, if $f$ is differentiable at $x$ then $g$ is differentiable at $0$, so the limit as $\alpha \to 0^+$ equals the limit as $\alpha \to 0^-$. Hence
+          \begin{align*}
+            f(x + z)
+            &
+            \le
+            \dfrac{f(x + \alpha z) - f(x)}{\alpha} + f(x)
+            \\
+            f(x + z)
+            &
+            \le
+            \lim_{\alpha \to 0^+}
+            \dfrac{f(x + \alpha z) - f(x)}{\alpha} + f(x)
+            \\
+            &
+            =
+            \lim_{\alpha \to 0}
+            \dfrac{f(x + \alpha z) - f(x)}{\alpha} + f(x)
+            \\
+            &
+            =
+            D_x f(x) \cdot z + f(x)
+          \end{align*}
 
       \item \textit{If $f$ is concave then any critical point (i.e. $x$ s.t. $Df(x) = 0$) is a global maximizer.}
 
-        \solution Following the previous result, for any $x, z$ we have
+        \solution Following the previous result, for any $x, z$ s.t. $x, x + z$ in the domain of $f$ we have
         \[
-          f(x + z) \le f(x) + \nabla f(x) \cdot z
+          f(x + z) \le f(x) + D f(x) \cdot z
         \]
 
-        Let $x^*$ be a critical point, $y$ be any other point, and $z \equiv y - x$. Since $D f(x^*) = 0$,
+        Let $x^*$ be a critical point and $y$ be any other point in the domain. Take $z \equiv y - x$ so that $x + z = y$ in the domain of $f$. Since $D f(x^*) = 0$, we find
         \[
           f(y)
           =
@@ -453,7 +463,7 @@
 
     \solution The FTC gives that if $f$ is integrable on $[a, b]$ then for any $x \in [a, b]$
     \[
-      F(x) = \int_{x}^{a} f(t) dt
+      F(x) = \int_{a}^{x} f(t) dt
     \]
 
     is continuously differentiable on $(a, b)$ and
@@ -481,8 +491,6 @@
       =
       f(v(x)) \dfrac{dv}{dx} - f(u(x)) \dfrac{du}{dx}
     \]
-
-    which is what we wanted to show.
 \end{enumerate}
 
 %----------------------------------------------------------------------
