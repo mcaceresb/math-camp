@@ -1,19 +1,19 @@
 Import('*')
 
-env.PDF(target = '#out/lectures/Math Camp 2021 Lecture 1 - Proofs, Metric Spaces, Topology.pdf',
-        source = '#src/lectures/lecture1.tex')
-
-env.PDF(target = '#out/lectures/Math Camp 2021 Lecture 2 - Sequences, Continuity.pdf',
-        source = '#src/lectures/lecture2.tex')
-
-env.PDF(target = '#out/lectures/Math Camp 2021 Lecture 3 - Correspondences, Compactness, EVT.pdf',
-        source = '#src/lectures/lecture3.tex')
-
-env.PDF(target = '#out/lectures/Math Camp 2021 Lecture 4 - Differentiation, IFT, Unconstrained Optimization.pdf',
-        source = '#src/lectures/lecture4.tex')
-
-env.PDF(target = '#out/lectures/Math Camp 2021 Lecture 5 - Constrained Optimization, Integration.pdf',
-        source = '#src/lectures/lecture5.tex')
-
-env.PDF(target = '#out/lectures/Math Camp 2021 Lecture 6 - Linear Algebra, ODE.pdf',
-        source = '#src/lectures/lecture6.tex')
+# env.PDF(target = '#out/lectures/Math Camp 2021 Lecture 1 - Proofs, Metric Spaces, Topology.pdf',
+#         source = '#src/lectures/lecture1.tex')
+# 
+# env.PDF(target = '#out/lectures/Math Camp 2021 Lecture 2 - Sequences, Continuity.pdf',
+#         source = '#src/lectures/lecture2.tex')
+# 
+# env.PDF(target = '#out/lectures/Math Camp 2021 Lecture 3 - Correspondences, Compactness, EVT.pdf',
+#         source = '#src/lectures/lecture3.tex')
+# 
+# env.PDF(target = '#out/lectures/Math Camp 2021 Lecture 4 - Differentiation, IFT, Unconstrained Optimization.pdf',
+#         source = '#src/lectures/lecture4.tex')
+# 
+# env.PDF(target = '#out/lectures/Math Camp 2021 Lecture 5 - Constrained Optimization, Integration.pdf',
+#         source = '#src/lectures/lecture5.tex')
+# 
+# env.PDF(target = '#out/lectures/Math Camp 2021 Lecture 6 - Linear Algebra, ODE.pdf',
+#         source = '#src/lectures/lecture6.tex')
