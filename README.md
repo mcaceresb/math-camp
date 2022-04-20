@@ -1,4 +1,4 @@
-Brown Math Camp 2021
+Brown Math Camp 2022
 --------------------
 
 [Syllabus](out/syllabus/Math%20Camp%202021%20Syllabus.pdf)
