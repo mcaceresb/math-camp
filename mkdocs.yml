@@ -1,0 +1,39 @@
+# Project information
+site_name:        'Math Camp'
+site_description: 'Brown Econ PhD Math Camp 2022'
+
+# Repository
+repo_name: 'mcaceresb/math-camp'
+repo_url: 'https://github.com/mcaceresb/math-camp'
+edit_uri: 'blob/master/docs/'
+site_url: 'https://mcaceresb.github.io/math-camp/'
+
+nav:
+    - Home: index.md
+
+theme:
+    name: 'material'
+    palette:
+        primary: 'blue grey'
+        accent: 'blue grey'
+    font:
+        text: 'Open Sans'
+        code: 'Inconsolata'
+
+extra_javascript:
+    - helpers.js
+    - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+
+markdown_extensions:
+    - meta
+    - toc
+    - tables
+    - fenced_code
+    - admonition
+    - codehilite:
+        guess_lang: false
+
+use_directory_urls: false
+
+extra_css:
+    - css/extra-material.css
