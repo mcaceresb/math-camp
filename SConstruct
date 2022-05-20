@@ -30,3 +30,4 @@ env.link(target = ['#docs/index.md'],
 SConscript('src/syllabus/SConscript')
 SConscript('src/lectures/SConscript')
 SConscript('src/homework/SConscript')
+SConscript('src/helpers/SConscript')

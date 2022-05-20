@@ -17,3 +17,6 @@ Import('*')
 #
 # env.PDF(target = '#out/lectures/Math Camp 2022 Lecture 6 - Linear Algebra, ODE.pdf',
 #         source = '#src/lectures/lecture6.tex')
+
+# env.link(target = ['#docs/out/lectures/Math Camp 2022 Lecture 1 - Proofs, Metric Spaces, Topology.pdf'],
+#          source = ['#out/lectures/Math Camp 2022 Lecture 1 - Proofs, Metric Spaces, Topology.pdf'])

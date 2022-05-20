@@ -1,0 +1,7 @@
+Import('*')
+
+env.py(target = ['#out/helpers/docs.log'],
+        source = ['#src/helpers/docs.py',
+                  Glob('out/lectures/*.pdf'),
+                  Glob('out/problems/*.pdf'),
+                  Glob('out/syllabus/*.pdf')])

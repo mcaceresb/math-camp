@@ -1,35 +1,53 @@
 # Project information
-site_name:        'Math Camp'
+site_name:        'Brown Math Camp 2022'
 site_description: 'Brown Econ PhD Math Camp 2022'
 
-# Repository
+  # Repository
 repo_name: 'mcaceresb/math-camp'
 repo_url: 'https://github.com/mcaceresb/math-camp'
 edit_uri: 'blob/master/docs/'
 site_url: 'https://mcaceresb.github.io/math-camp/'
 
 nav:
-    - Home: index.md
-
-theme:
-    name: 'material'
-    palette:
-        primary: 'blue grey'
-        accent: 'blue grey'
-    font:
-        text: 'Open Sans'
-        code: 'Inconsolata'
-
-extra_javascript:
-    - helpers.js
-    - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+  - Syllabus: index.md
+  - Lecture Notes:
+    - Lecture 1: lectures/lecture1.md
+    - Lecture 2: lectures/lecture2.md
+    - Lecture 3: lectures/lecture3.md
+    - Lecture 4: lectures/lecture4.md
+    - Lecture 5: lectures/lecture5.md
+    - Lecture 6: lectures/lecture6.md
+  - Problem Sets:
+    - Problem Set 1: problems/problem1.md
+    - Problem Set 2: problems/problem2.md
+    - Problem Set 3: problems/problem3.md
+  - Solution:
+    - Suggested Solutions 1: solutions/solution1.md
+    - Suggested Solutions 2: solutions/solution2.md
+    - Suggested Solutions 3: solutions/solution3.md
 
 markdown_extensions:
-    - meta
-    - toc
-    - admonition
+  - meta
+  - toc
+  - admonition
+
+theme:
+  name: 'material'
+  palette:
+    primary: 'blue grey'
+    accent: 'blue grey'
+  font:
+    text: 'Open Sans'
+    code: 'Inconsolata'
+  features:
+    - toc.integrate
+    - navigation.expand
+
+extra_javascript:
+  - helpers.js
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 use_directory_urls: false
 
 extra_css:
-    - css/extra-material.css
+  - css/extra-material.css
