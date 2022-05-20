@@ -24,7 +24,9 @@ env['ENV']['TEXMFHOME'] = path.join(environ['HOME'], 'texmf')
 
 Export('env')
 
-env.link(target = ['#docs/index.md'], source = ['#README.md'])
+env.link(target = ['#docs/index.md', '#docs/mkdocs.yml'],
+         source = ['#README.md', '#mkdocs.yml'])
+
 SConscript('src/syllabus/SConscript')
 SConscript('src/lectures/SConscript')
 SConscript('src/homework/SConscript')
