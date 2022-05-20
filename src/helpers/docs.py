@@ -22,7 +22,7 @@ def main():
     print(os.linesep.join(['-' * 72, datestr]))
 
     html = dedent("""
-    If the PDF does not appear below, please download the file [here]({0}).
+    If the PDF does not appear below, please download the file [here <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Icon_External_Link.png" width="13px"/>]({0}).
 
     <object data="{0}" type="application/pdf" width="100%"  style="height:100vh" >
         <embed src="{0}"></embed>
