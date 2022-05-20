@@ -8,6 +8,9 @@ repo_url: 'https://github.com/mcaceresb/math-camp'
 edit_uri: 'blob/master/docs/'
 site_url: 'https://mcaceresb.github.io/math-camp/'
 
+nav:
+    - Home: index.md
+
 theme:
     name: 'material'
     palette:
@@ -16,9 +19,6 @@ theme:
     font:
         text: 'Open Sans'
         code: 'Inconsolata'
-
-nav:
-    - Home: index.md
 
 extra_javascript:
     - helpers.js
