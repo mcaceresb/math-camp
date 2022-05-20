@@ -27,11 +27,7 @@ extra_javascript:
 markdown_extensions:
     - meta
     - toc
-    - tables
-    - fenced_code
     - admonition
-    - codehilite:
-        guess_lang: false
 
 use_directory_urls: false
 
