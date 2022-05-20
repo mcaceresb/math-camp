@@ -25,7 +25,7 @@ def main():
     If the PDF does not appear below, please download the file [here <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Icon_External_Link.png" width="13px"/>]({0}).
 
     <object data="{0}" type="application/pdf" width="100%"  style="height:100vh" >
-        <embed src="{0}"></embed>
+        <embed src="{0}#pagemode=0&navpanes=0"></embed>
     </object>
     """)
 
