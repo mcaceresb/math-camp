@@ -22,10 +22,10 @@ def main():
     print(os.linesep.join(['-' * 72, datestr]))
 
     html = dedent("""
+    If the PDF does not appear below, please download the file [here]({0}).
+
     <object data="{0}" type="application/pdf" width="100%"  style="height:100vh" >
-        <embed src="{0}">
-            <p>Unable to load embedded PDF; please download the file <a href="{0}">here</a>.</p>
-        </embed>
+        <embed src="{0}"></embed>
     </object>
     """)
 
