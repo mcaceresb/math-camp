@@ -5,7 +5,7 @@ Brown Math Camp 2022
 
 ### Lecture Notes
 
-- Lecture 1
+- [Lecture 1](out/lectures/Math%20Camp%202022%20Lecture%201%20-%20Proofs,%20Metric%20Spaces,%20Topology.pdf)
 - Lecture 2
 - Lecture 3
 - Lecture 4
@@ -17,7 +17,7 @@ Brown Math Camp 2022
 - [Lecture 2](out/lectures/Math%20Camp%202022%20Lecture%202%20-%20Sequences,%20Continuity.pdf)
 - [Lecture 3](out/lectures/Math%20Camp%202022%20Lecture%203%20-%20Correspondences,%20Compactness,%20EVT.pdf)
 - [Lecture 4](out/lectures/Math%20Camp%202022%20Lecture%204%20-%20Differentiation,%20IFT,%20Unconstrained%20Optimization.pdf)
-- [Lecture 5](out/lectures/Math%20Camp%202022%20Lecture%205%20-%20Constrained%20Optimization,%20Envelope%20Theorem,%20Integration.pdf)
+- [Lecture 5](out/lectures/Math%20Camp%202022%20Lecture%205%20-%20Constrained%20Optimization,%20{{velope%20Theorem,%20Integration.pdf)
 - [Lecture 6](out/lectures/Math%20Camp%202022%20Lecture%206%20-%20Linear%20Algebra,%20ODE.pdf)
 -->
 

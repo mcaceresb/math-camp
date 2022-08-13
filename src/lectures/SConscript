@@ -1,11 +1,11 @@
 Import('*')
 
-# env.PDF(target = '#out/lectures/Math Camp 2022 Lecture 1 - Proofs, Metric Spaces, Topology.pdf',
-#         source = '#src/lectures/lecture1.tex')
-#
-# env.PDF(target = '#out/lectures/Math Camp 2022 Lecture 2 - Sequences, Continuity.pdf',
-#         source = '#src/lectures/lecture2.tex')
-#
+env.PDF(target = '#out/lectures/Math Camp 2022 Lecture 1 - Proofs, Metric Spaces, Topology.pdf',
+        source = '#src/lectures/lecture1.tex')
+
+env.PDF(target = '#out/lectures/Math Camp 2022 Lecture 2 - Sequences, Continuity.pdf',
+        source = '#src/lectures/lecture2.tex')
+
 # env.PDF(target = '#out/lectures/Math Camp 2022 Lecture 3 - Compactness, EVT, Correspondences.pdf',
 #         source = '#src/lectures/lecture3.tex')
 #
