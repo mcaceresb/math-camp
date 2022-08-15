@@ -162,6 +162,33 @@ That is to say, if not $Q$, then not $P$. Logically, if $P \implies Q$ and we do
 
           where $\stackrel{!}{=}$ is true by the inductive step assumption (i.e. $P(k)$ means $\sum^{k}_{i = 1} 2i - 1 = k^2$).
         \end{example}
+
+        In class, someone asked for a proof with a tricky base step. Straight from \href{https://en.wikipedia.org/wiki/Mathematical_induction#Base_case_other_than_0_or_1}{Wikipedia \ExternalLink}:
+        \begin{example}
+          Prove that $\forall k \ge 12 ~~ \exists m, n \in \mathbb{Z}_+$ (non-negative integers) s.t. $4m + 5n = k$.
+          \begin{enumerate}[a)]
+            \item Base: $k = 12$ then $m = 3, n = 0$.
+            \item Induction: Assume $\exists m_k, n_k$ s.t. $4m_k + 5n_k = k$ and show $\exists m_{k + 1}, n_{k + 1}$ s.t. $4m_{k + 1} + 5n_{k + 1} = k + 1$.
+              \begin{align*}
+                k + 1
+                = 4m_k + 5n_k + 1
+                = 4m_k + 5n_k + 5 - 4
+                = 4(m_k - 1) + 5(n_k + 1)
+              \end{align*}
+
+              Hence $m_{k + 1} = m_k - 1, n_{k + 1} = n_k + 1$ if $m_k > 0$. If $m_k = 0$, then $n_k \ge 3$, so
+              \begin{align*}
+                k + 1
+                = 4m_k + 5n_k + 1
+                = 4m_k + 5n_k + 16 - 15
+                = 4(m_k + 4) + 5(n_k - 3)
+              \end{align*}
+
+              and $m_{k + 1} = m_k + 4, n_{k + 1} = n_k - 3$.
+          \end{enumerate}
+
+          Note for several $k < 12$ this cannot be true (e.g. $k = 3$).
+        \end{example}
     \end{enumerate}
 \end{enumerate}
 
@@ -169,7 +196,7 @@ That is to say, if not $Q$, then not $P$. Logically, if $P \implies Q$ and we do
 \subsection{Functions}
 \label{sub:functions}
 
-We will not delve much into set theory. Intuitively, we can think of a set as a collection of elements, and we can think of functions as rules that associate every element in one set with an element in another set.\footnote{Formally, we can define a function $f$ from $X$ to $Y$ as a binary relation s.t. $f \subseteq (X \times Y)$ and for each element $x \in X$ there is one (and only one) element $y \in Y$ s.t. $(x, y) \in f$ (though for each element in $y$ there may be some $z \ne x$ s.t. $(z, y) \in f$). Chapter 1 of Ok has a rigorous treatment of functions following an introduction to set theory.}
+We will not delve into set theory. Intuitively, we can think of a set as a collection of (unique) elements, and we can think of functions as rules that associate every element in one set with an element in another set.\footnote{Formally, we can define a function $f$ from $X$ to $Y$ as a binary relation s.t. $f \subseteq (X \times Y)$ and for each element $x \in X$ there is one (and only one) element $y \in Y$ s.t. $(x, y) \in f$ (though for each element in $y$ there may be some $z \ne x$ s.t. $(z, y) \in f$). Chapter 1 of Ok has a rigorous treatment of functions following an introduction to set theory.}
 \begin{definition}[function]\label{def:lecture1_functions}
   $f$ is a \keyword{function} with \keyword{domain} $X$ mapping to a \keyword{co-domain} $Y$ if for every element $x \in X$ there exists a $y \in Y$ s.t. $f(x) = y$. We write $f: X \to Y$, and for any $S \subseteq X$
 \[
@@ -295,6 +322,17 @@ Why doesn't this proof work for $\mathbb{Q}$?\footnote{If we try to use that sam
   whenever $a < b$. (``Informally'' because the concept of density here depends on the order, $<$, and in general we will be able to define that being dense means without it.)
 \end{tacomment}
 
+\begin{remark}
+  I noted in class that the finite Cartesian product of countable sets was countable, which we can show by induction. The claim is that if $P$ is countable, then $P^N$ is also countable. This is another example of induction where the base step cannot be $N = 1$ (since this ``base'' step is actually given by the premise of the problem).
+  \begin{enumerate}[a)]
+    \item Base: $P \times P$ is countable. We just proved that the Cartesian product of \textit{two} countable sets is countables, so this works.
+
+    \item Induction: If $P^N$ is countable then $P^{N + 1} = P^N \times P$ is the product of two countable sets, which, again, we already showed is countable (the induction assumption gets $P^N$ is countable and the problem statement gives that $P$ itself is countable).
+  \end{enumerate}
+
+  In this case, the base was $N = 2$.
+\end{remark}
+
 % ---------------------------------------------------------------------
 \subsection{Metric Spaces}
 \label{sub:metric_spaces}
@@ -333,7 +371,7 @@ Some examples of metric spaces:
       = \sqrt{\sum^{N}_{i = 1} (x_i - y_i)^2}
     \end{align*}
 
-  \item More generally, consider the $L^P$ norm, $d_p$, for $1 \le p \le \infty$ on $\mathbb{R}^N$ for $N \in \mathbb{N}$
+  \item More generally, consider for $1 \le p \le \infty$ the distance on $\mathbb{R}^N$ for $N \in \mathbb{N}$
     \begin{align*}
       d_p(x, y)
       =
@@ -345,11 +383,11 @@ Some examples of metric spaces:
       \end{cases}
     \end{align*}
 
-    $(\mathbb{R}^N, d_p)$ is a metric space. $d_2$ is the euclidean distance, but it turns out that, while geometrically intuitive, it's not necessary to preserve a lot of the properties we care about.
+    $(\mathbb{R}^N, d_p)$ is a metric space, often called a $L^p$-space.\footnote{\NB: I have encountered the terminology $L^p$ to refer to both the metric $d_p$ as well as the space $(\mathbb{R}^N, d_p)$.} $d_2$ is the euclidean distance, but it turns out that, while geometrically intuitive, it's not necessary to preserve a lot of the properties we care about.
     \begin{figure}[H]
       \centering
-      \caption{Unit ``circle'' in $\mathbb{R}^2$ under different $L^p$ norms}
-      \label{fig:unit_circle_in_r_2_under_different_l_p_norms}
+      \caption{Unit ``circle'' in $\mathbb{R}^2$ under different $d_p$ metrics}
+      \label{fig:unit_circle_in_r_2_under_different_d_p_metrics}
       \begin{tikzpicture}
         \begin{axis}[name=plot1
           %,title=
@@ -404,10 +442,27 @@ Some examples of metric spaces:
       \end{tikzpicture}
     \end{figure}
 
-    In the figure above we can get some intuition for why we defined the $d_{\infty}$ norm as the max; graphically on $\mathbb{R}^2$, we can see this is the natural extension of $d_p$ as $p \to \infty$.
+    In the figure above we can get some intuition for why we defined the $d_{\infty}$ metric as the max; graphically on $\mathbb{R}^2$, we can see this is the natural extension of $d_p$ as $p \to \infty$.
 \end{enumerate}
 
 While it can be useful to develop an abstract understanding of metric spaces, for the purposes of this class it's fine if you think of metric spaces as Euclidean space (i.e. $(\mathbb{R}^N, d_2)$, which I will simply denote as $\mathbb{R}^N$).
+\begin{remark}
+  Someone asked in class about the intuition for the class of $d_p$ metrics. 
+  \begin{itemize}[label=$\bullet$]
+    \item $d_2$ is the Euclidean distance, the ``straight line'' between two points.
+
+    \item $d_{\infty}$ is the largest distance.
+
+    \item $d_1$ is the absolute distance.
+  \end{itemize}
+
+  What about $d_p$?
+  \begin{itemize}[label=$\bullet$]
+    \item One intuition is that it ``bridges the gap'' between $d_1$ and $d_{\infty}$, which are the limits in either direction.
+
+    \item Another is that $d_p$ can generate curvatures, and in many applications the arc distance is of interest, rather than the straight-line distance (think about tracing the path between two points along a surface).
+  \end{itemize}
+\end{remark}
 
 % ---------------------------------------------------------------------
 \subsection{Introduction to Topology}
@@ -460,7 +515,7 @@ Some examples of open and closed sets:\footnote{Note the definition of openness 
 
 \begin{proof}
   The complement of  the empty set is $\mathbb{R}^N \setminus \varnothing = \mathbb{R}^N$, the entire space itself. Take any $x \in \mathbb{R}^N$ and any finite $\varepsilon > 0$; by definition $B_{\varepsilon}(x) \subseteq \mathbb{R}^N$, so $\mathbb{R}^N$ is open, and $\varnothing$ is closed.
-  
+
   The empty set is open by vacuity: Pick $\varepsilon > 0$ and any $x \in \varnothing$; we have $B_{\varepsilon}(x) = \varnothing \subseteq \varnothing$. Albeit correct, I'll admit this is not  the most intuitive argument. By contradiction, if $\varnothing$ is not open $\exists x \in \varnothing, \varepsilon > 0, y \in B_{\varepsilon}(x)$ s.t. $y \notin \varnothing$. However, $\varnothing$ is empty, so $x \in \varnothing$ is a contradiction. Since the empty set is open, $\mathbb{R}^N$ is closed, completing the proof.
 \end{proof}
 
@@ -556,6 +611,10 @@ Intuitively, it's any point in $S$ that can be arbitrarily close to other points
     d(x, a) < \delta \implies |f(x) - L| < \varepsilon
   \]
 \end{definition}
+
+\begin{remark}
+  There was a question in class about why $s \ne x$, which boils down to an earlier requirement that set elements must be unique, and thus a limit point is a point that can be ``approached''; if the only element that approaches $x$ is $s = x$ then $s$ cannot be approached; it would just be the function evaluated at $x, f(x)$, rather than the ``limit'' as we define it here.
+\end{remark}
 
 \begin{definition}
   Let $S \subseteq \mathbb{R}$, $f: S \to \mathbb{R}$, and $s$ a limit point of $S$. The limit from above or from the right is
