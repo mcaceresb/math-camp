@@ -6,7 +6,7 @@ Brown Math Camp 2022
 ### Lecture Notes
 
 - [Lecture 1](out/lectures/Math%20Camp%202022%20Lecture%201%20-%20Proofs,%20Metric%20Spaces,%20Topology.pdf)
-- Lecture 2
+- [Lecture 2](out/lectures/Math%20Camp%202022%20Lecture%202%20-%20Sequences,%20Continuity.pdf)
 - Lecture 3
 - Lecture 4
 - Lecture 5
@@ -23,7 +23,7 @@ Brown Math Camp 2022
 
 ### Problem Sets
 
-- Problem Set 1
+- [Problem Set 1](out/homework/Math%20Camp%202022%20Problem%20Set%201.pdf)
 - Problem Set 2
 - Problem Set 3
 
@@ -39,4 +39,8 @@ Brown Math Camp 2022
 - [Suggested Solutions 1](out/homework/Math%20Camp%202022%20Suggested%20Solutions%201.pdf)
 - [Suggested Solutions 2](out/homework/Math%20Camp%202022%20Suggested%20Solutions%202.pdf)
 - [Suggested Solutions 3](out/homework/Math%20Camp%202022%20Suggested%20Solutions%203.pdf)
+-->
+
+<!--
+To deploy with mkdocs; run `mkdocs gh-deploy`
 -->
