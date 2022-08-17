@@ -17,3 +17,6 @@ env.PDF(target = '#out/homework/Math Camp 2022 Suggested Solutions 1.pdf',
 # 
 # env.PDF(target = '#out/homework/Math Camp 2022 Suggested Solutions 3.pdf',
 #         source = '#src/homework/solutions3.tex')
+
+env.link(target = ['#docs/out/homework/Math Camp 2022 Problem Set 1.pdf'],
+         source = ['#out/homework/Math Camp 2022 Problem Set 1.pdf'])
