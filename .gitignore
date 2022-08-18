@@ -3,5 +3,6 @@ __pycache__
 *tmp*
 !out
 .sconsign.dblite
+src/students
 out/**/*log
 # **/*log

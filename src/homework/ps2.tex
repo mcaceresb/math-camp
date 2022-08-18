@@ -1,0 +1,114 @@
+%----------------------------------------------------------------------
+\documentclass{article}
+
+\usepackage[homework]{brownpreamble}
+\lhead{\color{light-gray} \itshape Math Camp 2022}
+\rhead{\color{light-gray} \itshape Problem Set 2}
+\renewcommand\sectiontype{Problem Set \thesection\ }
+% \renewcommand\thesection{\arabic{section}}
+\setcounter{section}{1}
+
+%----------------------------------------------------------------------
+\begin{document}
+\displayoptions
+
+% ---------------------------------------------------------------------
+\section{}
+
+\begin{enumerate}[1.]
+  \item \textit{Using the fact that every Cauchy sequence converges, prove the Bolzano-Weierstrass theorem. (Hint: First show every bounded sequence admits a monotonic sub-sequence. Second, show bounded monotonic sequences are Cauchy.)}
+
+  \item {\itshape
+    Let $(x_m)$ be any sequence. We define
+    \[
+      \limsup_{m \to \infty} = \lim_{m \to \infty} \left(\sup_{k \ge m} x_k\right)
+    \]
+
+    and
+    \[
+      \liminf_{m \to \infty} = \lim_{m \to \infty} \left(\inf_{k \ge m} x_k\right)
+    \]
+
+    Consider $(x_m) \in \mathbb{R}$ bounded. Show $x_m \to x \iff \limsup x_m = \liminf x_m = x$.}
+
+  \item {\itshape
+    Given a set $A \subseteq \mathbb{R}$ we say that a function $f: S \to \mathbb{R}$ is \keyword{uniformly continuous} if $\forall \varepsilon > 0 ~~ \exists \delta > 0$ s.t. $\forall x, y \in S$
+    \[
+      |x - y| < \delta \implies |f(x) - f(y)| < \varepsilon
+    \]
+
+    The main difference between this and the usual definition of continuity, is that the latter can have different values of $\delta$ given $x, y \in S$. If a function is uniformly continuous, we need $\delta$ picked for any $x, y$ (although it might depend on $\varepsilon$.)
+    \begin{enumerate}[a)]
+      \item Take $f(x) = 1 / x$ for $f: (0, 1) \to \mathbb{R}$. Show $f$ is continuous.
+
+      \item Show that for any two sequences $(x_m), (y_m) \in S$ with $\lim_{m \to \infty} (x_m - y_m) = 0$ and s.t. $\exists \varepsilon > 0$ with $|g(x_m) - g(y_m)| > \varepsilon ~~ \forall m \in \mathbb{N}$, we have $g: S \to \mathbb{R}$ is not uniformly continuous.
+
+      \item Use the result above to check that $f$ defined in (a) is not uniformly continuous.
+
+      \item Show that if $(x_n) \in S$ is Cauchy, then $(y_m)$ defined by $y_m = h(x_m)$ is also Cauchy when $h: S \to \mathbb{R}$ is uniformly continuous.
+
+      \item Check $x_m = 1 / m$ is Cauchy but $x_m = m$ is not.
+
+      \item Use the sequences in (e) and the result in (d) to give an alternative proof that the function defined in (a) is not uniformly continuous.
+    \end{enumerate}
+  }
+
+  \item {\itshape
+    A function $f: \mathbb{R}^N \to \mathbb{R}$ is homogeneous of degree $r \in \mathbb{Z}$ if $\forall t > 0, x \in \mathbb{R}^N$ we have
+    \[
+      f(tx) = t^r f(x)
+    \]
+
+    \begin{enumerate}[a)]
+      \item Show if $f(x)$ is homogeneous of degree $r$ the partial derivative is homogeneous of degree $r - 1$.
+
+      \item Show that if $f(x)$ is homogeneous of degree $r$ and differentiable  then for any $\widetilde{x}$ we have
+        \[
+          \sum^{N}_{n = 1} \dfrac{\partial f(\widetilde{x})}{\partial x_n} \widetilde{x}_n = r f(\widetilde{x})
+        \]
+
+      that is, $\nabla f(\widetilde{x}) \cdot \widetilde{x} = r f(\widetilde{x})$.\textit{}
+    \end{enumerate}
+  }
+
+  \item {\itshape
+    Take the simplified IS-LM system of equations
+    \[
+      Y - C(Y - T) - I(r) = G
+      \quad\quad
+      M^D(Y, r) = M^S
+    \]
+
+    Suppose that $0 < C^\prime(x) < 1, I^\prime(r) < 0, \dfrac{\partial M}{\partial Y} > 0$ and $\dfrac{\partial M}{\partial r} < 0$.
+    \begin{enumerate}[a)]
+      \item Use the IFT to check that one can represent the endogenous variables $Y, r$ as a function of the exogenous variables $G, M^S, T$
+
+      \item Check the sign of the effect of an infinitesimal increase in government spending $G$ on $r$ and $Y$ keeping $M^S$ and $T$ fixed.
+    \end{enumerate}
+  }
+
+  \item {\itshape
+    Take the correspondence $f: \mathbb{R}^3_{++} \to \mathbb{R}^2_{++}$ (i.e. with strictly posisive arguments) defined by
+    \[
+      f(p_1, p_2, w)
+      =
+      \begin{cases}
+        \left(\dfrac{w}{2p_1}, \dfrac{w}{2 p_2}\right)
+          & \text{if } \dfrac{w^2}{4 p_1 p_2} \ne 1 \\[6pt]
+        \varnothing
+          & \text{if } \dfrac{w^2}{4 p_1 p_2} = 1
+      \end{cases}
+    \]
+
+    \begin{enumerate}
+      \item Is $f$ upper hemicontinuous?
+
+      \item Is $f$ lower hemicontinuous?
+    \end{enumerate}
+
+    (Hint: Use sequential definitions.)
+  }
+\end{enumerate}
+
+%----------------------------------------------------------------------
+\end{document}
