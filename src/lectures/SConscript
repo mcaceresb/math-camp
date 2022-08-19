@@ -26,3 +26,6 @@ env.link(target = ['#docs/out/lectures/Math Camp 2022 Lecture 2 - Sequences, Con
 
 env.link(target = ['#docs/out/lectures/Math Camp 2022 Lecture 3 - Compactness, EVT, Correspondences.pdf'],
          source = ['#out/lectures/Math Camp 2022 Lecture 3 - Compactness, EVT, Correspondences.pdf'])
+
+env.link(target = ['#docs/out/lectures/Math Camp 2022 Lecture 4 - Differentiation, IFT, Unconstrained Optimization.pdf'],
+         source = ['#out/lectures/Math Camp 2022 Lecture 4 - Differentiation, IFT, Unconstrained Optimization.pdf'])

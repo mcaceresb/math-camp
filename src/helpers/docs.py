@@ -14,7 +14,7 @@ OUT  = ROOT / 'docs'
 OUT.mkdir(parents = True, exist_ok = True)
 
 
-# Helper 3
+# Helper 4.
 def main():
     print(sys.version)
     print(sys.platform if 'win' in sys.platform else os.linesep.join(os.uname()))
