@@ -1274,7 +1274,7 @@ Let us take $f(x) = 2x^3 - 3x^2$ again. We saw that $Df(x) = 6x^2 - 6x = 0$ at $
   \nonumber
 \end{equation}
 
-What about $f(x, y) = x^2 - y^2 + 9xy$? Recall
+What about $f(x, y) = x^3 - y^3 + 9xy$? Recall
 \[
   D f(x, y) = \left[\begin{matrix}
     3x^2 + 9y \\
@@ -1408,13 +1408,17 @@ with $f_{xy}$ denoting the partials with respect to $x$ and then $y$.
 \begin{theorem}
   Let $f: A \to \mathbb{R}$ be a twice continuously differentiable function on an open set $A \subseteq \mathbb{R}^N$.
   \begin{enumerate}
-    \item $f(x)$ is concave $\iff$ $D^2f(x)$ is negative semidefinite. (Strictly concave iff negative definite.)
-    \item $f(x)$ is convex $\iff$ $D^2f(x)$ is positive semidefinite. (Strictly convex iff positive definite.)
+    \item $f(x)$ is concave $\iff$ $D^2f(x)$ is negative semidefinite. (Negative definite $\implies$ strictly concave.)
+    \item $f(x)$ is convex $\iff$ $D^2f(x)$ is positive semidefinite. (Positive definite $\implies$ strictly convex.)
   \end{enumerate}
 \end{theorem}
 
 \begin{remark}
-  The univariate intuition generalizes. The first derivative of a concave function is decreasing (the function is either increasing at a decreasing rate or decreasing at an increasing rate), so the second derivative must be negative; the converse for a convex function. To see why this intuition is sufficient for multivariate functions, consider
+  As was pointed out during the lecture, $f(x) = x^4$ is convex but the Hessian is not positive definite everywhere. In particular, $D^2 f(0) = 0$. Hence while a positive definite Hessian implies concavity, the converse only gives weak concavity.
+\end{remark}
+
+\begin{remark}
+  The univariate intuition for concave and convex functions generalizes. The first derivative of a concave function is decreasing (the function is either increasing at a decreasing rate or decreasing at an increasing rate), so the second derivative must be negative; the converse for a convex function. To see why this intuition is sufficient for multivariate functions, consider
   \begin{align*}
     g(\alpha) = f(\alpha x + (1 - \alpha) y)
   \end{align*}
