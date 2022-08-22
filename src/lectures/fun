@@ -1,7 +1,0 @@
-\begin{itemize}[label=$\bullet$]
-  \item I first encountered the definition of compactness several years ago during my undergraduate real analysis course. To be perfectly honest, I thought the definition was rather disconcerting,\footnote{To be candid, I legit thought ``the fuck is this?''}  and I heavily relied on the ``closed and bounded'' intuition and the sequential compactness characterization to get through that part of the course.
-
-    My point is that you shouldn't be too concerned if you don't find compactness terribly easy at first. It is a difficult and deep concept to wrap your head around (at least I think so). I am sure you'll get there (:
-
-  \item It is rumored than when John Nash came to John Von Neumann to discuss his ideas and his proof, the latter interrupted to dismiss the result as trivial: ``That's just a fixed point theorem,'' he said. I always found this anecdote to be quite fascinating, in particular given the extent to which game theory plays a role in modern economics.
-\end{itemize}
