@@ -1328,7 +1328,7 @@ with $f_{xy}$ denoting the partials with respect to $x$ and then $y$.
 \end{enumerate}
 
 \begin{remark}
-  One way to think about why it is that definiteness of the Hessian gives local extrema is to use a ``multivariate'' version of Taylor's theorem. Let $f: A \to \mathbb{R}$ be a twice continuously differentiable function on an open set with $Df(x^*) = 0$ for some $x^*$. Note any $x$ can be written as $x^* + \alpha z$ for some $z$. Fix some distance $\delta$ from $x^*$ and consider any $x \in B_{\delta}(x^*)$ and the corresponding $z$. Let $g(\alpha) = f(x^* + \alpha z)$ and consider the second-order Taylor expansion of $g$ around $\alpha = 0$:
+  One way to think about why it is that definiteness of the Hessian gives local extrema is to use a ``multivariate'' version of Taylor's theorem. Let $f: A \to \mathbb{R}$ be a twice continuously differentiable function on an open set with $Df(x^*) = 0$ for some $x^*$. Note any $x$ can be written as $x^* + \alpha z$ for some unit vector $z$ and some $\alpha$. Note all such $x$ are at most $\alpha$ away from $x^*$ (i.e. $x \in B_{\alpha}(x^*)$). Let $g(\alpha) = f(x^* + \alpha z)$ and consider the second-order Taylor expansion of $g$ around $\alpha = 0$:
   \begin{align*}
     g(\alpha)
     &
@@ -1354,7 +1354,7 @@ with $f_{xy}$ denoting the partials with respect to $x$ and then $y$.
     h(\alpha) \alpha^2
   \end{align*}
 
-  with $h(\alpha) \to 0$ as $\alpha \to 0$. We know $Df(x^*) = 0$ by premise. If $D^2f(x^*)$ is positive definite, it turns out there exists some $\lambda$ s.t. $\lambda z^T z > 0$ for any $z$.\footnote{We will discuss this in the last lecture, but a symmetric matrix is PD iff all its eigenvalues are strictly positive. Further, a symmetric matrix $S$ can be decomposed into $C \Lambda C^T$ with $\Lambda$ a diagonal matrix of eigenvalues and $C$ a matrix of eigenvectors. Hence $z^T S z = z^T C \Lambda C^T z = p^T \Lambda p = \sum_{i} \lambda_i p_i^2$ for $p = C^T z$. Let $\lambda = \min_i \lambda_i$ and we have the result. Last, a symmetric matrix is ND iff all its eigenvalues are strictly negative, and the analogous steps give the result with the inequality flipped.} Hence
+  with $h(\alpha) \to 0$ as $\alpha \to 0$. We know $Df(x^*) = 0$ by premise. If $D^2f(x^*)$ is positive definite, it turns out there exists some $\lambda$ s.t. $z^T D^2f(x^*) z \ge \lambda z^T z = \lambda > 0$ for any unit vector $z$.\footnote{We will discuss this in the last lecture, but a symmetric matrix is PD iff all its eigenvalues are strictly positive. Further, a symmetric matrix $S$ can be decomposed into $C \Lambda C^T$ with $\Lambda$ a diagonal matrix of eigenvalues and $C$ an orthonormal matrix of eigenvectors. Hence $z^T S z = z^T C \Lambda C^T z = p^T \Lambda p = \sum_{i} \lambda_i p_i^2$ for $p = C^T z$. Let $\lambda = \min_i \lambda_i$ and we have the result, since $z^T S z \ge \lambda p^T p = z^T C C^T z = z^T z$ since $C$ is orthonormal. Last, a symmetric matrix is ND iff all its eigenvalues are strictly negative, and the analogous steps give the result with the inequality flipped.} Hence
   \begin{align*}
     f(x^* + \alpha z)
     =
@@ -1377,7 +1377,7 @@ with $f_{xy}$ denoting the partials with respect to $x$ and then $y$.
     f(x^* + \alpha z) > f(x^*)
   \end{align*}
 
-  for any such $z$; the last step is to remark is this holds for any $x \in B_{\delta \alpha}(x^*)$. Hence if $D^2f(x^*)$ is PD we have a local min. The steps for a local max are analogous (note the $\lambda$ will be negative).
+  for any such $z$; the last step is to remark once again $x = x^* + \alpha z \in B_{\alpha}(x^*)$. Hence if $D^2f(x^*)$ is PD we have a local min for the $\alpha$-neighborhood. The steps for a local max are analogous (note $\lambda$ will be negative).
 \end{remark}
 
 \subsubsection{Concavity and Convexity}

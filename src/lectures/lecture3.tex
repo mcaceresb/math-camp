@@ -908,7 +908,7 @@ Some remarks:
 \end{itemize}
 
 \begin{theorem}\label{thm:lecture3_compactness_lhc_sequential}
-  $\Gamma: X \toto Y$ is lhc at $x \in X \iff \forall (x_m) \in X$ s.t. $x_m \to x \in X$ and $\forall y \in \Gamma(x) ~~ \exists (y_m) \in Y$ s.t. $y_m \to y$ and $y_m \in \Gamma(x_m)$.
+  $\Gamma: X \toto Y$ is lhc at $x \in X \iff \forall (x_m) \in X$ s.t. $x_m \to x \in X$ and $\forall y \in \Gamma(x) ~~ \exists (y_m) \in Y$ s.t. $y_m \to y$ and $y_m \in \Gamma(x_m)$ whenever $m \ge M$ for some $M$.\footnote{I originally did not have this last requirement; this just says $\exists$ sequence whose tail end is in the correspondence and converges to $y \in \Gamma(x)$. If $\Gamma(x_m)$ is non-empty then $y_m$ for $m < M$ can just be any arbitrary element of $\Gamma(x_m)$ and then you wouldn't need the caveat. However, I want to define lhc even if $\Gamma(x_m)$ is empty for finitely many $m$, which requires me to add this caveat of the tail end.}
 \end{theorem}
 
 Given both sequential definitions of uhc and lhc, we repeat our intuition:
