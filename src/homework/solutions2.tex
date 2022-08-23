@@ -100,75 +100,57 @@
 
     Consider $(x_m) \in \mathbb{R}$ bounded. Show $x_m \to x \iff \limsup x_m = \liminf x_m = x$.}
 
-    \solution First we do $\implies$, that is, $x_m \to x$. We want to show that $\limsup x_m = \liminf x_m = x$. By definition,
+    \solution First $\implies$, that is, given $x_m \to x$ we show $\limsup x_m = \liminf x_m = x$. By definition,
     \[
       \limsup_{m \to \infty} x_m
       =
       \lim_{m \to \infty} \sup_{k \ge m} x_k
     \]
 
-    We want to show that for every $\varepsilon > 0$, there is some $M$ s.t. $m > M$ gives
+    Let $b_m \equiv \sup_{k \ge m} x_k$; we want to show $b_m \to x$. By definition of the $\sup$, we know for any $\varepsilon_m = 1/m > 0$ there exists some $x_{n_m}$ with $n_m \ge m$ s.t. $b_m - \varepsilon_m < x_{n_m} \le b_m$. Now by the triangle inequality,
     \[
-      |\sup_{k \ge m} x_k - x| < \varepsilon
-      \quad\quad
-      x - \varepsilon < \sup_{k \ge m} x_k < x + \varepsilon
+      d(b_m, x) \le d(b_m, x_{n_m}) + d(x, x_{n_m}) < 1/m + d(x, x_{n_m})
     \]
 
-    Suppose not; since $x_m \to x$, where is some $M$ s.t. $|x_m - x| < \varepsilon$. Hence for $m > N, m > M$, we have
+    Pick any $\varepsilon > 0$; we know $\exists M$ s.t. $m \ge M$ implies $d(x_{n_m}, x) < \varepsilon/2$ (since $x_{n_m}$ is a sub-sequence and must share the main sequence's limit). Further, for $m > 2/\varepsilon$ we have $d(b_m, x_{n_m}) < 1/m < \varepsilon/2$. Hence
     \[
-      \sup_{k \ge m} x_k < x - \varepsilon < x_m
-      \text{ or }
-      x_m < x + \varepsilon < \sup_{k \ge m} x_k
+      m > \max\set{2/\varepsilon, M}
+      \implies
+      d(b_m, x) < \varepsilon/2 + \varepsilon/2 = \varepsilon
     \]
 
-    The first statement is not true, or $\sup_{k \ge m} x_k$ cannot be the $\sup$, and the second statement cannot be true, or $x + \varepsilon$ would instead be the $\sup$. Hence $|\sup_{k \ge m} x_k - x| < \varepsilon$ for $m > \max\set{M, N}$. The argument for $\inf$ is completely analogous; if we assume the $\inf$ does not converge to $x$, we find $\widetilde{\varepsilon} > 0, \widetilde{M}, \widetilde{N}$ s.t.
+    which proves $b_m \to x$. The steps for the $\inf$ are analogous. Now we show $\impliedby$.  Note
     \[
-      \inf_{k \ge m} x_k < x - \widetilde{\varepsilon} < x_m
-      \text{ or }
-      x_m < x + \widetilde{\varepsilon} < \inf_{k \ge m} x_k
+      a_m \equiv \inf_{k \ge m} x_k \le x_m \le \sup_{k \ge m} x_k \equiv b_m
     \]
 
-    for $m > \max\set{\widetilde{M}, \widetilde{N}}$. Both statements are, again, false: The first because it means $x - \widetilde{\varepsilon}$ would tbe the $\inf$, and the second because the $\inf$ cannot be greater than $x_m$.
-
-    Now we show $\impliedby$.  We want to show that for every $\varepsilon > 0$, there is some $M$ s.t.
+    for each $m$, with $a_m \to x, b_m \to x$  by premise. This already shows that $x_m \to x$, but let's show this explicitly. We want to show that for every $\varepsilon > 0$, there is some $M$ s.t.
     \[
-      m > M \implies |x_m - x| < \varepsilon
+      m > M \implies d(x_m, x) < \varepsilon
     \]
 
-    We have that
+    Note $d(x_m, x) < \varepsilon \iff x - \varepsilon < x_m < x + \varepsilon$. For any $\varepsilon > 0$, there is some $M_1, M_2$ s.t.
     \[
-      \sup_{k \ge m} x_k \to x
+      m > M_1 \implies d(b_m, x) < \varepsilon
       \text{ and }
-      \inf_{k \ge m} x_k \to x
-    \]
-
-    So for $\varepsilon > 0$, there is some $M_1, M_2$ s.t.
-    \[
-      m > M_1 \implies |\sup_{k \ge m} x_k - x| < \varepsilon
-      \text{ and }
-      m > M_2 \implies |\inf_{k \ge m} x_k - x| < \varepsilon
+      m > M_2 \implies d(a_m, x) < \varepsilon
     \]
 
     Take $M > \max\set{M_1, M_2}$. Then we have
     \[
-      x - \varepsilon < \inf_{k \ge m} x_k < x + \varepsilon
+      x - \varepsilon < a_m < x + \varepsilon
       \text{ and }
-      x - \varepsilon < \sup_{k \ge m} x_k < x + \varepsilon
+      x - \varepsilon < b_m < x + \varepsilon
     \]
 
-    To finish, we simply need to note that
+    To finish, we leverage $a_m \le x_m \le b_m$. Hence we have
     \[
-      \inf_{k \ge m} x_k \le x_m \le \sup_{k \ge m} x_k
-    \]
-
-    by definition of $\inf$ and $\sup$. Hence we have
-    \[
-      x - \varepsilon < \inf_{k \ge m} x_k \le x_m \le \sup_{k \ge m} x_k < x + \varepsilon
+      x - \varepsilon < a_m \le x_m \le b_m < x + \varepsilon
       \implies
       x - \varepsilon < x_m < x + \varepsilon
     \]
 
-    which is what we wanted.
+    which is what we wanted. This shows generically $a_m \le x_m \le b_m$ with $a_m, b_m \to x$ implies $x_m \to x$.
 
   \item {\itshape
     Given a set $A \subseteq \mathbb{R}$ we say that a function $f: S \to \mathbb{R}$ is \keyword{uniformly continuous} if $\forall \varepsilon > 0 ~~ \exists \delta > 0$ s.t. $\forall x, y \in S$
@@ -622,7 +604,7 @@
         \begin{align*}
           \varepsilon
           >
-          \dfrac{2}{M} 
+          \dfrac{2}{M}
           =
           \dfrac{2M}{M^2}
           >
@@ -650,8 +632,8 @@
         (in particular this works for any $\varepsilon < \min\set{y - (w / 2p_1), (w/2p_2) - y}$). By convergence, $\exists M_1$ s.t.
         \begin{align*}
           \dfrac{w^m}{2 p_1^m} < \dfrac{w}{2 p_1} + \varepsilon
-          < 
-          y 
+          <
+          y
           <
           \dfrac{w}{2 p_2} - \varepsilon
           <
@@ -661,7 +643,7 @@
         whenever $m \ge M_1$ and by the Archimedean principle (!) there is some $M_2$ s.t. $1 / M_2 < \varepsilon$. Let $M \equiv \max\set{M_1, M_2}$ and we have that the sequence $y_m = y + \dfrac{1}{m}$ is s.t.
         \begin{align*}
           \dfrac{w^m}{2 p_1^m}
-          < 
+          <
           y_m
           <
           \dfrac{w^m}{2 p_2^m}
