@@ -1213,7 +1213,7 @@ Some useful properties of Riemann integrals (given $f, g: [a, b] \to \mathbb{R}$
 \label{ssub:fundamental_theorem_of_calculus}
 
 \begin{definition}
-  Let $f: [a, b] \to \mathbb{R}$ be Riemann integrable on $[a, b]$ and $F: [a, b] \to \mathbb{R}$ be differentiable on $(a, b)$. $F$ is called the \keyword{anti-derivative} of $f$ if
+  Let $f: [a, b] \to \mathbb{R}$ be Riemann integrable on $[a, b]$ and $F: [a, b] \to \mathbb{R}$ be differentiable on $(a, b)$ and continuous on $[a, b]$. $F$ is called the \keyword{anti-derivative} of $f$ if
   \begin{align*}
     F^{\prime}(x) = f(x)
   \end{align*}
@@ -1250,6 +1250,39 @@ Some useful properties of Riemann integrals (given $f, g: [a, b] \to \mathbb{R}$
       \end{align*}
   \end{enumerate}
 \end{theorem}
+
+\begin{remark}
+  In class there was a discussion about why continuity of $f$ was required. We want the function
+  \[
+    F(x) \equiv \displaystyle\int_a^x f(t) dt
+  \]
+
+  to be differentiable, and if $f$ is not continuous at some point $c$ then $F$ will not be differentiable at that point. However, within this discussion I made a statement that I believe was incorrect: In particular I said that if $f$ was not continuous, $F$ might not be continuous. Discontinuities in $f$ introduce kinks in $F$, but I believe preserve continuity. The example I gave was $f: [0, 2] \to \mathbb{R}$
+  \begin{align*}
+    f(x) & = 1(x \le 1) + 2(x > 1)
+    \\
+    \int_{0}^{2} f(x) dx
+    & =
+    \int_{0}^{2} 1(x \le 1) + 2(x > 1) dx
+    \\
+    & =
+    \int_{0}^{2} 1(x \le 1) dx
+    +
+    \int_{0}^{2} 2(x > 1) dx
+    \\
+    & =
+    \int_{0}^{1} 1 dx
+    +
+    \int_{1}^{2} 2 dx
+    \\
+    & =
+    x \cdot 1(x \le 1)
+    +
+    (2x - 1) \cdot 2(x > 1)
+  \end{align*}
+
+  which has a kink at $1$ but remains continuous. Intuitively, a function can have discontinuities and remain integrable as long as there are not too many discontinuities. The technical requirement is that $f$ is continuous ``almost everywhere'' (which means the set of discontinuities must have measure $0$). It's important to remember that this requirement is still imposing that $f$ be continuous everywhere it's not discontinuous. To wrap your mind around this, one way to impose ``nice'' discontinuities for integrability is to, for example, make $f$ jump at each integer, and $f$ would remain integrable; one way to impose not so nice discontinuities is to make make $f$ jump at each rational number, and then $f$ would no longer be integrable (as it would now be discontinuous everywhere).
+\end{remark}
 
 \subsubsection{Integration Rules}
 \label{ssub:integration_rules}
@@ -1305,6 +1338,94 @@ From the FTC we can derive a number of useful rules to help us evaluate integral
         (1 + \sin x) \cos x
       \end{align*}
     \end{example}
+
+    \begin{remark}
+      There was a question during class about replacing $a(x), b(x)$ with $\pm \infty$. If we take limits of constant functions $a(x), b(x)$ to infinity we can, and this way we gain additional insight from Leibniz' rule:
+    \begin{align*}
+      \lim_{c \to \infty}
+      \dfrac{d}{dx} \int_{-c}^{c} f(x, t) dt
+      =
+      \lim_{c \to \infty}
+      f(x, c) \dfrac{d (c)}{dx}
+      -
+      f(x, -c) \dfrac{d (-c)}{dx}
+      +
+      \int_{-c}^{c}
+      \dfrac{\partial f(x, t)}{\partial x} dt
+    \end{align*}
+
+    with $c$ some constant. Hence $dc/dx = 0$, and we can conclude
+    \begin{align*}
+      \dfrac{d}{dx} \int_{-\infty}^{\infty} f(x, t) dt
+      =
+      \int_{-\infty}^{\infty}
+      \dfrac{\partial f(x, t)}{\partial x} dt
+    \end{align*}
+
+    This comes up in metrics in a few ways. For instance, suppose we have a random variable $X$ with pdf $f$:
+    \begin{align*}
+      \dfrac{d}{d\theta} E\left[g(X, \theta)\right]
+      =
+      \dfrac{d}{d\theta} \int_{-\infty}^{\infty} g(x, \theta) f(x) dx
+      =
+      \int_{-\infty}^{\infty} \dfrac{\partial}{\partial\theta} g(x, \theta) f(x) dx
+      =
+      E\left[
+        \dfrac{\partial}{\partial\theta} g(x, \theta)
+      \right]
+    \end{align*}
+
+    Another way it comes up is in maximum likelihood. Consider some random variable $x_i$ and some parameter $\theta_0$ and the log likelihood $\log(f(x_i | \theta_0))$. We maximize
+    \begin{align*}
+      \max_{\theta \in \Theta} E\left[\log(f(x_i | \theta))\right]
+    \end{align*}
+
+    where $\Theta$ is the parameter space and the expectation is taken over the true likelihood $\log(f(x_i | \theta_0))$. Note the FOC
+    \begin{align*}
+      \dfrac{d}{d\theta} E\left[\log(f(x_i | \theta))\right]
+      =
+      E\left[\dfrac{\partial}{\partial\theta} \log(f(x_i | \theta))\right]
+      =
+      E\left[\dfrac{\partial_{\theta} f(x_i | \theta)}{f(x_i | \theta)}\right]
+      =
+      0
+    \end{align*}
+
+    If $\theta = \theta_0$ the true value, we have
+    \begin{align*}
+      E\left[\dfrac{\partial_{\theta} f(x_i | \theta_0)}{f(x_i | \theta_0)}\right]
+      &
+      =
+      \int_{-\infty}^{\infty}
+      \dfrac{\partial_{\theta} f(x_i | \theta_0)}{f(x_i | \theta_0)}
+      f(x_i | \theta_0)
+      dx_i
+      \\
+      &
+      =
+      \int_{-\infty}^{\infty}
+      \partial_{\theta} f(x_i | \theta_0)
+      dx_i
+    \end{align*}
+
+    Now we apply Leibniz rule in reverse to find
+    \begin{align*}
+      \int_{-\infty}^{\infty}
+      \partial_{\theta} f(x_i | \theta_0)
+      dx_i
+      =
+      \dfrac{d}{d\theta}
+      \int_{-\infty}^{\infty}
+      f(x_i | \theta_0)
+      dx_i
+      =
+      \dfrac{d}{d\theta} 1
+      =
+      0
+    \end{align*}
+
+    where $\int_{-\infty}^{\infty} f(x_i | \theta_0) dx_i = 1$ because $f$ is a pdf. This  shows that if $\theta= \theta_0$ then the FOC holds.
+    \end{remark}
 
   \item \keyword{Integration by Parts}: Let $u, v: [a, b] \to \mathbb{R}$ be continuously differentiable and s.t. $u(x) v^\prime(x)$ is Riemann integrable. Then
     \[

@@ -32,3 +32,6 @@ env.link(target = ['#docs/out/lectures/Math Camp 2022 Lecture 4 - Differentiatio
 
 env.link(target = ['#docs/out/lectures/Math Camp 2022 Lecture 5 - Constrained Optimization, Envelope Theorem, Integration.pdf'],
          source = ['#out/lectures/Math Camp 2022 Lecture 5 - Constrained Optimization, Envelope Theorem, Integration.pdf'])
+
+env.link(target = ['#docs/out/lectures/Math Camp 2022 Lecture 6 - Linear Algebra, ODE.pdf'],
+         source = ['#out/lectures/Math Camp 2022 Lecture 6 - Linear Algebra, ODE.pdf'])

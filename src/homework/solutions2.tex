@@ -535,7 +535,7 @@
 
     (Note $\left(\dfrac{w}{2p_1}, \dfrac{w}{2 p_2}\right)$ is a single point, a coordinate.)}
 
-    \solution I intended the ``correspondence'' to be made up of singleton points, and the point of this exercise was to show you can poke a hole in a continuous function and lose continuity but still get upper or lower hemicontinuity. However, some people interpreted this as an interval (in which case we'd need to write $f: R^{3}_{++} \toto \mathbb{R}$), so I will do the solution both ways (i.e. if the correspondence was singleton-valued or interval-valued).
+    \solution I intended the ``correspondence'' to be made up of singleton points, and the point of this exercise was to show you can poke a hole in a continuous function and lose continuity but still get upper or lower hemicontinuity. However, some people interpreted this as an interval (in which case we'd need to write $f: R^{3}_{++} \toto \mathbb{R}$), so do the solution both ways (i.e. if the correspondence was singleton-valued or interval-valued).
 
     \begin{enumerate}
       \item \textit{Is $f$ upper hemicontinuous?}
@@ -565,55 +565,32 @@
           (1, 1)
         \]
 
-        Hence $y_m \to 1$ and there is no sub-sequence of $y_m$ that converges to a point in the empty set. For the interval-valued interpretation of the problem we need a slight modification since the intervals would all be empty. Consider instead
+        Hence $y_m \to 1$ and there is no sub-sequence of $y_m$ that converges to a point in the empty set. For the interval-valued interpretation we cannot use the sequential definition given this is an open interval. (If they were closed intervals then a very similar proof would be sufficient since they would be closed and bounded real intervals. An earlier version of this solution had such a proof, but it was pointed out to me the intervals were open in the interval interpretation.)
+
+        So fix a point $\widetilde{x} \equiv (\widetilde{p}_1, \widetilde{p}_2, \widetilde{w})$ and consider instead the open set
         \[
-          p^m_1
+          O
           =
-          1 + \dfrac{1}{m}
-          \quad\quad
-          p^m_2
-          =
-          1 - \dfrac{1}{m}
-          \quad\quad
-          w_m = 2
+          \left(
+            \dfrac{\widetilde{w}}{2 \widetilde{p}_1}, \dfrac{\widetilde{w}}{2 \widetilde{p}_2}
+          \right)
+          \subseteq
+          O
         \]
 
-        and
+        We can do this because the point is fixed, so they are just values (i.e. not numbers). But now the upper inverse image will contain this point, and there is no neighborhood of $\widetilde{x}$ that is entirely contained in $O$. For any $\varepsilon > 0$, the point $(\widetilde{p}_1, \widetilde{p}_2, \widetilde{w} - \varepsilon) \in B_{\varepsilon}(\widetilde{x})$, yet
         \[
-          y_m
-          \in
-          f(p^m_1, p^m_2, w^m)
-          =
-          \left(\dfrac{2}{2 (1 + 1 / m)}, \dfrac{2}{2 (1 - 1 / m)}\right)
-          =
-          \left(\dfrac{m}{m + 1}, \dfrac{m}{m - 1}\right)
-          \to
-          (1, 1)
+          \left(
+            \dfrac{\widetilde{w} - \varepsilon}{2 \widetilde{p}_1}, \dfrac{\widetilde{w} - \varepsilon}{2 \widetilde{p}_2}
+          \right)
+          \cancel\subseteq
+          O
         \]
 
-        Since $m / (m + 1) < y_m < m / (m - 1)$ for  each $m$ it must be that $y_m \to 1$. Another way to see it is to say that for any such sequence $y_m$, WLOG let $m \ge n$ and note
-        \begin{align*}
-          d(y_m, y_n)
-          <
-          \dfrac{m}{m - 1} - \dfrac{m}{m + 1}
-          =
-          \dfrac{2m}{m^2 - 1}
-        \end{align*}
-
-        For any $\varepsilon > 0$, if $M > 2/\varepsilon$ then
-        \begin{align*}
-          \varepsilon
-          >
-          \dfrac{2}{M}
-          =
-          \dfrac{2M}{M^2}
-          >
-          \dfrac{2M - 1}{M^2}
-          >
-          d(y_m, y_n)
-        \end{align*}
-
-        whenever $m, n \ge M$. Hence $y_m$ is Cauchy and real Cauchy sequences converge, again showing no sub-sequence of $y_m$ converges to a point in the empty set (since they all converge to a real number and the empty set is empty).
+        Since $\dfrac{\widetilde{w} - \varepsilon}{2 \widetilde{p}_1} < \dfrac{\widetilde{w}}{2 \widetilde{p}_1}$.
+        \begin{remark}
+          I want to clarify a point: I believe I have an example in class and in the notes that the correspondence, for instance, $\Gamma(x) = (1, 2)$, i.e. ``constant'' real intervals, was uhc. This is true because for any open set containing $(1, 2)$ the upper inverse image is the entire space. However, consider $\Gamma(x) = (-x, x)$. This is not uhc for the exact same reason the correspondence in this problem set is not uhc (the upper inverse image of any open set $(a, b)$ will either be $\varnothing$ if $a, b > 0$ or the closed set $[-\min\set{|a|, |b|}, \min\set{|a|, |b|}]$).
+        \end{remark}
 
       \item \textit{Is $f$ lower hemicontinuous?}
 
