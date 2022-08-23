@@ -1,7 +1,4 @@
 scons: done reading SConscript files.
 scons: Building targets ...
-Link(["docs/out/homework/Math Camp 2022 Problem Set 3.pdf"], ["out/homework/Math Camp 2022 Problem Set 3.pdf"])
-cd out/homework && pdflatex -interaction=nonstopmode -recorder solutions2.tex
-move out/homework/solutions2.pdf to out/homework/Math Camp 2022 Suggested Solutions 2.pdf
-Link(["docs/out/homework/Math Camp 2022 Suggested Solutions 2.pdf"], ["out/homework/Math Camp 2022 Suggested Solutions 2.pdf"])
+scons: `.' is up to date.
 scons: done building targets.
