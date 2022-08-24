@@ -1,8 +1,6 @@
 scons: done reading SConscript files.
 scons: Building targets ...
-cd out/lectures && pdflatex -interaction=nonstopmode -recorder lecture6.tex
-cd out/lectures && makeindex lecture6.idx
-cd out/lectures && pdflatex -interaction=nonstopmode -recorder lecture6.tex
-move out/lectures/lecture6.pdf to out/lectures/Math Camp 2022 Lecture 6 - Linear Algebra, ODE.pdf
-Link(["docs/out/lectures/Math Camp 2022 Lecture 6 - Linear Algebra, ODE.pdf"], ["out/lectures/Math Camp 2022 Lecture 6 - Linear Algebra, ODE.pdf"])
+cd out/homework && pdflatex -interaction=nonstopmode -recorder solutions3.tex
+move out/homework/solutions3.pdf to out/homework/Math Camp 2022 Suggested Solutions 3.pdf
+Link(["docs/out/homework/Math Camp 2022 Suggested Solutions 3.pdf"], ["out/homework/Math Camp 2022 Suggested Solutions 3.pdf"])
 scons: done building targets.
