@@ -397,7 +397,16 @@
           \sum_l p_l = \sum^{}_{l} \dfrac{1}{L} = 1
         \]
 
-        The set is bounded below by $0$, since $p_l \ge 0$ for each $l$, and above by $1$, since $p_j \le p_j + \sum^{}_{l \ne j} p_l \le 1$ (note the sum is positive since $p_l \ge 0$ for each $l$). If we can show that $\Delta$ is closed, then we can show that it is compact. Take any $q \notin \Delta$. We know that
+        We next show that it is convex. Take any $p, q \in \Delta$ and let $r = \alpha p + (1 - \alpha) q$ for any $\alpha \in [0, 1]$. We can see that
+        \[
+          \sum^{}_{l} r_l
+          = \sum^{}_{l} \left[\alpha p_l + (1 - \alpha) q_l\right]
+          = \alpha \sum^{}_{l} p_l + (1 - \alpha) \sum^{}_{l} q_l
+          = \alpha + (1 - \alpha)
+          = 1
+        \]
+
+        Hence $r \in \Delta$, and $\Delta$ is convex. Then the set is bounded below by $0$, since $p_l \ge 0$ for each $l$, and above by $1$, since $p_j \le p_j + \sum^{}_{l \ne j} p_l \le 1$ (note the sum is positive since $p_l \ge 0$ for each $l$). If we can show that $\Delta$ is closed, then we can show that it is compact. (The cleanest proof I saw was to note $g: \mathbb{R}^L \to \mathbb{R}$ defined by $g(p) = \sum^{L}_{l = 1} p_l$ is continuous; then $g^{-1}(\set{1}) = \Delta$ is closed since $\set{1}$ is closed.) For my original proof, take any $q \notin \Delta$. We know that
         \[
           \sum^{}_{l} q \ne 1
           \implies
@@ -419,17 +428,6 @@
         \]
 
         Hence if $\sum^{}_{l} q \ne 1$, there is some $\varepsilon > 0$ s.t. for any $r \in B_{\varepsilon}(q)$, $r \notin \Delta$, which means that $\Delta^C$ is open, and thus $\Delta$ is closed. Since $\Delta$ is closed and bounded, it is compact.
-
-        Last, we show that it is convex. Take any $p, q \in \Delta$ and let $r = \alpha p + (1 - \alpha) q$ for any $\alpha \in [0, 1]$. We can see that
-        \[
-          \sum^{}_{l} r_l
-          = \sum^{}_{l} \left[\alpha p_l + (1 - \alpha) q_l\right]
-          = \alpha \sum^{}_{l} p_l + (1 - \alpha) \sum^{}_{l} q_l
-          = \alpha + (1 - \alpha)
-          = 1
-        \]
-
-        Hence $r \in \Delta$, and $\Delta$ is convex.
 
       \item \textit{Show that $f: \Delta \to \Delta$ is continuous in $p$.}
         \[
@@ -506,7 +504,7 @@
 
   \item \textit{Use the chain rule and the FTC to prove the Leibniz rule:}
     \[
-      \dfrac{d}{dx} \int_{v(x)}^{u(x)} f(t) dt
+      \dfrac{d}{dx} \int_{u(x)}^{v(x)} f(t) dt
       =
       f(v(x)) \dfrac{dv}{dx}
       - f(u(x)) \dfrac{du}{dx}
