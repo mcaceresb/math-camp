@@ -263,32 +263,34 @@
 
       \item \textit{Check $x_m = 1 / m$ is Cauchy but $x_m = m$ is not.}
 
-        \solution $x_m = m$ and $x_{m + 1} = m + 1$ gives $|x_m - x_{m + 1}| = |m - (m + 1)| = |1| = 1 > \varepsilon$ for all $0 < \varepsilon < 1$, so it cannot be Cauchy. Now
+        \solution $x_m = m$ and $x_{m + 1} = m + 1$ gives $|x_m - x_{m + 1}| = |m - (m + 1)| = |1| = 1 > \varepsilon$ for all $0 < \varepsilon < 1$, so it cannot be Cauchy. Note
         \[
-          \left|\dfrac{1}{m} - \dfrac{1}{m + 1}\right|
+          \left|\dfrac{1}{m} - \dfrac{1}{n}\right|
+          \le
+          \left|\dfrac{1}{m}\right| + \left|\dfrac{1}{n}\right|
+          <
+          \dfrac{1}{\min\set{n, m}} + \dfrac{1}{\min\set{n, m}}
           =
-          \left|\dfrac{m + 1 - m}{m (m + 1)}\right|
-          =
-          \left|\dfrac{1}{m (m + 1)}\right|
+          \dfrac{2}{\min\set{n, m}}
         \]
 
         For any $\varepsilon > 0$, let
         \[
-          M = \Fceil{\dfrac{1}{\varepsilon}} + 1 > \dfrac{1}{\varepsilon}
+          M = \Fceil{\dfrac{2}{\varepsilon}} + 1 > \dfrac{2}{\varepsilon}
           \implies
-          \varepsilon > \dfrac{1}{M}
-          \text{ and }
-          \varepsilon > \dfrac{1}{M + 1}
+          \varepsilon > \dfrac{2}{M}
         \]
 
-        Hence for any $m > M$,
+        Hence for any $m, n \ge M$,
         \[
-          \left|\dfrac{1}{m (m + 1)}\right|
-          < \varepsilon^2
-          \le \varepsilon
+          \left|\dfrac{1}{m} - \dfrac{1}{n}\right|
+          <
+          \dfrac{2}{\min\set{n, m}}
+          \le
+          \dfrac{2}{M}
+          <
+          \varepsilon
         \]
-
-        given $\varepsilon \le 1$ (and if $\varepsilon > 1$ then the inequality holds for all $m$).
 
       \item \textit{Use the sequences in (e) and the result in (d) to give an alternative proof that the function defined in (a) is not uniformly continuous.}
 
