@@ -26,12 +26,12 @@
     \begin{enumerate}[a)]
       \item \textit{Let $f_i(x) = x / i$ and $f(x) = 0$. Check that $f_i \to f$ point-wise.}
 
-        \solution Pick an arbitrary $x$ and $\varepsilon > 0$. We have the sequence $x_m = x / m$, and for $M = |x| / \varepsilon$ we have that
+        \solution Pick an arbitrary $x$ and $\varepsilon > 0$. We have the sequence $x_m = x / m$, and for $N > \norm{x} / \varepsilon$ we have that
         \[
-          |x / m| < \varepsilon = |x / M|
+          \norm{x / m} < \norm{x} / N < \varepsilon
         \]
 
-        whenever $m > M$. Hence for any given $x$, $f_i(x) \to f(x)$.
+        whenever $m > N$. Hence for any given $x$, $f_i(x) \to f(x)$.
 
       \item \textit{Show $f_i$ defined above does not converge uniformly to $f$.}
 
@@ -44,7 +44,7 @@
           \Fnorm{x} < \varepsilon i
         \]
 
-        However, $f_i$ are defined on $\mathbb{R}$, for any fixed $\varepsilon$ and $I_0(\varepsilon)$, take any given $i > I_0(\varepsilon)$, for instance $i = I_0(\varepsilon) + 1$, and $x = \varepsilon i + 1 \in \mathbb{R}$ will violate the equation above, a contradiction.
+        However, for fixed $\varepsilon$ and $I_0(\varepsilon)$, take any given $i > I_0(\varepsilon)$, for instance $i = I_0(\varepsilon) + 1$, and $x = \sqrt{M} \varepsilon i + \mathbf{1}$ (with $\mathbf{1}$ a vector of ones and $M$ the dimension of $\mathbb{R}^M$, since we said $\Omega \subseteq \mathbb{R}^M$) will violate the equation above, a contradiction.
 
       \item \textit{Show uniform convergence implies point-wise convergence.}
 
@@ -293,7 +293,44 @@
 
       \item \textit{If $f$ is concave then $f(x + z) \le f(x) + z^T Df(x)$ for any $x, z$.}
 
-        \solution Take $x, z$ s.t. $x$ and $x + z$ are in the domain of $f$. Let $g(\alpha) \equiv f(x + \alpha z)$ and note
+        \solution Take $x, z$ s.t. $x$ and $x + z$ are in the domain of $f$. Let $g(\alpha) \equiv f(x + \alpha z)$ and, by the chain rule,
+          \begin{align*}
+            g^\prime(0)
+            =
+            z^T D_x f(x)
+          \end{align*}
+
+          (Note $x, x + z$ in the domain and $\alpha \in [0, 1]$ imply that $x + z\alpha$ in the domain since it's a convex set.) You can tell I did this problem before the previous one because my original solution was less concrete. In this case, take a second order Taylor expansion:
+          \begin{align*}
+            g(\alpha)
+            &
+            =
+            g(0)
+            +
+            g^{\prime}(0) \alpha
+            +
+            \dfrac{1}{2}
+            g^{\prime\prime}(c) \alpha^2
+          \end{align*}
+
+          for some $c \in (0, \alpha)$. But
+          \begin{align*}
+            g^{\prime\prime}(c) \alpha^2
+            =
+            z^T D^2 f(x + cz) z \alpha^2 \le 0
+          \end{align*}
+
+          since $f$ concave $\implies D^2f$ is negative semi-definite (and $\alpha^2 \ge 0$). Finally,
+          \begin{align*}
+            f(x + \alpha z)
+            &
+            \le
+            f(x)
+            +
+            z^T D_x f(x) \alpha
+          \end{align*}
+
+          Set $\alpha = 1$ and  we get the result. If, like me, you tried using the definitions, here's my original solution, using limits:
           \begin{align*}
             g^\prime(0)
             =
@@ -304,12 +341,6 @@
             \dfrac{f(x + \alpha z) - f(x)}{\alpha}
           \end{align*}
 
-          However, by the chain rule, we know that
-          \begin{align*}
-            g^\prime(0)
-            =
-            z^T D_x f(x)
-          \end{align*}
 
           Therefore, if we can show that
           \begin{align*}
