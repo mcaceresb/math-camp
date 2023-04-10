@@ -35,24 +35,24 @@ def main():
     """)
 
     problems = [
-        ('right before', 2, 'out/homework/Math Camp 2022 Problem Set 1.pdf'),
-        ('right before', 4, 'out/homework/Math Camp 2022 Problem Set 2.pdf'),
-        ('right before', 6, 'out/homework/Math Camp 2022 Problem Set 3.pdf')
+        ('right before', 2, 'out/homework/Math Camp 2023 Problem Set 1.pdf'),
+        ('right before', 4, 'out/homework/Math Camp 2023 Problem Set 2.pdf'),
+        ('right before', 6, 'out/homework/Math Camp 2023 Problem Set 3.pdf')
     ]
 
     solutions = [
-        ('right before', 4, 'out/homework/Math Camp 2022 Suggested Solutions 1.pdf'),
-        ('right before', 6, 'out/homework/Math Camp 2022 Suggested Solutions 2.pdf'),
-        ('a day after', 6, 'out/homework/Math Camp 2022 Suggested Solutions 3.pdf')
+        ('right before', 4, 'out/homework/Math Camp 2023 Suggested Solutions 1.pdf'),
+        ('right before', 6, 'out/homework/Math Camp 2023 Suggested Solutions 2.pdf'),
+        ('a day after', 6, 'out/homework/Math Camp 2023 Suggested Solutions 3.pdf')
     ]
 
     lectures = [
-        ('right after', 1, 'out/lectures/Math Camp 2022 Lecture 1 - Proofs, Metric Spaces, Topology.pdf'),
-        ('right after', 2, 'out/lectures/Math Camp 2022 Lecture 2 - Sequences, Continuity.pdf'),
-        ('right after', 3, 'out/lectures/Math Camp 2022 Lecture 3 - Compactness, EVT, Correspondences.pdf'),
-        ('right after', 4, 'out/lectures/Math Camp 2022 Lecture 4 - Differentiation, IFT, Unconstrained Optimization.pdf'),
-        ('right after', 5, 'out/lectures/Math Camp 2022 Lecture 5 - Constrained Optimization, Envelope Theorem, Integration.pdf'),
-        ('right after', 6, 'out/lectures/Math Camp 2022 Lecture 6 - Linear Algebra, ODE.pdf')
+        ('right after', 1, 'out/lectures/Math Camp 2023 Lecture 1 - Proofs, Metric Spaces, Topology.pdf'),
+        ('right after', 2, 'out/lectures/Math Camp 2023 Lecture 2 - Sequences, Continuity.pdf'),
+        ('right after', 3, 'out/lectures/Math Camp 2023 Lecture 3 - Compactness, EVT, Correspondences.pdf'),
+        ('right after', 4, 'out/lectures/Math Camp 2023 Lecture 4 - Differentiation, IFT, Unconstrained Optimization.pdf'),
+        ('right after', 5, 'out/lectures/Math Camp 2023 Lecture 5 - Constrained Optimization, Envelope Theorem, Integration.pdf'),
+        ('right after', 6, 'out/lectures/Math Camp 2023 Lecture 6 - Linear Algebra, ODE.pdf')
     ]
 
     for i, (mkstub1, mkstub2, filepdf) in enumerate(problems):
