@@ -1,7 +1,7 @@
 Import('*')
 
-env.PDF(target = '#out/syllabus/Math Camp 2022 Syllabus.pdf',
+env.PDF(target = '#out/syllabus/Math Camp 2023 Syllabus.pdf',
         source = '#src/syllabus/syllabus.tex')
 
-env.link(target = ['#docs/out/syllabus/Math Camp 2022 Syllabus.pdf'],
-         source = ['#out/syllabus/Math Camp 2022 Syllabus.pdf'])
+env.link(target = ['#docs/out/syllabus/Math Camp 2023 Syllabus.pdf'],
+         source = ['#out/syllabus/Math Camp 2023 Syllabus.pdf'])
