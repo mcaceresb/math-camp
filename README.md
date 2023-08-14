@@ -5,7 +5,7 @@ Brown Math Camp 2023
 
 ### Lecture Notes
 
-- Lecture 1
+- [Lecture 1](out/lectures/Math%20Camp%202023%20Lecture%201%20-%20Proofs,%20Metric%20Spaces,%20Topology.pdf)
 - Lecture 2
 - Lecture 3
 - Lecture 4
@@ -25,7 +25,6 @@ Brown Math Camp 2023
 <!--
 To deploy with mkdocs; run `mkdocs gh-deploy`
 
-- [Lecture 1](out/lectures/Math%20Camp%202023%20Lecture%201%20-%20Proofs,%20Metric%20Spaces,%20Topology.pdf)
 - [Lecture 2](out/lectures/Math%20Camp%202023%20Lecture%202%20-%20Sequences,%20Continuity.pdf)
 - [Lecture 3](out/lectures/Math%20Camp%202023%20Lecture%203%20-%20Correspondences,%20Compactness,%20EVT.pdf)
 - [Lecture 4](out/lectures/Math%20Camp%202023%20Lecture%204%20-%20Differentiation,%20IFT,%20Unconstrained%20Optimization.pdf)
