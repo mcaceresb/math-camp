@@ -345,7 +345,7 @@ I think in general it's very useful to visualize proofs in $\mathbb{R}^2$ (makin
 \end{theorem}
 
 \begin{theorem}[Nested Intervals Theorem]\label{thm:lecture2_nested_interval}
-  Let $I_m = [a_m,  b_m]$ s.t. $I_{m + 1} \subset I_m$.
+  Let $I_m = [a_m,  b_m]$ s.t. $I_{m + 1} \subseteq I_m$.
   \begin{enumerate}[a)]
     \item $\cap_{m \in \mathbb{N}} I_m \ne \varnothing$
     \item If $b_m - a_m \to 0$ then $\cap_{m \in \mathbb{N}}$ is  a singleton.
@@ -1326,18 +1326,17 @@ We show \Cref{thm:lecture2_continuity_open_closed} using, again, drawings in $\m
 \end{figure}
 
 \begin{proof}
-  Take $A = \set{x \in [a, b]: f(x) \le L}$. $A$ is bounded so the $\sup$ exists; let $c = \sup A$. For $\varepsilon_m = 1/m$ take $x_m \in (c - \varepsilon_m, c] \cap A$, so $x_m \to c$ and $f(x_m) \to f(c)$ (by continuity). Since $A$ is closed and $x_m \in A$, $c \in A$ and $f(c) \le L$. If $f(c) = L$ we are done; if $f(c) < L$ then, by continuity, for $\varepsilon: f(c) - \varepsilon < f(c) + \varepsilon < L ~~ \exists \delta$ s.t.
+  Take any $L \in (f(a), f(b))$ and consider
   \[
-    x: c - \delta < c < x < c + \delta
-    \implies
-    |f(x) - f(c)| < \varepsilon
-    \implies
-    f(x) < L
-    \implies
-    x \in A
+    A = \set{x \in [a, b]: f(x) \le L}
   \]
 
-  Note $x > c$, but by definition of the $\sup$, $x \le \sup A = c$ for any $x \in A$, contradiction. Hence it must be that no such $x$ exists, which can only happen if $c = b$ ($c \in A \implies c \le b$ and $c < b$ means such an $x$ can exist). But this is another contradiction, since $b = c \implies f(b) = f(c) < L$, and by premise $L < f(b)$. Hence it must be that $f(c) = L$. (\NB: There was a question in class about  whether we might need to consider the $\inf$ as well, but this is not the case, as we arrive at a contradiction using just the $\sup$.)
+  $A$ is bounded so the $\sup$ exists; let $c = \sup A$. For $\varepsilon_m = 1/m$ take $x_m \in (c - \varepsilon_m, c] \cap A$, so $x_m \to c$ and $f(x_m) \to f(c)$ (by continuity). Since $A$ is closed and $x_m \in A$, $c \in A$ and $f(c) \le L$. If $f(c) = L$ we are done; if $f(c) < L$ then consider
+  \[
+    B = \set{x \in [c, b]: f(x) \ge L}
+  \]
+
+  Note $B = (c, b]$ because $f(c) < L$, so $c \notin B$, and $c$ is an upper bound for $A$: For every $x \in (c, b]$ it cannot be $f(x) < L$ because then $x \in A$ and $x < c$, contradiction, so $f(c) \ge L$. However, this is another contradiction because the upper set of a continuous function is closed, and $B = (c, b]$ is not closed. Hence $f(c) = L$. (\NB: If you take $\inf(B)$ you can follow the same logic to get $f(c) > L$; basically we're showing there's a discontinuity at $c$, which cannot happen for a continuous function.) (\NB: Another subtlety here is the case when $c = b$, but then $f(b) = f(c) < L < f(b)$ contradiction.)
 \end{proof}
 
 % ---------------------------------------------------------------------
