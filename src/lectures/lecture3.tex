@@ -39,7 +39,7 @@ So, straight up, the first time I encountered compactness (back in undergrad rea
 \end{definition}
 
 \begin{definition}[compactness]\label{def:lecture3_compactness_compact}
-  A set $S$ is \keyword{compact} if every open cover of $S$ has a \keyword{finite subcover} of $S$.
+  A set $S$ is \keyword{compact} if every open cover of $S$ has a \keyword{finite sub-cover} of $S$.
 \end{definition}
 
 Some examples of sets that are and are not compact:
@@ -50,6 +50,10 @@ Some examples of sets that are and are not compact:
 
   \item $[0, 1]$ \textit{is} compact. Compactness is really trying to get to a notion of ``finiteness,'' and there is a sense in which intervals that are open or not bounded are not finite. Of course, compactness is more general than that, but at least in $\mathbb{R}^N$ we will get a more intuitive definition of compactness.
 \end{itemize}
+
+\begin{remark}
+  You can prove the set $[0, 1]$ is compact by following the same steps of the proof for Bolzano-Weierstrass---the ideas are related. Suppose by contradiction that there is an open cover with no finite sub-cover. You can split the set in halves so that at least one half has no finite sub-cover; then you can iterate on this idea and, just like in Bolzano-Weierstrass, the half-intervals will converge to a single point and give you a contradiction. Can you see what the contradiction will be? If you can then you've basically proven \nameref{thm:lecture3_compactness_heine_borel_modern} in $\mathbb{R}$!
+\end{remark}
 
 \begin{remark}
   Any finite set $A$ is compact. Take any open cover $\mathcal{F} = \set{\mathcal{F}_\omega}_{\omega \in \Omega}$. For $x \in A$, $x \in \mathcal{F}_\omega$ for some $\omega \in \Omega$ (there may be several, and a single $\mathcal{F}_\omega$ may contain many $x \in A$). Name this $\omega_x$ for each $x$; since $A$ is finite, $\set{\omega_x}_{x \in A}$ is a finite. Hence
@@ -141,20 +145,13 @@ Is $\mathbb{Q} \cap [0, 1]$ compact (the rational numbers between $0$ and $1$, i
   For any finite $N$, $S \subseteq \mathbb{R}^N$ is compact iff $S$ is closed and bounded.
 \end{theorem}
 
-\subsubsection{Heine-Borel and Other Theorems}
-\label{ssub:heine_borel_and_other_theorems}
-
-\begin{theorem}[Heine-Borel]\label{thm:lecture3_compactness_heine_borel_modern}
-  For any finite $N$, $S \subseteq \mathbb{R}^N$ is compact iff $S$ is closed and bounded.
-\end{theorem}
-
 \begin{proof}
   We show that compactness $\implies$ closed and bounded. The converse is a bit more involved. Let $S$ be a compact set; first we show it is bounded. Fix $s \in S$ and take
   \[
     \mathcal{F} = \Fset{\mathcal{F}_n = B_n(s)}_{n \in \mathbb{N}}
   \]
 
-  $\mathcal{F}$ is an open cover for $\mathbb{R}^N$, and hence an open cover for $S \subseteq \mathbb{R}^N$. Since $S$ is compact, it admits a finite subcover.\footnote{Strictly speaking, a finite  subcover is indexed by some finite set $T$ with $N = \max T$ and it needn't be that every $n \le N$ is in $T$; however, I write $n \le N$ for simplicity.} Since $\mathcal{F}_n \subseteq \mathcal{F}_{n + 1}$,
+  $\mathcal{F}$ is an open cover for $\mathbb{R}^N$, and hence an open cover for $S \subseteq \mathbb{R}^N$. Since $S$ is compact, it admits a finite sub-cover.\footnote{Strictly speaking, a finite  sub-cover is indexed by some finite set $T$ with $N = \max T$ and it needn't be that every $n \le N$ is in $T$; however, I write $n \le N$ for simplicity.} Since $\mathcal{F}_n \subseteq \mathcal{F}_{n + 1}$,
   \[
     \bigcup_{n \le N} \mathcal{F}_n = \mathcal{F}_N = B_N(s)
   \]
@@ -420,6 +417,19 @@ with $B(p, w) = \set{x: p \cdot x \le w}$ and $x, p \in \mathbb{R}^N_+$. $B(p, w
 
 The idea here is to show examples of how to construct sequences in a way that helps when doing proofs. We saw these proofs already without using sequences; however, we we have seen that various definitions often have a sequential version, so let us see how they might help.
 \begin{enumerate}
+  \item Let us show if $X \subseteq S$ is closed and $S$ compact then $X$ compact.
+    \begin{proof}
+      \begin{itemize}[label=$\bullet$]
+        \item Take any sequence $(x_m) \in X \subseteq S$.
+
+        \item $S$ is compact, so it is sequentially compact; that is, $\exists x_{m_k} \to x$ for some $x \in S$.
+
+        \item $X$ is closed, so $x \in X$. Hence any sequence in $X$ has a convergent subsequence in $X$.
+      \end{itemize}
+
+      By definition, $X$ is sequentially compact, which means it is compact.
+    \end{proof}
+
   \item Let us show if $f: S \to T$ is continuous function, then $S$ is compact implies $f(S)$ compact.
     \begin{proof}
       \begin{itemize}[label=$\bullet$]
@@ -529,7 +539,7 @@ The set is compact, but the function diverges to $\infty$ as it approaches $0$ f
 \subsubsection{``Set-Valued Functions''}
 \label{ssub:_set_valued_functions_}
 
-A correspondence, denoted $\Gamma: X \toto Y$, assigns a non-empty subset of $Y$ to each point in $X$. In a sense, a correspondence is a ``set-valued function'' with ``input'' $x \in X$ and ``output'' is $\Gamma(x) \subseteq Y$.\footnote{Conversely, functions are ``singleton-valued correspondences,'' where $f(x)$ is equivalent to the correspondence $\Gamma(x) = \set{f(x)}$.} Some terminology is completely analogous relative to when we were working with functions:
+A correspondence, denoted $\Gamma: X \toto Y$, assigns a subset of $Y$ to each point in $X$. In a sense, a correspondence is a ``set-valued function'' with ``input'' $x \in X$ and ``output'' is $\Gamma(x) \subseteq Y$.\footnote{Conversely, functions are ``singleton-valued correspondences,'' where $f(x)$ is equivalent to the correspondence $\Gamma(x) = \set{f(x)}$.} Some terminology is completely analogous relative to when we were working with functions:
 \begin{itemize}[label=$\bullet$]
   \item $X$ is the \keyword{domain} and $Y$ is the \keyword{co-domain}.
 
@@ -1092,9 +1102,12 @@ The idea is that \textit{every} series in $\Gamma(x_m)$ that converges will conv
   The example in \Cref{fig:not_closed_graph} above is closed-valued but not closed graph, so the former need not imply the latter. Further, a closed graph is not the same as uhc: A uhc correspondence doesn't have to be closed-valued, which would mean that it would not have a closed graph (if $\Gamma(x)$ is not closed-valued, then there is some sequence in $\Gamma(x)$ that converges to a point outside of $\Gamma(x)$, contradicting the definition of closed graph).
 
   Conversely, a correspondence can have a closed graph with a discontinuity. $\Gamma(x) = \set{1/x}$ if $x > 0$ and $\Gamma(x) = \set{0}$ if $x = 0$. Note that any sequence in $\Gamma(x)$ as $x \to 0^+$ will diverge, so there is no contradiction of the closed graph property. However, there is clearly a discontinuity at $0$.
+
+
+  Can you tell, by the way, whether the correspondence in \Cref{fig:not_closed_graph} is uhc, lhc, both, or neither?
 \end{remark}
 
-We can, however, say that closed graph, closed-valued, and uhc are related:
+What we \textit{can} say is that closed graph, closed-valued, and uhc are related:
 \begin{claim}
   \begin{enumerate}
     \item If $\Gamma: X \toto Y$ has a closed graph and $Y$ is compact then $\Gamma$ is uhc.
@@ -1191,28 +1204,28 @@ Recall $B(p, w) = \set{x: p \cdot x \le w}$ the budget correspondence is compact
       ,title={Both FPT hold}
       ,width=9cm
       ,height=8cm
-      ,ymin=0
-      ,ymax=16
-      ,xmin=0
-      ,xmax=14
-      ,domain=0:10
+      ,ymin=0.95
+      ,ymax=14
+      ,xmin=0.95
+      ,xmax=12
+      ,domain=0.95:9.15
       ,ylabel=$f(x)$
       ,xlabel=$x$
     ]
     \addplot [-, dashed] {x};
-    \addplot [only marks, mark=*] coordinates {(4.75, 4.75)};
+    \addplot [only marks, mark=*] coordinates {(5.14, 5.14)};
     \draw [->, >=latex]
-      (axis cs:3.5, 7.5) to[bend left=15] (axis cs:4.75, 5)
-      node[above] at (axis cs:3.5, 7.5) {Fixed Point};
+      (axis cs:2.5, 5.5) to[bend left=15] (axis cs:5.14, 5)
+      node[above] at (axis cs:2.5, 5.5) {Fixed Point};
     \node at (axis cs:3, 12) {$f$ continuous};
     \draw [-]
-      (axis cs:0,  0)  --
-      (axis cs:0,  10) --
-      (axis cs:10, 10) --
-      (axis cs:10, 0)  --
-      (axis cs:0,  0)
-      node[above] at (axis cs:10.1, 10) {$S \times S$};
-    \addplot [smooth] {0.08 * (x - 4.2)^3 - 0.2 * (x - 0.2)^2 + 0.525 * (x - 0.2) + 6.5};
+      (axis cs:0.95, 0.95) --
+      (axis cs:0.95, 9.15) --
+      (axis cs:9.15, 9.15) --
+      (axis cs:9.15, 0.95) --
+      (axis cs:0.95, 0.95)
+      node[above] at (axis cs:9.25, 9.25) {$S \times S$};
+    \addplot [smooth] {1.5 * (0.08 * (x - 4.2)^3 - 0.235 * (x - 0.2)^2 + 0.525 * (x - 0.2) + 6.5)};
     \end{axis}
 
     \begin{axis}[name=plot2
@@ -1221,28 +1234,32 @@ Recall $B(p, w) = \set{x: p \cdot x \le w}$ the budget correspondence is compact
       ,anchor=west
       ,width=9cm
       ,height=8cm
-      ,ymin=0
-      ,ymax=16
-      ,xmin=0
-      ,xmax=14
-      ,domain=0:10
+      ,ymin=0.95
+      ,ymax=14
+      ,xmin=0.95
+      ,xmax=12
+      ,domain=0.95:9.25
       ,ylabel=$f(x)$
       ,xlabel=$x$
     ]
+    % \node[draw=white, align=left, text width=5.5cm]
+    %   at (axis cs:6.5, 12) {
+    %   Note $f$ is lower hemi-continuous, but not continuous
+    % };
     \node[draw=white, align=left, text width=5.5cm]
       at (axis cs:6.5, 12) {
-      Note $f$ is lower hemi-continuous, but not continuous
+      $f$ has a jump.
     };
     \addplot [-, dashed] {x};
     \draw [-]
-      (axis cs:0,  0)  --
-      (axis cs:0,  10) --
-      (axis cs:10, 10) --
-      (axis cs:10, 0)  --
-      (axis cs:0,  0)
+      (axis cs:0.95, 0.95)  --
+      (axis cs:0.95, 9.15) --
+      (axis cs:9.15, 9.15) --
+      (axis cs:9.15, 0.95)  --
+      (axis cs:0.95, 0.95)
       node[above] at (axis cs:10.1, 10) {$S \times S$};
-    \addplot [smooth,domain=0:4.75] {0.08 * (x - 4.2)^3 - 0.15 * (x - 0.2)^2 + 0.525 * (x - 0.2) + 6.5};
-    \addplot [smooth,domain=4.75:10] {0.08 * (x - 4.2)^3 - 0.2 * (x - 0.2)^2 + 0.625 * (x - 0.2) + 5.5};
+    \addplot [smooth,domain=0.95:5.14] {1.425 * (0.08 * (x - 4.2)^3 - 0.235 * (x - 0.2)^2 + 0.525 * (x - 0.2) + 6.5) + 0.5};
+    \addplot [smooth,domain=5.14:9.15] {1.225 * (0.08 * ((x + 0.9) - 4.2)^3 - 0.235 * ((x + 0.9) - 0.2)^2 + 0.525 * ((x + 0.9) - 0.2) + 6.5) + 0.2};
     \end{axis}
   \end{tikzpicture}
   \caption{Examples of when $f$ does or not have a fixed point}
@@ -1278,10 +1295,10 @@ Recall $B(p, w) = \set{x: p \cdot x \le w}$ the budget correspondence is compact
       (axis cs:0,  0)
       node[above] at (axis cs:10.1, 10) {$S \times S$};
     % \draw [-, line width=0.75pt]
-    \draw [-, line width=0.75pt]
-      (axis cs:0, 8) -- (axis cs:6, 8) -- (axis cs:6, 2);
-    \draw [-, line width=0.75pt]
-      (axis cs:4, 8) -- (axis cs:4, 2) -- (axis cs:10, 2);
+    \draw [-, line width=1.25pt]
+      (axis cs:0, 10) -- (axis cs:0.5, 8) -- (axis cs:6, 8) -- (axis cs:6, 2);
+    \draw [-, line width=1.25pt]
+      (axis cs:4, 8) -- (axis cs:4, 2) -- (axis cs:9.5, 2) -- (axis cs:10, 0);
     \addplot [fill, color=gray, opacity=0.2] coordinates {
       (4, 8)
       (4, 2)
@@ -1313,14 +1330,16 @@ Recall $B(p, w) = \set{x: p \cdot x \le w}$ the budget correspondence is compact
       (axis cs:10, 0)  --
       (axis cs:0,  0)
       node[above] at (axis cs:10.1, 10) {$S \times S$};
-    \draw [-, line width=0.75pt]
-      (axis cs:0, 8) --
+    \draw [-, line width=1.25pt]
+      (axis cs:0, 10) --
+      (axis cs:0.5, 8) --
       (axis cs:6, 8) --
       (axis cs:6, 7) --
       (axis cs:4, 7) --
       (axis cs:4, 8);
-    \draw [-, line width=0.75pt]
-      (axis cs:10, 2) --
+    \draw [-, line width=1.25pt]
+      (axis cs:10, 0) --
+      (axis cs:9.5, 2) --
       (axis cs:4, 2) --
       (axis cs:4, 3) --
       (axis cs:6, 3) --
@@ -1366,7 +1385,7 @@ A Nash Equilibrium is then defined as a set of strategies such that no player ha
   s^* \in b(s^*)
 \]
 
-If $S_i$ are compact, non-empty, and convex-valued, and $u_i$ are continuous and quasiconcave, then we will be able to apply Kakutani's fixed point theorem to show that $s^* \in b(s^*)$ for some $s^* \in S = \prod_{i = 1}^N S_i$ (with some work in between to show that $b: S \to S$ is upper hemicontinuous).
+If $S_i$ are compact, non-empty, and convex-valued, and $u_i$ are continuous and quasiconcave (this gives convexity), then we will be able to apply Kakutani's fixed point theorem to show that $s^* \in b(s^*)$ for some $s^* \in S = \prod_{i = 1}^N S_i$ (noting $b: S \to S$ is upper hemicontinuous by \nameref{thm:lecture4_correspondences_maximum_theorem}).
 
 % ---------------------------------------------------------------------
 \subsection{Fun Remarks}
@@ -1375,7 +1394,7 @@ If $S_i$ are compact, non-empty, and convex-valued, and $u_i$ are continuous and
 \begin{itemize}[label=$\bullet$]
   \item It is rumored than when John Nash came to John Von Neumann to discuss his ideas and his proof of the existence of a Nash Equilibrium (though of course he probably just called it ``Equilibrium''), Von Neumann interrupted to dismiss the result as trivial: ``That's just a fixed point theorem,'' he said. I always found this anecdote to be quite fascinating, in particular given the extent to which game theory plays a role in modern economics.
 
-  \item The other famous application of Kakutani's fixed point theorem in economics is in the proof of the existence of general equilibrium. A perhaps lesser known but no less fun example of course the fair cake-cutting theorem, where Kakutani guarantees that there exists a division of a cake (which is a non-uniform resource) among $n$ agents that is not only Pareto efficient but envy-free (i.e. no agent prefers someone else's allocation). The cake, of course, is a lie, and the theorem refers to an allocation as a disjoint $n$-partition of set among $n$ agents with heterogeneous preferences over the set.
+  \item The other famous application of Kakutani's fixed point theorem in economics is in the proof of the existence of general equilibrium. A perhaps lesser known but no less fun example of course the fair cake-cutting theorem, where Kakutani guarantees that there exists a division of a cake (which is a non-uniform resource) among $n$ agents that is not only Pareto efficient but envy-free (i.e. no agent prefers someone else's allocation). The cake, of course, is a lie, and the theorem refers to an allocation as a disjoint $n$-partition of a set among $n$ agents with heterogeneous preferences over the set.
 
   \item Speaking of general equilibrium, I very briefly met Arrow once after he gave a short talk; I basically said hello and that was that. However, a classmate of mine had the, let's say, very fun idea to ask Arrow to autograph his class notes on general equilibrium, which I always remember as one of the more endearing things I've seen someone do.
 

@@ -1,7 +1,5 @@
 scons: done reading SConscript files.
 scons: Building targets ...
-Link(["docs/out/homework/Math Camp 2023 Problem Set 1.pdf"], ["out/homework/Math Camp 2023 Problem Set 1.pdf"])
-Python(["out/helpers/docs.log"], ["src/helpers/docs.py"])
-{}
-"/usr/bin/python"  "src/helpers/docs.py"  > "out/helpers/docs.log" 2>&1
+cd out/lectures && pdflatex -interaction=nonstopmode -recorder lecture4.tex
+move out/lectures/lecture4.pdf to out/lectures/Math Camp 2023 Lecture 4 - Differentiation, IFT, Unconstrained Optimization.pdf
 scons: done building targets.
