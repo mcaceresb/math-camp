@@ -123,22 +123,13 @@ Intuitively, differentiation yields the slope of a function at a point:
     |f(x) - f(a)| < \left(\varepsilon + |L|\right) \widetilde{\delta}
   \]
 
-  If we can find $\delta \le \widetilde{\delta}$ s.t. $\left(\varepsilon + |L|\right)\delta < \varepsilon$ then we'd be done. If $\widetilde{\delta} < 1$, then take $\delta = \widetilde{\delta} \cdot \dfrac{\varepsilon}{\varepsilon + |L|} \le \widetilde{\delta}$ (since $|L| \ge 0$, we multiply $\widetilde{\delta}$ by something $< 1$). Then we have
+  If we can find $\delta \le \widetilde{\delta}$ s.t. $\left(\varepsilon + |L|\right)\delta < \varepsilon$ then we'd be done.  Take any $\delta < \min\left(\tilde{\delta}, \dfrac{\varepsilon}{\varepsilon + |L|}\right)$ and we have
   \[
-    |x - a| < \delta \le \widetilde{\delta}
+    |x - a| < \delta < \widetilde{\delta}
     \implies
     |f(x) - f(a)|
     <
-    \left(\varepsilon + |L|\right) \dfrac{\varepsilon}{\varepsilon + |L|} \widetilde{\delta}
-    = \varepsilon \widetilde{\delta}
-    < \varepsilon
-  \]
-
-  where the last inequality holds if $\widetilde{\delta} < 1$. If $\delta \ge 1$, then set $\delta = \dfrac{\varepsilon}{\varepsilon + |L|} \le 1 \le \delta$ and we get
-  \[
-    |x - a| < \delta \le \widetilde{\delta}
-    \implies
-    |f(x) - f(a)|
+    \delta(\varepsilon + |L|)
     <
     \left(\varepsilon + |L|\right) \dfrac{\varepsilon}{\varepsilon + |L|}
     = \varepsilon
@@ -391,14 +382,14 @@ Note that partial derivatives needn't imply anything about the behavior of the f
 \[
   f(x, y) =
   \begin{cases}
-    \dfrac{xy^2}{x^2 + y^4} & (x, y) \ne (0, 0) \\
+    \dfrac{x^2y^4}{x^4 + y^8} & (x, y) \ne (0, 0) \\
     0 & (x, y) = (0, 0)
   \end{cases}
 \]
 
-The partial derivatives at $0$ are all $0$ (crucially, we take the limits one dimension at a time, so it's not that $(x, y) \to (0, 0)$, but rather $x \to 0$ and then $y \to 0$. Now take any $y_m \to 0$ and $x_m = y_m^2$ s.t. $y_m \ne 0$ for all $n$.
+The partial derivatives at $0$ are all $0$ (crucially, we take the limits one dimension at a time, so it's not that $(x, y) \to (0, 0)$, but rather $x \to 0$ and $y \to 0$ separately. Now take any $y_m \to 0$ and $x_m = y_m^2$ s.t. $y_m \ne 0$ for all $n$.
 \[
-  \lim_{n \to \infty} f(x_m, y_m) = \dfrac{1}{2} \ne 0
+  \lim_{n \to \infty} f(x_m, y_m) = \dfrac{1}{2} \ne 0 = f(0, 0)
 \]
 
 which means the function is not even continuous at $0$.
@@ -460,7 +451,7 @@ We will prove an equivalent, albeit perhaps conceptually easier, version of this
 \begin{theorem}[Rolle's Theorem]\label{thm:lecture4_rolles_theorem}
   Let $g: [a, b] \to \mathbb{R}$ be continuous on $[a, b]$ and differentiable on $(a, b)$ with $g(a) = g(b)$. Then $\exists c \in (a, b)$ s.t.
   \[
-    f^\prime(c) = 0
+    g^\prime(c) = 0
   \]
 \end{theorem}
 
@@ -544,7 +535,7 @@ We will prove an equivalent, albeit perhaps conceptually easier, version of this
     g(x) = \left(f(x) - f(a)\right) - \dfrac{f(b) - f(a)}{b - a} (x - a)
   \]
 
-  Note that $g(a) = g(b) = 0$. Hence $\exists c$ s.t.
+  (This is subtracting the line with slope $\dfrac{f(b) - f(a)}{b - a}$ that goes through $a$ from the function $f$, which is what we need to get it to ``flatten.'') Note that $g(a) = g(b) = f(b) - f(a)$. Hence $\exists c$ s.t.
   \[
     g^\prime(c) = 0
   \]
@@ -559,7 +550,7 @@ We will prove an equivalent, albeit perhaps conceptually easier, version of this
 
 Now we show \nameref{thm:lecture4_rolles_theorem}.
 \begin{proof}
-    For Rolle's theorem we will use the extreme value theorem, and we know that $f$ is bounded and attains its $\sup$ and its $\inf$ in $[a, b]$. If the $\sup$ and the $\inf$ are \textit{both} at $\set{a, b}$, then because by assumption $f(a) = f(b) = 0$, $f(x) = 0$ everywhere on $[a, b]$. Take any $c \in (a, b)$, and
+    For Rolle's theorem we will use the extreme value theorem, and we know that $f$ is bounded and attains its $\sup$ and its $\inf$ in $[a, b]$. If the $\sup$ and the $\inf$ are \textit{both} at $\set{a, b}$, then because by assumption $f(a) = f(b)$, $f(x) = 0$ everywhere on $[a, b]$. Take any $c \in (a, b)$, and
     \[
         f^\prime(c)
         = \lim_{y \to c} \dfrac{f(y) - f(c)}{y - c}
@@ -567,7 +558,7 @@ Now we show \nameref{thm:lecture4_rolles_theorem}.
         = \lim_{y \to c} 0 = 0
     \]
 
-    Suppose then that either the $\sup$ or the $\inf$ occur at at interior point $c \in (a, b)$. Take the $\sup$ (the case for the $\inf$ will be analogous). By assumption $f$ is differentiable, so $f^\prime(c)$ exists. That is, we know that
+    Suppose then that either the $\sup$ or the $\inf$ occur at at interior point $c \in (a, b)$. Take the $\sup$ (WLOG; the $\inf$ is analogous or you can set $g = -f$). By assumption $f$ is differentiable, so $f^\prime(c)$ exists. That is, we know that
     \[
         f^\prime(c)
         = \lim_{y \to c} \dfrac{f(y) - f(c)}{y - c}
@@ -590,39 +581,42 @@ Now we show \nameref{thm:lecture4_rolles_theorem}.
 
     Which means that
     \[
-        L_- = \lim_{y \to c^-} \dfrac{f(y) - f(c)}{y - c} \ge 0
+      L_- = \lim_{y \to c^-} \dfrac{f(y) - f(c)}{y - c} \ge 0
+      \quad\text{and}\quad
+      L_+ = \lim_{y \to c^+} \dfrac{f(y) - f(c)}{y - c} \le 0
     \]
 
-    Suppose not, then $L_- < 0$. But for every $\varepsilon > 0$ there is some $\delta$ s.t.
-    \[
-        c^- - \delta < y < c^- < c^- + \delta
-        \implies
-        L_- - \varepsilon < \dfrac{f(y) - f(c)}{y - c} < L_- + \varepsilon
-    \]
-
-    Take $\varepsilon$ s.t. $L_- < - \varepsilon < 0$. Then for some $\delta > 0$, we get
-    \[
-        c^- - \delta < y < c^- < c^- + \delta
-        \implies
-        L_- - \varepsilon < \dfrac{f(y) - f(c)}{y - c} < L_- + \varepsilon < 0
-    \]
-
-    But we have established that $y < c$ gives $\dfrac{f(y) - f(c)}{y - c} \ge 0$, a contradiction. By that same logic, we can write
-    \[
-        L_+ = \lim_{y \to c^+} \dfrac{f(y) - f(c)}{y - c} \le 0
-    \]
-
-    Since $f^\prime(c)$ exists, it must be the case that
-    \[
-        f^\prime(c)
-        = \lim_{y \to c^+} \dfrac{f(y) - f(c)}{y - c}
-        = L_+
-        = \lim_{y \to c^-} \dfrac{f(y) - f(c)}{y - c}
-        = L_-
-        = L
-    \]
-
-    Now we can see that $L_+ \le 0$, $L_- \ge 0$, and $L_+ = L_- = L$  gives that $L = 0$. The proof for the case when the $\inf$ is interior is completely analogous.
+    Since the limit exists ($f$ is differentiable at $c$), we know $L = L_- = L_+$. Thus $0 \le L \le 0 \implies L = 0$.
+    % Suppose not, then $L_- < 0$. But for every $\varepsilon > 0$ there is some $\delta$ s.t.
+    % \[
+    %     c^- - \delta < y < c^- < c^- + \delta
+    %     \implies
+    %     L_- - \varepsilon < \dfrac{f(y) - f(c)}{y - c} < L_- + \varepsilon
+    % \]
+    %
+    % Take $\varepsilon$ s.t. $L_- < - \varepsilon < 0$. Then for some $\delta > 0$, we get
+    % \[
+    %     c^- - \delta < y < c^- < c^- + \delta
+    %     \implies
+    %     L_- - \varepsilon < \dfrac{f(y) - f(c)}{y - c} < L_- + \varepsilon < 0
+    % \]
+    %
+    % But we have established that $y < c$ gives $\dfrac{f(y) - f(c)}{y - c} \ge 0$, a contradiction. By that same logic, we can write
+    % \[
+    %     L_+ = \lim_{y \to c^+} \dfrac{f(y) - f(c)}{y - c} \le 0
+    % \]
+    %
+    % Since $f^\prime(c)$ exists, it must be the case that
+    % \[
+    %     f^\prime(c)
+    %     = \lim_{y \to c^+} \dfrac{f(y) - f(c)}{y - c}
+    %     = L_+
+    %     = \lim_{y \to c^-} \dfrac{f(y) - f(c)}{y - c}
+    %     = L_-
+    %     = L
+    % \]
+    %
+    % Now we can see that $L_+ \le 0$, $L_- \ge 0$, and $L_+ = L_- = L$  gives that $L = 0$. The proof for the case when the $\inf$ is interior is completely analogous.
 \end{proof}
 
 \begin{corollary}
@@ -778,7 +772,7 @@ Hence for some $h$, we can write
   \nonumber
 \end{equation}
 
-We have that
+(\NB: \textbf{\textit{Stop here in class; the rest is a homework problem.}}) We have that
 \begin{align*}
   D_{\theta^\prime} f(\theta, h(\theta))
   & =
@@ -1170,10 +1164,10 @@ In our example above, these are the determinants of the matrix $S$ itself ($3$rd
 
   if $p_i \ne 0$ for some $i$. Note all the leading principal minors are $1$. For $B$, we similarly have
   \begin{align*}
-    p^T B p = - p^T p = p^T p = \sum_{i} p_i^2 < 0
+    p^T B p = - p^T p = - \sum_{i} p_i^2 < 0
   \end{align*}
 
-  if $p_i \ne 0$ for some $i$. Note the leading principal minors are $-1, 1, 1$. For $C$, take $p_1 = (0, 1, 0), p_2 = (0, 0, -1)$:
+  if $p_i \ne 0$ for some $i$. Note the leading principal minors are $-1, 1, -1$. For $C$, take $p_1 = (0, 1, 0), p_2 = (0, 0, -1)$:
   \begin{align*}
     p_1^T C p_1 = 1 > 0
     \quad\quad
