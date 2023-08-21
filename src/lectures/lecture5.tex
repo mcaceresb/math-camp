@@ -406,13 +406,13 @@ Once you have all the candidate points, check which is largest to determine the 
 \begin{theorem}[Karush-Kuhn-Tucker]\label{thm:lecture5_kkt}
   Let $f: \mathbb{R}^N \to \mathbb{R}$ be a real-valued function, $g: \mathbb{R}^N \to \mathbb{R}^K$, $h: \mathbb{R}^N \to \mathbb{R}^M$ vector-valued functions, and $b \in \mathbb{R}^K$ and $c \in \mathbb{R}^M$ constants. Suppose that $x^*$ is such that the constraint qualification is satisfied (non-degenerate) and that it solves
   \begin{align*}
-    \max_{x \in \mathbb{R}^N} f(x^*)
+    \max_{x \in \mathbb{R}^N} f(x)
     \quad
     \text{s.t.}
     \quad
-    g(x^*) \le b
+    g(x) \le b
     \quad
-    h(x^*) = c
+    h(x) = c
   \end{align*}
 
   Then there exist $\mu \in \mathbb{R}^K_{+}$ (non-negative Lagrange multipliers for the inequality constants), $\lambda \in \mathbb{R}^M$ s.t.
@@ -1252,12 +1252,12 @@ Some useful properties of Riemann integrals (given $f, g: [a, b] \to \mathbb{R}$
 \end{theorem}
 
 \begin{remark}
-  In class there was a discussion about why continuity of $f$ was required. We want the function
+  Why is continuity of $f$ required? We want the function
   \[
     F(x) \equiv \displaystyle\int_a^x f(t) dt
   \]
 
-  to be differentiable, and if $f$ is not continuous at some point $c$ then $F$ will not be differentiable at that point. However, within this discussion I made a statement that I believe was incorrect: In particular I said that if $f$ was not continuous, $F$ might not be continuous. Discontinuities in $f$ introduce kinks in $F$, but I believe preserve continuity. The example I gave was $f: [0, 2] \to \mathbb{R}$
+  to be differentiable, and if $f$ is not continuous at some point $c$ then $F$ will not be differentiable at that point. However, note that even if $f$ is not continuous, $F$ might be continuous: Discontinuities in $f$ introduce a kink in $F$, and as long as the set of discontinuities is ``small'' then the function will continue to be integrable and $F$ will remain continuous. (I believe the technical condition is that $f$ has to be continuous ``almost everywhere.'') As an example, take $f: [0, 2] \to \mathbb{R}$
   \begin{align*}
     f(x) & = 1(x \le 1) + 2(x > 1)
     \\
@@ -1281,7 +1281,12 @@ Some useful properties of Riemann integrals (given $f, g: [a, b] \to \mathbb{R}$
     (2x - 1) \cdot 2(x > 1)
   \end{align*}
 
-  which has a kink at $1$ but remains continuous. Intuitively, a function can have discontinuities and remain integrable as long as there are not too many discontinuities. The technical requirement is that $f$ is continuous ``almost everywhere'' (which means the set of discontinuities must have measure $0$). It's important to remember that this requirement is still imposing that $f$ be continuous everywhere it's not discontinuous. To wrap your mind around this, one way to impose ``nice'' discontinuities for integrability is to, for example, make $f$ jump at each integer, and $f$ would remain integrable; one way to impose not so nice discontinuities is to make make $f$ jump at each rational number, and then $f$ would no longer be integrable (as it would now be discontinuous everywhere).
+  which has a kink at $1$ but remains continuous. A counterexample is the function $f: [0, 1] \to \mathbb{R}$
+  \begin{align*}
+    f(x) & = 1(x \in \mathbb{Q})
+  \end{align*}
+
+  That is, $1$ at every rational number and $0$ elsewhere. This is discontinuous everywhere in $[0, 1]$ and it's actually not Riemann integrable (the $\sup$ and $\inf$ of any partition's interval will be $1$ and $0$, respectively).
 \end{remark}
 
 \subsubsection{Integration Rules}
@@ -1340,7 +1345,7 @@ From the FTC we can derive a number of useful rules to help us evaluate integral
     \end{example}
 
     \begin{remark}
-      There was a question about replacing $a(x), b(x)$ with $\pm \infty$. If we take limits of constant functions $a(x), b(x)$ to infinity we can, and this way we gain additional insight from Leibniz' rule:
+      What happens if we replace $a(x), b(x)$ with $\pm \infty$? If we take limits of constant functions $a(x) = b(x) = c \to \infty$ we can gain additional insight from Leibniz' rule:
     \begin{align*}
       \lim_{c \to \infty}
       \dfrac{d}{dx} \int_{-c}^{c} f(x, t) dt

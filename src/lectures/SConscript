@@ -15,8 +15,8 @@ env.PDF(target = '#out/lectures/Math Camp 2023 Lecture 4 - Differentiation, IFT,
 env.PDF(target = '#out/lectures/Math Camp 2023 Lecture 5 - Constrained Optimization, Envelope Theorem, Integration.pdf',
         source = '#src/lectures/lecture5.tex')
 
-# env.PDF(target = '#out/lectures/Math Camp 2023 Lecture 6 - Linear Algebra, ODE.pdf',
-#         source = '#src/lectures/lecture6.tex')
+env.PDF(target = '#out/lectures/Math Camp 2023 Lecture 6 - Linear Algebra, ODE.pdf',
+        source = '#src/lectures/lecture6.tex')
 
 env.link(target = ['#docs/out/lectures/Math Camp 2023 Lecture 1 - Proofs, Metric Spaces, Topology.pdf'],
          source = ['#out/lectures/Math Camp 2023 Lecture 1 - Proofs, Metric Spaces, Topology.pdf'])
@@ -30,8 +30,8 @@ env.link(target = ['#docs/out/lectures/Math Camp 2023 Lecture 3 - Compactness, E
 env.link(target = ['#docs/out/lectures/Math Camp 2023 Lecture 4 - Differentiation, IFT, Unconstrained Optimization.pdf'],
          source = ['#out/lectures/Math Camp 2023 Lecture 4 - Differentiation, IFT, Unconstrained Optimization.pdf'])
 
-# env.link(target = ['#docs/out/lectures/Math Camp 2023 Lecture 5 - Constrained Optimization, Envelope Theorem, Integration.pdf'],
-#          source = ['#out/lectures/Math Camp 2023 Lecture 5 - Constrained Optimization, Envelope Theorem, Integration.pdf'])
-#
+env.link(target = ['#docs/out/lectures/Math Camp 2023 Lecture 5 - Constrained Optimization, Envelope Theorem, Integration.pdf'],
+         source = ['#out/lectures/Math Camp 2023 Lecture 5 - Constrained Optimization, Envelope Theorem, Integration.pdf'])
+
 # env.link(target = ['#docs/out/lectures/Math Camp 2023 Lecture 6 - Linear Algebra, ODE.pdf'],
 #          source = ['#out/lectures/Math Camp 2023 Lecture 6 - Linear Algebra, ODE.pdf'])
