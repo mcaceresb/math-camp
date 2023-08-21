@@ -812,7 +812,7 @@ In $x$--$\theta$ space, we can see that $f(x^*(\theta), \theta)$ \textit{\textbf
     =
     \Big[
       D_{\theta} f(x; \theta)
-      +
+      -
       D_{\theta} h(x; \theta) \lambda
     \Big]_{(x, \lambda) = (x^*(\theta), \lambda^*(\theta))}
     \\
@@ -820,7 +820,7 @@ In $x$--$\theta$ space, we can see that $f(x^*(\theta), \theta)$ \textit{\textbf
     &
     =
     \dfrac{\partial f(x^*(\theta), \theta)}{\partial \theta_k}
-    +
+    -
     \sum^{M}_{m = 1}
     \lambda_m^*(\theta)
     \dfrac{\partial h_m(x^*(\theta), \theta)}{\partial \theta_k}
@@ -855,14 +855,14 @@ Note that in our example, there is no constraint so the second term in the theor
     D_{\theta} f(x(\theta); \theta)
   \end{align*}
 
-  To finish, note
+  To finish, differentiate the constraint $h(x(\theta); \theta) = c$ with respect to $\theta$ to get
   \begin{align*}
-    D_{\theta} h(x(\theta); \theta)
+    - D_{\theta} h(x(\theta); \theta)
     =
     (D_\theta x(\theta)) D_x h(x(\theta); \theta)
   \end{align*}
 
-  by the chain rule. Plug this in and you get the exact statement of the envelope theorem.
+  by the chain rule. The right-hand appears in our expression for $D_{\theta} V(\theta)$; plug in $- D_{\theta} h(x(\theta); \theta)$ and you get the envelope theorem.
 \end{remark}
 
 \subsubsection{Application to Economics}
