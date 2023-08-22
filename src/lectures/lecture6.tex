@@ -1529,16 +1529,14 @@ for some constant $C$. Let's see an example:
 
 \begin{example}
   Consider the system
-  \[
-    \dot{y} + t^2 y = t^2
-  \]
-
-  How to proceed in this case?
+  % \[
+  %   \dot{y} + t^2 y = t^2
+  % \]
   \[
     \dot{y} = ay + b
   \]
 
-  $p(t) = -a$ and $q(t) = b$. The integrating factor is
+  The issue is that this is not homogeneous. How to proceed in this case? $p(t) = -a$ and $q(t) = b$; the integrating factor is
   \[
     \exp\left\{\int_{}^{} p(t) dt\right\}
     =

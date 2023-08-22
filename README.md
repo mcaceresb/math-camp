@@ -10,7 +10,7 @@ Brown Math Camp 2023
 - [Lecture 3](out/lectures/Math%20Camp%202023%20Lecture%203%20-%20Correspondences%2C%20Compactness%2C%20EVT.pdf)
 - [Lecture 4](out/lectures/Math%20Camp%202023%20Lecture%204%20-%20Differentiation%2C%20IFT%2C%20Unconstrained%20Optimization.pdf)
 - [Lecture 5](out/lectures/Math%20Camp%202023%20Lecture%205%20-%20Constrained%20Optimization%2C%20Envelope%20Theorem%2C%20Integration.pdf)
-- Lecture 6
+- [Lecture 6](out/lectures/Math%20Camp%202023%20Lecture%206%20-%20Linear%20Algebra%2C%20ODE.pdf)
 
 ### Problem Sets
 
@@ -25,7 +25,7 @@ Brown Math Camp 2023
 <!--
 To deploy with mkdocs; run `mkdocs gh-deploy`
 
-- [Lecture 6](out/lectures/Math%20Camp%202023%20Lecture%206%20-%20Linear%20Algebra%2C%20ODE.pdf)
+xx you have to find a better example for ODEs
 
 - [Suggested Solutions 3](out/homework/Math%20Camp%202023%20Suggested%20Solutions%203.pdf)
 -->
