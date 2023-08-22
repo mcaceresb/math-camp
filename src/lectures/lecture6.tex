@@ -14,7 +14,6 @@
 \rhead{\color{light-gray} \itshape \thesubsection. \leftmark}
 \setcounter{section}{5}
 % \renewcommand\SetHideLevel{1pt}
-% TODO: xx add spectral decomposition and some eigenstuff related to PD/ND
 
 %----------------------------------------------------------------------
 \begin{document}
@@ -751,7 +750,7 @@ Another point to make about the determinant is that it is related to the $\rank$
         -1     & 1 & 0 & \cdots & 0 \\
         0      & 0 & 1 &        & \vdots \\
         \vdots &   &   & \ddots &   \\
-        0      &   &   &        & 0
+        0      &   &   &        & 1
       \end{bmatrix}
     \end{align*}
 
@@ -793,7 +792,7 @@ Another point to make about the determinant is that it is related to the $\rank$
         -\alpha& 1 & 0 & \cdots & 0 \\
         0      & 0 & 1 &        & \vdots \\
         \vdots &   &   & \ddots &   \\
-        0      &   &   &        & 0
+        0      &   &   &        & 1
       \end{bmatrix}
     \end{align*}
 
@@ -816,7 +815,7 @@ Another point to make about the determinant is that it is related to the $\rank$
         -\alpha_2 & 1 & 0 & \cdots & 0 \\
         -\alpha_3 & 0 & 1 &        & \vdots \\
         \vdots    &   &   & \ddots & \\
-        -\alpha_N &   &   &        & 0
+        -\alpha_N &   &   &        & 1
       \end{bmatrix}
     \end{align*}
 
@@ -1305,7 +1304,7 @@ Recall in \Cref{example:lecture6_eigen_example}, the matrix $A$ we considered wa
     u^T \Lambda u = \sum^{N}_{i = 1} \lambda_i u_i^2
   \end{equation}
 
-  where $u_i^2 \ge 0$ (strict for at least one $i$). If $\lambda_i > 0$ for all $i$, $v^\prime A v = \sum^{N}_{i = 1} \lambda_i u_i^2 > 0$, so it is PD. Conversely, if $A$ is PD, we know $v^\prime A v > 0$ for any $v \ne 0$. In particular, it must be true for $v$ equal to each of the columns of $P$. Since the columns of $P$ are orthonormal, for $v = p_i$ the $i$th column of $P$, $C^T p_i = e_i$ the $i$th standard vector (i.e. $1$ in the $i$th entry and $0$ elsewhere). Hence $v^\prime A v = \lambda_i$ when $v = p_i$; since all such quadratic forms are positive, $\lambda_i > 0$. The logic for $< 0$ and ND, $\ge 0$ and PSD, and $\le 0$ and NSD is completely analogous.
+  where $u_i^2 \ge 0$ (strict for at least one $i$). If $\lambda_i > 0$ for all $i$, $v^\prime A v = \sum^{N}_{i = 1} \lambda_i u_i^2 > 0$, so it is PD. Conversely, if $A$ is PD, we know $v^\prime A v > 0$ for any $v \ne 0$. In particular, it must be true for $v$ equal to each of the columns of $P$. Since the columns of $P$ are orthonormal, for $v = p_i$ the $i$th column of $P$, $P^T p_i = e_i$ the $i$th standard vector (i.e. $1$ in the $i$th entry and $0$ elsewhere). Hence $v^\prime A v = \lambda_i$ when $v = p_i$; since all such quadratic forms are positive, $\lambda_i > 0$. The logic for $< 0$ and ND, $\ge 0$ and PSD, and $\le 0$ and NSD is completely analogous.
 \end{proof}
 
 \paragraph{EigenExample}

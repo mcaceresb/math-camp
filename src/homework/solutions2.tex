@@ -1,0 +1,649 @@
+%----------------------------------------------------------------------
+\documentclass{article}
+
+\usepackage[homework]{brownpreamble}
+\setcounter{section}{1}
+\lhead{\color{light-gray} \itshape Math Camp 2022}
+\rhead{\color{light-gray} \itshape Suggested Solutions 2}
+\renewcommand\sectiontype{Suggested Solutions \thesection\ }
+% \renewcommand\thesection{\arabic{section}}
+
+%----------------------------------------------------------------------
+\begin{document}
+\displayoptions
+
+% ---------------------------------------------------------------------
+\section{}
+
+\begin{enumerate}[1.]
+  \item \textit{Using the fact that every Cauchy sequence converges, prove the Bolzano-Weierstrass theorem. (Hint: First show every bounded sequence admits a monotonic sub-sequence. Second, show bounded monotonic sequences are Cauchy.)}
+
+    \solution The Bolzano-Weierstrass theorem states every bounded sequence has a convergent sub-sequence. Our strategy to prove it using Cauchy sequences will be:
+    \begin{itemize}[label=$\bullet$]
+      \item Show that every bounded sequence admits a monotonic sub-sequence.
+
+      \item Show every bounded monotonic sequence is Cauchy.
+    \end{itemize}
+
+    For the first part, the claim is, formally,
+    \begin{itemize}[label=$\bullet$]
+      \item For each $m$ there exists some $n > m$ s.t. $x_m \ge x_n$
+
+      \item \textit{Or} for each $k$ there exists some $n > k$ s.t. $x_k \le x_n$.
+    \end{itemize}
+
+    Maybe both are true, but if at least one is true then we have the first step. By contradiction, suppose this claim is false, meaning both statements must be false. That is,
+    \begin{itemize}[label=$\bullet$]
+      \item $\exists m_1$ s.t. $\forall n > m_1$ we have $x_{m_1} < x_n$
+
+      \item \textit{and} $\exists k_1$ s.t. $\forall n > k_1$ we have $x_{k_1} > x_n$.
+    \end{itemize}
+
+    In other words, for $n \ge M_1 \equiv \max\set{m_1, k_1}$ we have $x_n \in (x_{m_1}, x_{k_1})$. Now we can iterate the claim: Suppose there is no monotonic sub-sequence of $x_m$ for $m \ge M_1$. Then
+    \begin{itemize}[label=$\bullet$]
+      \item $\exists m_2$ s.t. $\forall n > m_2$ we have $x_{m_2} < x_n$
+
+      \item and $\exists k_2$ s.t. $\forall n > k_2$ we have $x_{k_2} > x_n$.
+    \end{itemize}
+
+    Note $m_2, k_2$ must each be larger than $M_1$, so $x_{m_2}, x_{k_2} \in (x_{m_1}, x_{k_1})$, and for $n \ge M_2 \equiv \max\set{m_2, k_2}$ we have $x_n \in (x_{m_2}, x_{k_2}) \subset (x_{m_1}, x_{k_1})$. We can proceed by induction, and construct a sequence (two sequences, actually) $x_{m_l}$ strictly increasing and $x_{k_l}$ strictly decreasing. These are strictly monotonic sub-sequences of $x_m$, which is a contradiction.
+
+    For the second step, we again by contradiction suppose that monotonic sequences are not Cauchy. Remember the definition of Cauchy is for every $\varepsilon > 0$ there exists some $M$ s.t. $d(x_k, x_n) < \varepsilon$ whenever $n, k \ge M$. If a sequence is not Cauchy, then $\exists \varepsilon > 0$ s.t. for each $k, n$ we have
+    \begin{align*}
+      d(x_k, x_n) \ge \varepsilon
+    \end{align*}
+
+    Consider $x_{m_k}$ any monotonic sub-sequence of $x_m$ and suppose it is increasing. We know that sequential elements of this sub-sequence are at least $\varepsilon$ away from each other, since this is true of any two elements of $x_m$. Hence we can write
+    \begin{align*}
+      x_{m_1} + \varepsilon
+      \le
+      x_{m_2}
+      \quad
+      x_{m_2} + \varepsilon
+      \le
+      x_{m_3}
+      \quad
+      x_{m_1} + 2\varepsilon
+      \le
+      x_{m_3}
+      \quad
+      \quad
+      \cdots
+    \end{align*}
+
+    In general, we can find that
+    \begin{align*}
+      x_{m_1} + (K - 1) \varepsilon \le x_{m_K}
+    \end{align*}
+
+    for any $K$. Since $\varepsilon > 0$, take any upper bound of the sequence $U$. We have that
+    \begin{align*}
+      K > \dfrac{U - x_{m_1}}{\varepsilon} + 1
+      \implies
+      x_{m_1} + (K - 1) \varepsilon > U
+      \implies
+      x_{m_K} > U
+    \end{align*}
+
+    meaning $U$ is not an upper bound, contradiction. The proof for a decreasing sub-sequence is analogous. Thus we have shown every bounded sequence admits a monotonic sub-sequence; this sub-sequence is Cauchy, and since Cauchy sequences converge this sub-sequence converges.
+
+  \item {\itshape
+    Let $(x_m)$ be any sequence. We define
+    \[
+      \limsup_{m \to \infty} = \lim_{m \to \infty} \left(\sup_{k \ge m} x_k\right)
+    \]
+
+    and
+    \[
+      \liminf_{m \to \infty} = \lim_{m \to \infty} \left(\inf_{k \ge m} x_k\right)
+    \]
+
+    Consider $(x_m) \in \mathbb{R}$ bounded. Show $x_m \to x \iff \limsup x_m = \liminf x_m = x$.}
+
+    \solution First $\implies$, that is, given $x_m \to x$ we show $\limsup x_m = \liminf x_m = x$. By definition,
+    \[
+      \limsup_{m \to \infty} x_m
+      =
+      \lim_{m \to \infty} \sup_{k \ge m} x_k
+    \]
+
+    Let $b_m \equiv \sup_{k \ge m} x_k$; we want to show $b_m \to x$. By definition of the $\sup$, we know for any $\varepsilon_m = 1/m > 0$ there exists some $x_{n_m}$ with $n_m \ge m$ s.t. $b_m - \varepsilon_m < x_{n_m} \le b_m$. Now by the triangle inequality,
+    \[
+      d(b_m, x) \le d(b_m, x_{n_m}) + d(x, x_{n_m}) < 1/m + d(x, x_{n_m})
+    \]
+
+    Pick any $\varepsilon > 0$; we know $\exists M$ s.t. $m \ge M$ implies $d(x_{n_m}, x) < \varepsilon/2$ (since $x_{n_m}$ is a sub-sequence and must share the main sequence's limit). Further, for $m > 2/\varepsilon$ we have $d(b_m, x_{n_m}) < 1/m < \varepsilon/2$. Hence
+    \[
+      m > \max\set{2/\varepsilon, M}
+      \implies
+      d(b_m, x) < \varepsilon/2 + \varepsilon/2 = \varepsilon
+    \]
+
+    which proves $b_m \to x$. The steps for the $\inf$ are analogous. Now we show $\impliedby$.  Note
+    \[
+      a_m \equiv \inf_{k \ge m} x_k \le x_m \le \sup_{k \ge m} x_k \equiv b_m
+    \]
+
+    for each $m$, with $a_m \to x, b_m \to x$  by premise. This already shows that $x_m \to x$, but let's show this explicitly. We want to show that for every $\varepsilon > 0$, there is some $M$ s.t.
+    \[
+      m > M \implies d(x_m, x) < \varepsilon
+    \]
+
+    Note $d(x_m, x) < \varepsilon \iff x - \varepsilon < x_m < x + \varepsilon$. For any $\varepsilon > 0$, there is some $M_1, M_2$ s.t.
+    \[
+      m > M_1 \implies d(b_m, x) < \varepsilon
+      \text{ and }
+      m > M_2 \implies d(a_m, x) < \varepsilon
+    \]
+
+    Take $M > \max\set{M_1, M_2}$. Then we have
+    \[
+      x - \varepsilon < a_m < x + \varepsilon
+      \text{ and }
+      x - \varepsilon < b_m < x + \varepsilon
+    \]
+
+    To finish, we leverage $a_m \le x_m \le b_m$. Hence we have
+    \[
+      x - \varepsilon < a_m \le x_m \le b_m < x + \varepsilon
+      \implies
+      x - \varepsilon < x_m < x + \varepsilon
+    \]
+
+    which is what we wanted. This shows generically $a_m \le x_m \le b_m$ with $a_m, b_m \to x$ implies $x_m \to x$.
+
+  \item {\itshape
+    Given a set $A \subseteq \mathbb{R}$ we say that a function $f: S \to \mathbb{R}$ is \keyword{uniformly continuous} if $\forall \varepsilon > 0 ~~ \exists \delta > 0$ s.t. $\forall x, y \in S$
+    \[
+      |x - y| < \delta \implies |f(x) - f(y)| < \varepsilon
+    \]
+
+    The main difference between this and the usual definition of continuity, is that the latter can have different values of $\delta$ given $x, y \in S$. If a function is uniformly continuous, we need $\delta$ picked for any $x, y$ (although it might depend on $\varepsilon$.)}
+    \begin{enumerate}[a)]
+      \item \textit{Take $f(x) = 1 / x$ for $f: (0, 1) \to \mathbb{R}$. Show $f$ is continuous.}
+
+        \solution First, note for any $x \in (0, 1)$ and $\delta > 0$ small enough we have
+        \begin{align*}
+            |x - a| < \delta
+            &
+            \implies
+            \dfrac{1}{a}
+            \in
+            \left(
+              \dfrac{1}{x + \delta},
+              \dfrac{1}{x - \delta}
+            \right)
+            \\
+            &
+            \implies
+            \left|\dfrac{1}{x} - \dfrac{1}{a}\right|
+            =
+            \left|\dfrac{x - a}{xa}\right|
+            <
+            \left|\dfrac{1}{x} - \dfrac{1}{a}\right|
+            <
+            \left|\dfrac{\delta}{x (x - \delta)}\right|
+        \end{align*}
+
+        Let $\delta \equiv \varepsilon x^2 / (1 + \varepsilon x)$ (noting $x \in (0, 1)$). We have that
+        \[
+            |x - a| < \delta
+            \implies
+            \left|\dfrac{1}{x} - \dfrac{1}{a}\right|
+            <
+            \left|\dfrac{\delta}{x (x - \delta)}\right|
+            =
+            \dfrac{\dfrac{\varepsilon x^2}{1 + \varepsilon x}}{x \left(x - \dfrac{\varepsilon x^2}{1 + \varepsilon x}\right)}
+            =
+            \varepsilon
+        \]
+
+        which shows that $1/x$ is continuous.
+
+      \item \textit{Show that for any two sequences $(x_m), (y_m) \in S$ with $\lim_{m \to \infty} (x_m - y_m) = 0$ and s.t. $\exists \varepsilon > 0$ with $|g(x_m) - g(y_m)| > \varepsilon ~~ \forall m \in \mathbb{N}$, we have $g: S \to \mathbb{R}$ is not uniformly continuous.}
+
+        \solution First, note every $\varepsilon_1$ there is some $M$ s.t.
+        \[
+            m > M \implies |x_m - y_m| < \varepsilon_1
+        \]
+
+        $g: A \to \mathbb{R}$ is uniformly continuous if for every $\varepsilon_2$ there is some $\delta$ such that for all $x, y \in A$,
+        \[
+            |x - y| < \delta \implies |g(x) - g(y)| < \varepsilon_2
+        \]
+
+        Suppose $g(\cdot)$ is uniformly continuous and let $\varepsilon_1 = \delta, \varepsilon_2 = \varepsilon$. Then we know there is some $M$ s.t. $m > M$ gives $|x_m - y_m| < \delta$, which in turn would imply $|g(x_m) - g(u_m)| < \varepsilon$. However, we assumed $\varepsilon < |g(x_m) - g(u_m)|$, which is a contradiction.
+
+      \item \textit{Use the result above to check that $f$ defined in (a) is not uniformly continuous.}
+
+        \solution Let $x_m = 1 / m$ and $y_m = 1 / (m + 1)$. Clearly,
+        \[
+          \dfrac{1}{m} - \dfrac{1}{m + 1}
+          =
+          \dfrac{m + 1 - m}{m (m + 1)}
+          =
+          \dfrac{1}{m (m + 1)}
+          \to
+          0
+        \]
+
+        However,
+        \[
+          \left|f\left(\dfrac{1}{m}\right) - f\left(\dfrac{1}{m + 1}\right)\right|
+          =
+          \left|\dfrac{1}{1 / m} - \dfrac{1}{1 / (m + 1)}\right|
+          =
+          \left|m - (m + 1)\right|
+          =
+          1
+          >
+          \varepsilon
+        \]
+
+        for, say, $\varepsilon = 1 / 2 > 0$. By (b) we know then that $f$ is not uniformly continuous.
+
+      \item \textit{Show that if $(x_m) \in S$ is Cauchy, then $(y_m)$ defined by $y_m = h(x_m)$ is also Cauchy when $h: S \to \mathbb{R}$ is uniformly continuous.}
+
+        \solution If $h(\cdot)$ uniformly continuous, we know for every $\varepsilon > 0$ there is some $\delta > 0$ s.t.
+        \[
+          |x - y| < \delta \implies |h(x) - h(y)| < \varepsilon
+        \]
+
+        If $x_m$ is Cauchy, we know that for this $\delta > 0$, we can find some $M$ s.t.
+        \[
+          m, n \ge M \implies |x_m - x_{n}| < \delta
+        \]
+
+        Since $h()$ is uniformly continuous, this in turn implies
+        \[
+          |y_m - y_n| = |h(x_m) - h(x_n)| < \varepsilon
+        \]
+
+        and by definition $y_m$ is Cauchy.
+
+      \item \textit{Check $x_m = 1 / m$ is Cauchy but $x_m = m$ is not.}
+
+        \solution $x_m = m$ and $x_{m + 1} = m + 1$ gives $|x_m - x_{m + 1}| = |m - (m + 1)| = |1| = 1 > \varepsilon$ for all $0 < \varepsilon < 1$, so it cannot be Cauchy. Note
+        \[
+          \left|\dfrac{1}{m} - \dfrac{1}{n}\right|
+          \le
+          \left|\dfrac{1}{m}\right| + \left|\dfrac{1}{n}\right|
+          <
+          \dfrac{1}{\min\set{n, m}} + \dfrac{1}{\min\set{n, m}}
+          =
+          \dfrac{2}{\min\set{n, m}}
+        \]
+
+        For any $\varepsilon > 0$, let
+        \[
+          M = \Fceil{\dfrac{2}{\varepsilon}} + 1 > \dfrac{2}{\varepsilon}
+          \implies
+          \varepsilon > \dfrac{2}{M}
+        \]
+
+        Hence for any $m, n \ge M$,
+        \[
+          \left|\dfrac{1}{m} - \dfrac{1}{n}\right|
+          <
+          \dfrac{2}{\min\set{n, m}}
+          \le
+          \dfrac{2}{M}
+          <
+          \varepsilon
+        \]
+
+      \item \textit{Use the sequences in (e) and the result in (d) to give an alternative proof that the function defined in (a) is not uniformly continuous.}
+
+        \solution If $f(\cdot)$ is uniformly continuous, then $y_m \equiv f(x_m)$ is Cauchy for any $x_m$ that is Cauchy. However, we just proved that $x_m = 1 / m$ is Cauchy while $y_m = 1 / (1 / m) = m$ is not Cauchy, which is a contradiction. Hence $f(\cdot)$ cannot be uniformly continuous.
+    \end{enumerate}
+
+  \item {\itshape
+    A function $f: \mathbb{R}^N \to \mathbb{R}$ is homogeneous of degree $r \in \mathbb{Z}$ if $\forall t > 0, x \in \mathbb{R}^N$ we have
+    \[
+      f(tx) = t^r f(x)
+    \]
+    }
+
+    \begin{enumerate}[a)]
+      \item \textit{Show if $f(x)$ is homogeneous of degree $r$ the partial derivative is homogeneous of degree $r - 1$.}
+
+        \solution If we can assume that the partial derivative exists, then we have
+        \begin{align*}
+          \dfrac{\partial}{\partial x_j} f(tx) & = \dfrac{\partial}{\partial x_j} \left[t^r f(x)\right] = t^r \dfrac{\partial f}{\partial x_j}(x)
+        \end{align*}
+
+        where we substituted $f(tx)$ with $t^r f(x)$. However, by the chain rule,
+        \begin{align*}
+          \dfrac{\partial}{\partial x_j} f(tx) & = t \cdot \left[\dfrac{\partial}{\partial x_j} f(x)\right]_{x = tx} = t \dfrac{\partial f}{\partial x_j}(tx)
+        \end{align*}
+
+        Finally,
+        \begin{align*}
+          t \dfrac{\partial f}{\partial x_j}(tx)
+          =
+          t^r \dfrac{\partial f}{\partial x_j}(x)
+          \implies
+          \dfrac{\partial f}{\partial x_j}(tx) = t^{r - 1} \dfrac{\partial f}{\partial x_j}(x)
+        \end{align*}
+
+        which is the definition of homogeneity of degree $r - 1$ for $\dfrac{\partial f}{\partial x_j}$.
+
+      \item {\itshape
+          Show that if $f(x)$ is homogeneous of degree $r$ and differentiable  then for any $\widetilde{x}$ we have
+        \[
+          \sum^{N}_{n = 1} \dfrac{\partial f(\widetilde{x})}{\partial x_n} \widetilde{x}_n = r f(\widetilde{x})
+        \]
+
+        that is, $\nabla f(\widetilde{x}) \cdot \widetilde{x} = r f(\widetilde{x})$.}
+
+      \solution Take derivatives with respect to $t$, then we have
+        \[
+          \dfrac{d}{dt} f(tx)
+            = \dfrac{d}{dt} t^r f(x)
+          \quad\quad
+          \sum^{N}_{n = 1}
+          \left(\dfrac{\partial}{\partial x_n} f(tx)\right)
+          \underbrace{\left(\dfrac{d}{dt} (t x_n)\right)}_{x_n}
+            = r t^{r - 1} f(x)
+        \]
+
+        is true for every $t$. So simply choose $t = 1$, and we get
+        \[
+          \sum^{N}_{n = 1} \dfrac{\partial}{\partial x_n} f(x) x_n = r f(x)
+        \]
+
+        which is what we wanted.\footnote{I think the only sticky point here is to show that
+        \[
+          \dfrac{d}{dt}f(tx) = \nabla f(tx) \cdot \dfrac{d}{dt} tx
+        \]
+
+        which is true by the chain rule.}
+    \end{enumerate}
+
+  \item {\itshape
+    Take the simplified IS-LM system of equations
+    \[
+      Y - C(Y - T) - I(r) = G
+      \quad\quad
+      M^D(Y, r) = M^S
+    \]
+
+    Suppose that $0 < C^\prime(x) < 1, I^\prime(r) < 0, \dfrac{\partial M}{\partial Y} > 0$ and $\dfrac{\partial M}{\partial r} < 0$.}
+    \begin{enumerate}[a)]
+      \item \textit{Use the IFT to check that one can represent the endogenous variables $Y, r$ as a function of the exogenous variables $G, M^S, T$.}
+
+        \solution Note that
+          \begin{align*}
+            Y - C(Y - T) - I(r) - G & = 0 \\
+            M^S - M^D (Y, r)        & = 0
+          \end{align*}
+
+          with endogenous variables $x \equiv (Y, r)$, national income and the interest rate, and exogenous variables $\theta \equiv (M^S, G, T)$, money supply, government spending, and taxes.
+          \begin{equation}
+           \label{eq:is_lm_example}
+            f(\theta, x)
+            =
+            \left[\begin{matrix}
+              f_1(\theta, x) \\
+              f_2(\theta, x)
+            \end{matrix}\right]
+            =
+            \left[\begin{matrix}
+              Y - C(Y - T) - I(r) - G \\
+              M^S - M^D (Y, r)
+            \end{matrix}\right]
+            = 0
+          \end{equation}
+
+          is the exact type of equation where IFT applies. If $D_{x^\prime}$ is non-singular, then for some open neighborhood of $\theta$ and some $h$ we can write
+          \begin{equation}
+            \begin{array}{c}
+              h(\theta)
+              = \left[\begin{matrix}
+                Y(M^S, G, T) \\
+                r(M^S, G, T)
+              \end{matrix}\right] \\[6pt]
+              D_{\theta^\prime} f(\theta, h(\theta)) + D_{x^\prime} f(\theta, h(\theta)) D_{\theta^\prime} h(\theta) = 0
+            \end{array}
+            \label{eq:ift_example_statement}
+          \end{equation}
+
+          We find that
+          \begin{align*}
+            D_{\theta^\prime} f(\theta, h(\theta))
+            & =
+            \left[\begin{matrix}
+                0
+              & -1
+              & C^\prime(Y(\cdot) - T) \\[6pt]
+                1
+              & 0
+              & 0
+            \end{matrix}\right] \\[6pt]
+            D_{x^\prime} f(\theta, h(\theta))
+            & =
+            \left[\begin{matrix}
+                \dfrac{\partial f_1}{\partial Y} = 1 - C^\prime(Y(\cdot) - T)
+              & \dfrac{\partial f_1}{\partial r} = -I^\prime(r(\cdot)) \\[6pt]
+                \dfrac{\partial f_2}{\partial Y} = -\dfrac{\partial M^D}{\partial Y}
+              & \dfrac{\partial f_2}{\partial r} = -\dfrac{\partial M^D}{\partial r}
+            \end{matrix}\right] \\[6pt]
+            \left[D_{x^\prime} f(\theta, h(\theta))\right]^{-1}
+            & =
+            \dfrac{1}{D}
+            \left[\begin{matrix}
+                - \dfrac{\partial M^D}{\partial r}
+              & I^\prime(r(\cdot)) \\[6pt]
+                \dfrac{\partial M^D}{\partial Y}
+              & 1 - C^\prime(Y(\cdot) - T)
+            \end{matrix}\right] \\[6pt]
+            D & =
+            \underbrace{
+             - \overbrace{\dfrac{\partial M^D}{\partial r}}^{< 0}
+               \underbrace{\Bpar{1 - C^\prime(Y(\cdot) - T)}}_{> 0}
+             }_{> 0}
+            \underbrace{
+             - \overbrace{I^\prime(r(\cdot))}^{< 0}
+               \underbrace{\dfrac{\partial M^D}{\partial Y}}_{> 0}
+             }_{> 0}
+             \implies D > 0
+          \end{align*}
+
+        A non-zero determinant $\implies$ the inverse exists, and we can use \Cref{eq:ift_example_statement} to characterize $D_{\theta^\prime} h(\theta)$
+
+      \item \textit{Check the sign of the effect of an infinitesimal increase in government spending $G$ on $r$ and $Y$ keeping $M^S$ and $T$ fixed.}
+
+        \solution Using the results from the previous section, we have that
+        \begin{align*}
+          D_{\theta^\prime} h(\theta)
+          & =
+          \left[\begin{matrix}
+              \dfrac{\partial Y}{\partial M^S}
+            & \dfrac{\partial Y}{\partial G}
+            & \dfrac{\partial Y}{\partial T} \\[6pt]
+              \dfrac{\partial r}{\partial M^S}
+            & \dfrac{\partial r}{\partial G}
+            & \dfrac{\partial r}{\partial T}
+          \end{matrix}\right]
+          \\[6pt]
+          & =
+            -\dfrac{1}{D}
+            \left[\begin{matrix}
+                - \dfrac{\partial M^D}{\partial r}
+              & I^\prime(r(\cdot)) \\[6pt]
+                \dfrac{\partial M^D}{\partial Y}
+              & 1 - C^\prime(Y(\cdot) - T)
+            \end{matrix}\right]
+            \left[\begin{matrix}
+                0
+              & -1
+              & C^\prime(Y(\cdot) - T) \\[6pt]
+                1
+              & 0
+              & 0
+            \end{matrix}\right]
+          \\[6pt]
+          & =
+          - \dfrac{1}{D}
+          \left[\begin{matrix}
+                I^\prime(r(\cdot))
+            &   \dfrac{\partial M^D}{\partial r}
+            & - \dfrac{\partial M^D}{\partial r} C^\prime(Y(\cdot) - T)
+            \\[6pt]
+                1 - C^\prime(Y(\cdot) - T)
+            & - \dfrac{\partial M^D}{\partial Y}
+            &   \dfrac{\partial M^D}{\partial Y} C^\prime(Y(\cdot) - T)
+            \\[6pt]
+          \end{matrix}\right] \\
+          & =
+          - \dfrac{1}{D}
+          \left[\begin{matrix}
+              < 0
+            & < 0
+            & > 0 \\[6pt]
+              > 0
+            & < 0
+            & > 0
+          \end{matrix}\right]
+          =
+          \dfrac{1}{D}
+          \left[\begin{matrix}
+              > 0
+            & > 0
+            & < 0 \\[6pt]
+              < 0
+            & > 0
+            & < 0
+          \end{matrix}\right]
+        \end{align*}
+
+      Which means that for some $x = (Y, r), \theta = (M^S, G, T)$ that satisfies \Cref{eq:is_lm_example} there is some local neighborhood around $\theta$ where we can characterize the behavior of $(Y, r)$ with respect to each of the variables in $\theta$. In particular, income reacts positively to increases money supply or government spending but negatively to taxes, while the interest rate goes down with increases in the money supply or taxes but goes up with increases in government spending.
+    \end{enumerate}
+
+  \item {\itshape
+    Take the correspondence $f: \mathbb{R}^3_{++} \to \mathbb{R}^2_{++}$ (i.e. with strictly posisive arguments) defined by
+    \[
+      f(p_1, p_2, w)
+      =
+      \begin{cases}
+        \Fset{
+          \left(\dfrac{w}{2p_1}, \dfrac{w}{2 p_2}\right)
+        }
+          & \text{if } \dfrac{w^2}{4 p_1 p_2} \ne 1 \\[6pt]
+        \varnothing
+          & \text{if } \dfrac{w^2}{4 p_1 p_2} = 1
+      \end{cases}
+    \]
+
+    (Note $\left(\dfrac{w}{2p_1}, \dfrac{w}{2 p_2}\right)$ is a single point, a coordinate.)}
+
+    % \solution I intended the ``correspondence'' to be made up of singleton points, and the point of this exercise was to show you can poke a hole in a continuous function and lose continuity but still get upper or lower hemicontinuity. However, last year some people interpreted this as an interval (in which case we'd need to write $f: R^{3}_{++} \toto \mathbb{R}$), and I forgot to clarify this year. Hence I do the solution both ways (i.e. if the correspondence was singleton-valued or interval-valued).
+
+    \solution
+
+    \begin{enumerate}
+      \item \textit{Is $f$ upper hemicontinuous?}
+
+        \solution It's not uhc. Take
+        \[
+          p^m_1, p^m_2
+          =
+          \left(
+            1 - \dfrac{1}{m},
+            1 - \dfrac{1}{m}
+          \right)
+          \quad\quad
+          w_m = 2
+        \]
+
+        Hence $(p^m_1, p^m_2, w^m) \to (1, 1, 2)$, and $f(1, 1, 2) = \varnothing$ because $2^2 / 4 = 1$. However
+        \[
+          y_m
+          \equiv
+          f(p^m_1, p^m_2, w^m)
+          =
+          \left(\dfrac{2}{2 (1 - 1 / m)}, \dfrac{2}{2 (1 - 1 / m)}\right)
+          =
+          \left(\dfrac{m}{m - 1}, \dfrac{m}{m - 1}\right)
+          \to
+          (1, 1)
+        \]
+
+        Hence $y_m \to 1$ and there is no sub-sequence of $y_m$ that converges to a point in the empty set. 
+
+        % For the interval-valued interpretation we cannot use the sequential definition given this is an open interval. (If they were closed intervals then a very similar proof would be sufficient since they would be closed and bounded real intervals. An earlier version of this solution had such a proof, but it was pointed out to me the intervals were open in the interval interpretation.)
+        %
+        % So fix a point $\widetilde{x} \equiv (\widetilde{p}_1, \widetilde{p}_2, \widetilde{w})$ and consider instead the open set
+        % \[
+        %   O
+        %   =
+        %   \left(
+        %     \dfrac{\widetilde{w}}{2 \widetilde{p}_1}, \dfrac{\widetilde{w}}{2 \widetilde{p}_2}
+        %   \right)
+        %   \subseteq
+        %   O
+        % \]
+        %
+        % We can do this because the point is fixed, so they are just values (i.e. not numbers). But now the upper inverse image will contain this point, and there is no neighborhood of $\widetilde{x}$ that is entirely contained in $O$. For any $\varepsilon > 0$, the point $(\widetilde{p}_1, \widetilde{p}_2, \widetilde{w} - \varepsilon) \in B_{\varepsilon}(\widetilde{x})$, yet
+        % \[
+        %   \left(
+        %     \dfrac{\widetilde{w} - \varepsilon}{2 \widetilde{p}_1}, \dfrac{\widetilde{w} - \varepsilon}{2 \widetilde{p}_2}
+        %   \right)
+        %   \cancel\subseteq
+        %   O
+        % \]
+        %
+        % Since $\dfrac{\widetilde{w} - \varepsilon}{2 \widetilde{p}_1} < \dfrac{\widetilde{w}}{2 \widetilde{p}_1}$.
+        % \begin{remark}
+        %   I want to clarify a point: I believe I have an example in class and in the notes that the correspondence, for instance, $\Gamma(x) = (1, 2)$, i.e. ``constant'' real intervals, was uhc. This is true because for any open set containing $(1, 2)$ the upper inverse image is the entire space. However, consider $\Gamma(x) = (-x, x)$. This is not uhc for the exact same reason the correspondence in this problem set is not uhc (the upper inverse image of any open set $(a, b)$ will either be $\varnothing$ if $a, b > 0$ or the closed set $[-\min\set{|a|, |b|}, \min\set{|a|, |b|}]$).
+        % \end{remark}
+
+      \item \textit{Is $f$ lower hemicontinuous?}
+
+        \solution It is lhc. Take any $(p_1^m, p_2^m, w^m) \to (p_1, p_2, w)$. We want to show for each $y \in f(p_1, p_2, w)$ then $\exists y_m$ s.t. $y_m \to y$ with $y_m \in f(p_1^m, p_2^m, w^m)$. If $f(p_1, p_2, w) = \varnothing$ then this holds vacuously; otherwise note $w/2p_1$ and $w/2p_2$ are continuous so the result holds by continuity (if $y_m = (w^m/2p_1^m, w^m/2p^m_2)$ then $y_m \to (w/2p_1, 2p_2)$ by continuity). Unlike uhc, the fact $y_m$ converges is not a contradiction.
+
+        % Now for the interval interpretation there are two cases: First case is when $w/2p_1 < w/2p_2$, and for any $y \in f(p_1, p_2, w)$ we have
+        % \begin{align*}
+        %   \dfrac{w}{2 p_1} < y < \dfrac{w}{2 p_2}
+        % \end{align*}
+        %
+        % means that  for some $\varepsilon > 0$ we have
+        % \begin{align*}
+        %   \dfrac{w}{2 p_1} + \varepsilon < y < \dfrac{w}{2 p_2} - \varepsilon
+        % \end{align*}
+        %
+        % (in particular this works for any $\varepsilon < \min\set{y - (w / 2p_1), (w/2p_2) - y}$). By convergence, $\exists M_1$ s.t.
+        % \begin{align*}
+        %   \dfrac{w^m}{2 p_1^m} < \dfrac{w}{2 p_1} + \varepsilon
+        %   <
+        %   y
+        %   <
+        %   \dfrac{w}{2 p_2} - \varepsilon
+        %   <
+        %   \dfrac{w^m}{2 p_2^m}
+        % \end{align*}
+        %
+        % whenever $m \ge M_1$ and by the Archimedean principle (!) there is some $M_2$ s.t. $1 / M_2 < \varepsilon$. Let $M \equiv \max\set{M_1, M_2}$ and we have that the sequence $y_m = y + \dfrac{1}{m}$ is s.t.
+        % \begin{align*}
+        %   \dfrac{w^m}{2 p_1^m}
+        %   <
+        %   y_m
+        %   <
+        %   \dfrac{w^m}{2 p_2^m}
+        % \end{align*}
+        %
+        % for any $m \ge M$. Since $1/m \to 0$ we have $y_m \to y$ for any $y \in f(p_1, p_2, w)$ given $f(p_1, p_2, w) \ne \varnothing$. Now to finish we need to consider $w/2 p_2 \le w/2p_1$. Note
+        % \begin{align*}
+        %   (a, b) = \Fset{x \in \mathbb{R}: a < x < b} = \varnothing \quad\text{if $b \le a$}
+        % \end{align*}
+        %
+        % Hence for any such $(p_1, p_2, w)$ we have $f(p_1, p_2, w) = \varnothing$ and lhc again holds vacuously.
+    \end{enumerate}
+
+    % \begin{remark}
+    %   There's a slight issue with the theorem I gave regarding lhc correspondences. I said $\Gamma: X \toto Y$ is lhc at $x \in X \iff \forall (x_m) \in X$ s.t. $x_m \to x \in X$ and $\forall y \in \Gamma(x) ~~ \exists (y_m) \in Y$ s.t. $y_m \to y$ and $y_m \in \Gamma(x_m)$. However, in this case we don't necessarily have $y_m \in \Gamma(x_m)$ for all $m$; rather, what we have is $y_m \in \Gamma(x_m)$ whenever $m \ge M$ for some finite $M$. If $\Gamma(x_m)$ is not empty for each $m$, then we can just pick $y_1, \ldots, y_{M - 1}$ to be arbitrary elements therein. However, if $\Gamma(x_m) = \varnothing$ we cannot  do that. Hence the actual statement of the theorem should add the caveat that $y_m \in \Gamma(x_m)$ whenever $m \ge M$ for some finite $M$.
+    % \end{remark}
+\end{enumerate}
+
+%----------------------------------------------------------------------
+\end{document}

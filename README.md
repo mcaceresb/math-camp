@@ -16,19 +16,16 @@ Brown Math Camp 2023
 
 - [Problem Set 1](out/homework/Math%20Camp%202023%20Problem%20Set%201.pdf)
 - [Problem Set 2](out/homework/Math%20Camp%202023%20Problem%20Set%202.pdf)
-- Problem Set 3
+- [Problem Set 3](out/homework/Math%20Camp%202023%20Problem%20Set%203.pdf)
 
 - [Suggested Solutions 1](out/homework/Math%20Camp%202023%20Suggested%20Solutions%201.pdf)
-- Suggested Solutions 2
+- [Suggested Solutions 2](out/homework/Math%20Camp%202023%20Suggested%20Solutions%202.pdf)
 - Suggested Solutions 3
 
 <!--
 To deploy with mkdocs; run `mkdocs gh-deploy`
 
-- [Lecture 6](out/lectures/Math%20Camp%202023%20Lecture%206%20-%20Linear%20Algebra,%20ODE.pdf)
+- [Lecture 6](out/lectures/Math%20Camp%202023%20Lecture%206%20-%20Linear%20Algebra%2C%20ODE.pdf)
 
-- [Problem Set 3](out/homework/Math%20Camp%202023%20Problem%20Set%203.pdf)
-
-- [Suggested Solutions 2](out/homework/Math%20Camp%202023%20Suggested%20Solutions%202.pdf)
 - [Suggested Solutions 3](out/homework/Math%20Camp%202023%20Suggested%20Solutions%203.pdf)
 -->
