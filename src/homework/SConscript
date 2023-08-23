@@ -15,8 +15,8 @@ env.PDF(target = '#out/homework/Math Camp 2023 Suggested Solutions 1.pdf',
 env.PDF(target = '#out/homework/Math Camp 2023 Suggested Solutions 2.pdf',
         source = '#src/homework/solutions2.tex')
 
-# env.PDF(target = '#out/homework/Math Camp 2023 Suggested Solutions 3.pdf',
-#         source = '#src/homework/solutions3.tex')
+env.PDF(target = '#out/homework/Math Camp 2023 Suggested Solutions 3.pdf',
+        source = '#src/homework/solutions3.tex')
 
 env.link(target = ['#docs/out/homework/Math Camp 2023 Problem Set 1.pdf'],
          source = ['#out/homework/Math Camp 2023 Problem Set 1.pdf'])
@@ -33,5 +33,5 @@ env.link(target = ['#docs/out/homework/Math Camp 2023 Suggested Solutions 1.pdf'
 env.link(target = ['#docs/out/homework/Math Camp 2023 Suggested Solutions 2.pdf'],
          source = ['#out/homework/Math Camp 2023 Suggested Solutions 2.pdf'])
 
-# env.link(target = ['#docs/out/homework/Math Camp 2023 Suggested Solutions 3.pdf'],
-#          source = ['#out/homework/Math Camp 2023 Suggested Solutions 3.pdf'])
+env.link(target = ['#docs/out/homework/Math Camp 2023 Suggested Solutions 3.pdf'],
+         source = ['#out/homework/Math Camp 2023 Suggested Solutions 3.pdf'])

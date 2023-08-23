@@ -20,12 +20,8 @@ Brown Math Camp 2023
 
 - [Suggested Solutions 1](out/homework/Math%20Camp%202023%20Suggested%20Solutions%201.pdf)
 - [Suggested Solutions 2](out/homework/Math%20Camp%202023%20Suggested%20Solutions%202.pdf)
-- Suggested Solutions 3
+- [Suggested Solutions 3](out/homework/Math%20Camp%202023%20Suggested%20Solutions%203.pdf)
 
 <!--
 To deploy with mkdocs; run `mkdocs gh-deploy`
-
-xx you have to find a better example for ODEs
-
-- [Suggested Solutions 3](out/homework/Math%20Camp%202023%20Suggested%20Solutions%203.pdf)
 -->
